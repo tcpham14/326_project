@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head style="background-color: yellow">
     <title>Bootstrap 4 Website Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,144 +57,137 @@
 
     </nav>
     <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; border-radius: 0px;">
-        <h1 style="color: white"><a href="#" style="color: white">FEATURED CLASS HERE</a></h1>
-        <p style="color: white">DESCRIPTION OF THE CLASS HERE!</p>
+        <h1 style="color: white"><a href="#" style="color: white">FEATURED CLASS</a></h1>
+        <p style="color: white">Course Description OF THE CLASS HERE!</p>
     </div>
 
-    <div class="container" style="margin-top:20px">
+    <div class="container-fluid" style="margin-top:20px">
         <div class="row">
-            <!-- <div class="col-sm-4">
-      <div class="panel-group">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" href="#collapse1"><h3>Popular Classes</h3></a>
-                </h4>
-              </div>
-              <div id="collapse1" class="panel-collapse collapse">
-                <ul class="list-group">
-                  <a href="#" class="list-group-item">One</a>
-                  <a href="#" class="list-group-item">Two</a>
-                  <a href="#" class="list-group-item">Three</a>
-                  <a href="#" class="list-group-item">Four</a>
-                  <a href="#" class="list-group-item">Five</a>
-                  <a href="#" class="list-group-item">Six</a>
-                  <a href="#" class="list-group-item">Seven</a>
-                </ul>
-              </div>
-            </div>
-          </div>
-      <hr class="d-sm-none">
-    </div>
-    <div class="col-sm-8">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      </div> -->
-            <div id="demo" class="carousel slide" data-ride="carousel">
+            <div id="myCarousel" class="carousel slide mx-auto" style="padding-right:50px; padding-left: 50px"
+                data-ride="carousel">
 
                 <!-- Indicators -->
-                <ul class="carousel-indicators">
-                    <li data-target="#demo" data-slide-to="0" class="active"></li>
-                    <li data-target="#demo" data-slide-to="1"></li>
-                    <li data-target="#demo" data-slide-to="2"></li>
-                </ul>
+
 
                 <!-- The slideshow -->
-                <div class="carousel-inner">
+                <div class="carousel-inner" role="listbox" style="width: 1000px; height:500px">
                     <div class="carousel-item active">
-                            <div class="container">
-                                    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; border-radius: 0px;">
-                                            <h1 style="color: white"><a href="#" style="color: white">CLASS 1 HERE</a></h1>
-                                    </div>  
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h5>Description</h5>
-                                            <!-- <div class="fakeimg">Fake Image</div> -->
-                                            <p>Some text..</p>
-                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h5>Reviews</h5>
-                                            <!-- <div class="fakeimg">Fake Image</div> -->
-                                            <p>Some text..</p>
-                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                        </div>
+                        <div class="container">
+                            <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                                <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">MATH331: <small>Differential
+                                        Equations</small></a></h1>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <p class="drop-shadow">Introduction to ordinary differential equations. First
+                                            and second order linear differential equations, systems of linear
+                                            differential equations, Laplace transform, numerical methods, applications.
+                                        </p>
+                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white" href="#">MATH132</a>, or <a class="drop-shadow" style="color:white" href="#">MATH136</a>; corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Lucas</a> said:</h6>
+
+                                        <p class="drop-shadow">Probably the worst class I've ever taken. Would not
+                                            recommend to anyone.</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="carousel-item">
-                            <div class="container">
-                                    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; border-radius: 0px;">
-                                            <h1 style="color: white"><a href="#" style="color: white">CLASS 2 HERE</a></h1>
-                                    </div>  
-        
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h5>Description</h5>
-                                            <!-- <div class="fakeimg">Fake Image</div> -->
-                                            <p>Some text..</p>
-                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h5>Reviews</h5>
-                                            <!-- <div class="fakeimg">Fake Image</div> -->
-                                            <p>Some text..</p>
-                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                        </div>
+                        <div class="container">
+
+
+                            <div class="jumbotron" style="background-image: url(Earth-Background.jpg); height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                                <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI326: <small>Web Programming</small></a></h1>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <p class="drop-shadow">The World Wide Web was proposed originally as a
+                                            collection of static documents inter-connected by hyperlinks. Today, the
+                                            web has grown into a rich platform, built on a variety of protocols,
+                                            standards, and programming languages, that aims to replace many of the
+                                            services traditionally provided by a desktop operating system. This course
+                                            will study core technologies, concepts, and techniques behind the creation
+                                            of modern web-based systems and applications. This course satisfies the
+                                            Integrative Experience requirement for BS/BA CS majors.
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Lucas</a> said:</h6>
+
+                                        <p class="drop-shadow">Nah dude not a good class.</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="carousel-item">
-                            <div class="container">
-                                    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; border-radius: 0px;">
-                                            <h1 style="color: white"><a href="#" style="color: white">CLASS 3 HERE</a></h1>
-                                    </div>  
-        
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <h5>Description</h5>
-                                            <!-- <div class="fakeimg">Fake Image</div> -->
-                                            <p>Some text..</p>
-                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <h5>Reviews</h5>
-                                            <!-- <div class="fakeimg">Fake Image</div> -->
-                                            <p>Some text..</p>
-                                            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur
-                                                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                                        </div>
+                        <div class="container">
+                            <div class="jumbotron" style="background-image: url(internals.jpg); height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                                <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI311: <small>Introduction to
+                                        Algorithms</small></a></h1>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <p class="drop-shadow">The design and analysis of efficient algorithms for
+                                            important computational problems. Emphasis on the relationships between
+                                            algorithms and data structures and on measures of algorithmic efficiency.
+                                            Sorting (heapsort, mergesort, quicksort), searching, graph algorithms.
+                                            Experimental analysis of algorithms also emphasized. Use of computer
+                                            required.</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Lucas</a> said:</h6>
+                                        <p class="drop-shadow">Sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum consectetur.</p>
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Lucas</a> said:</h6>
+                                        <p class="drop-shadow">Sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum consectetur
+                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Left and right controls -->
-                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                <a class="carousel-control-prev" style="margin-left: 0px;" href="#myCarousel" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="#demo" data-slide="next">
+                <a class="carousel-control-next" style="margin-right: 0px;" href="#myCarousel" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
 
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
             </div>
+
         </div>
     </div>
 
+    <br>
     <div class="jumbotron text-center" style="margin-bottom:0">
         <p>Footer</p>
     </div>
