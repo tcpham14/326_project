@@ -9,3 +9,21 @@ body {
     text-shadow: 1px 1px 4px black;
     color: white;
 }
+
+.carousel-control {
+    
+    height: 20%;
+    /* background: black; */
+}
+
+.prev-c {
+    
+    margin-left: -5%;
+    margin-top: 16%;
+    /* background: black; */
+}
+
+.next-c {
+    margin-right: -5%;
+    margin-top: 16%;
+}
