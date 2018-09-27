@@ -53,7 +53,6 @@ body {
 
 .class-header-card {
 	font-family: Verdana;
-	top: 50px;
 	right: 16px;
 	position: relative;
 	height: 180px;
@@ -63,7 +62,6 @@ body {
 
 .related-classes-card {
 	font-family: Verdana;
-	top: 50px;
 	right: 16px;
 	position: relative;
 	height: 180px;
@@ -87,7 +85,6 @@ body {
 .info {
 	background: white;
 	height: auto;
-	top: 100px;
 	z-index: 2;
 	position: relative;
 	opacity: .9;
