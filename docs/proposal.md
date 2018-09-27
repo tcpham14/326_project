@@ -24,7 +24,7 @@ Here is the homepage. It will contain information about the current top classes,
  ![example image](imgs/index.png)
  The following is the class page, which displays general class information, along with classes that are relevant to the currently viewed class in the top right. Further down, reviews are submitted by students and ratings are also submitted based on specific disciplines of that class.
 
-![example image](class_proposal.png)
+![example image](imgs/class_proposal.png)
  The search results page will display a list of all the classes related to the search input. It will display all important information on the left, such as pre-reqs, gen-eds, etc. 
  ![example image](imgs/searchresults.png)
  The advanced search is similar to spire, but much more accessible and easier to read. It keeps important information while disregarding a lot of the pointless info on spire.
