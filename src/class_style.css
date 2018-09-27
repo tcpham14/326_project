@@ -26,7 +26,7 @@ body {
 }
 
 .carousel-pic1 {
-	background-image: url("pic1.png");
+	background-image: url("class_pic1.png");
 	background-color: green
 	width: 2200px;
 	height: 600px;
@@ -34,7 +34,7 @@ body {
 }
 
 .carousel-pic2 {
-	background-image: url("pic2.png");
+	background-image: url("class_pic2.png");
 	background-color: green
 	filter: opacity(0.5)
 	width: 2200px;
@@ -43,7 +43,7 @@ body {
 }
 
 .carousel-pic3 {
-	background-image: url("pic3.png");
+	background-image: url("class_pic3.png");
 	background-color: green
 	filter: opacity(0.5)
 	width: 2200px;
