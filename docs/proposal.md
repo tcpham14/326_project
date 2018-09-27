@@ -22,10 +22,9 @@ Please describe the important data that your application will be managing.
 
 # User Interface
 
-<<<<<<< HEAD
 Below is a user's profile page on the website. While the class ratings are the center of the site, we thought it could be similar to a social media platform, and it's nice to have everything in one place for the user and others to refer to.
 ![example image](imgs/profile_page.png)
-=======
+
 Provide a description and images of the user interface your
 application will intend on supporting.
 
