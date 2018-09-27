@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head style="background-color: yellow">
+    <title>Bootstrap 4 Website Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <style>
+        .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand" style="color:white" href="index.html">Logo</a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">???</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Advanced Search</a>
+            </li>
+
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ml-auto">
+                <form class="form-inline" style="padding-right: 20px;" action="#">
+                    <input class="form-control" type="text" placeholder="Search">
+                </form>
+                <a class="navbar-brand" style="color: white"><img src="download.png" width="32px"></a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="profile.html">Profile</a>
+                        <a class="dropdown-item" href="#">Messages</a>
+                        <a class="dropdown-item" href="#">Account Settings</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Register</a>
+                    <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                        <form class="px-4 py-3">
+                          <div class="form-group">
+                            <label for="exampleDropdownFormEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                            <label class="form-check-label" for="dropdownCheck">
+                              Remember me
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                      </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Log In</a>
+                    <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                        <form class="px-4 py-3">
+                          <div class="form-group">
+                            <label for="exampleDropdownFormEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                            <label class="form-check-label" for="dropdownCheck">
+                              Remember me
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Forgot password?</a>
+                      </div>
+                </li>
+            </ul>
+
+        </ul>
+
+        </div>
+
+
+    </nav>
+    <div class="jumbotron">
+        <div class="container-fluid" style="text-align: center">
+            <h1 style="font-size: 500%">Advanced Search</h1>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h3>Class Filters</h3>
+        <div class="row">
+        <div class="form-group" style="padding-right:20px; padding-left: 20px">
+            <label for="sel1">General Education Requirements</label>
+            <select class="form-control" id="sel1">
+              <option>ALU</option>
+              <option>HSG</option>
+              <option>R2</option>
+              <option>DU</option>
+              <option>ALU</option>
+              <option>HSG</option>
+              <option>R2</option>
+              <option>DU</option>
+              <option>ALU</option>
+              <option>HSG</option>
+              <option>R2</option>
+              <option>DU</option>
+              <option>ALU</option>
+              <option>HSG</option>
+              <option>R2</option>
+              <option>DU</option>
+              <option>ALU</option>
+              <option>HSG</option>
+              <option>R2</option>
+              <option>DU</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sel1">Select list:</label>
+            <select class="form-control" id="sel1">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+        </div>
+    </div>
+
+        
+
+
+
+</body>
+
+</html>

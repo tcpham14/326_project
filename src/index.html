@@ -36,7 +36,7 @@
                 <a class="nav-link" href="#">???</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Advanced Search</a>
+                <a class="nav-link" href="advancedSearch.html">Advanced Search</a>
             </li>
 
         </ul>
@@ -57,60 +57,53 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Register</a>
-                    <ul class="dropdown-menu dropdown-menu-right animated " role="menu">
-                        <div class="col-sm-12">
-                            <div class="text-center">
-                                <h3><b>Register</b></h3>
-                            </div>
-                            <form id="" action="" method="post" role="form" autocomplete="off">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="username">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="email address">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="password">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="confirm password">
-                                </div>
-                                <div class="form-group">
-                                    <!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
-                                    <a class="btn btn-primary" href="#" role="button">Submit</a>
-
-                                </div>
-                            </form>
-                        </div>
-                    </ul>
+                    <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                        <form class="px-4 py-3">
+                          <div class="form-group">
+                            <label for="exampleDropdownFormEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                            <label class="form-check-label" for="dropdownCheck">
+                              Remember me
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                      </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Log In</a>
-                    <ul class="dropdown-menu dropdown-menu-right animated " style="padding: 5px" role="menu">
-                        <div class="col-sm-12">
-                            <div class="text-center">
-                                <h3><b>Log In</b></h3>
-                            </div>
-                            <form id="" action="" method="post" role="form" autocomplete="off">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="username">
-                                </div>
-
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="password">
-                                </div>
-
-                                <div class="form-group">
-                                    <!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
-                                    <a class="btn btn-primary" href="#" role="button">Submit</a>
-
-                                </div>
-                                <a href="#">Forgot your username or password?</a>
-                            </form>
-                            <br>
-
-                        </div>
-                    </ul>
+                    <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                        <form class="px-4 py-3">
+                          <div class="form-group">
+                            <label for="exampleDropdownFormEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleDropdownFormPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                          </div>
+                          <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                            <label class="form-check-label" for="dropdownCheck">
+                              Remember me
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-primary">Sign in</button>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Forgot password?</a>
+                      </div>
                 </li>
             </ul>
 
@@ -120,7 +113,7 @@
 
 
     </nav>
-    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
+    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
         <h1 style="color: white"><a href="#" style="color: white">FEATURED CLASS</a></h1>
         <p style="color: white">Course Description OF THE CLASS HERE!</p>
     </div>
@@ -134,7 +127,7 @@
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url(boris-stefanik-131519-unsplash.jpg); height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url(boris-stefanik-131519-unsplash.jpg); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">MATH331:
@@ -176,7 +169,7 @@
                         <div class="container-fluid">
 
 
-                            <div class="jumbotron img-fluid" style="background-image: url(old_dark_background-wallpaper-2560x1440.jpg);  height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px; margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url(old_dark_background-wallpaper-2560x1440.jpg); max-width:100%;  height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px; margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI326:
@@ -222,7 +215,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url(internals.jpg); height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                            <div class="jumbotron img-fluid" style="background-image: url(internals.jpg); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI311:
