@@ -30,4 +30,4 @@ Here is the homepage. It will contain information about the current top classes,
  The advanced search is similar to spire, but much more accessible and easier to read. It keeps important information while disregarding a lot of the pointless info on spire.
 ![example image](imgs/advancedsearch.png)
 The following is a user's profile page on the website. While the class ratings are the center of the site, we thought it could be similar to a social media platform, and it's nice to have everything in one place for the user and others to refer to.
-![example image](imgs/profile_page.png)
+![example image](imgs/profile_page.PNG)
