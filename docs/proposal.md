@@ -31,3 +31,5 @@ Here is the homepage. It will contain information about the current top classes,
 ![example image](imgs/advancedsearch.png)
 The following is a user's profile page on the website. While the class ratings are the center of the site, we thought it could be similar to a social media platform, and it's nice to have everything in one place for the user and others to refer to.
 ![example image](imgs/profile_page.PNG)
+Here is the page for rating a class: the user will be able to rate the class on a scale and leave a comment, which will be public and visible to all other users on the site.
+![example image](imgs/ratingpage.png)
