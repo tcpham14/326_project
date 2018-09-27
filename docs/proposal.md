@@ -16,8 +16,7 @@ Spew
 Spew is an innovative student-driven database centered around finding the perfect class for any student. It provides an array of information on any class offered at UMass, such as required textbooks, instructors, attendance and so on. It also allows students to share feedback in the form of reviews, along with ratings based on certain disciplines of the class. This application will allow students to view most-rated and highest-rated classes, along with the ability to view related classes in the form of track based on the student's concentration. 
 # Important Data
 
-Please describe the important data that your application will be managing.
-
+Our application will need to keep track of many types of data pertaining to classes: class times, gen-ed fulfillments, professors, days, semester, credits, course subject, course number, and class number. These different criteria will be essential to our search system in order to find classes. We will also be have data on the user: their reviews of different courses, their ratings of the courses, a favorite classes list, and their majors/minors. We will also have data on popularity of a course and how highly rated it is on average in order to populate the homepage. 
 # User Interface
 
 
