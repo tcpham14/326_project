@@ -33,3 +33,5 @@ The following is a user's profile page on the website. While the class ratings a
 ![example image](imgs/profile_page.PNG)
 Here is the page for rating a class: the user will be able to rate the class on a scale and leave a comment, which will be public and visible to all other users on the site.
 ![example image](imgs/ratingpage.png)
+Here is the page for submitting feedback about a specific class and rating the different metrics through which we will track and present on this website.
+![example image](imgs/submissions_page.png)
