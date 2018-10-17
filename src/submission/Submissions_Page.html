@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 4 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                <a href="#" class="navbar-brand navbar-left"><img src="book.png" width="40px"></a>
+    
+            <a class="navbar-brand" style="color:white" href="index.html">Spew @UMass Amherst</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">???</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="advancedSearch.html">Advanced Search</a>
+                </li>
+    
+            </ul>
+    
+            <ul class="nav navbar-nav navbar-right">
+                <ul class="navbar-nav ml-auto">
+                    <form class="form-inline" style="padding-right: 20px;" action="#">
+                        <input class="form-control" type="text" style="padding-right:10px;" placeholder="Search">
+                        <a href="searchresults2.html"><button type="button" class="btn btn-primary btn btn-block">Search</button></a>
+    
+                    </form>
+                    <a class="navbar-brand" style="color: white"><img src="download.png" width="32px"></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="profile.html">Profile</a>
+                            <a class="dropdown-item" href="#">Messages</a>
+                            <a class="dropdown-item" href="#">Account Settings</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Register</a>
+                        <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                            <form class="px-4 py-3">
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Confirm Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Log In</a>
+                        <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                            <form class="px-4 py-3">
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                    <label class="form-check-label" for="dropdownCheck">
+                                        Remember Me
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Forgot password?</a>
+                        </div>
+                    </li>
+                </ul>
+    
+            </ul>
+    
+            </div>
+    
+    
+        </nav>
+<div class="container_fluid" style="background-color:lightgray;">
+  <h1 class = "text-center pb-4"> Submissions Page</h1>
+  <div class="row pb-4">
+    <div class="col-sm-1" style="background-color:lightgray;"></div>
+    <div class="col-sm-4 rounded text-white" style="background-color:rgb(0,49,83);">Class Description</div>
+    <div class="col-sm-6 rounded" style="background-color:gray" form action="/action_page.php;">
+            <label for="customRange">Custom range</label>
+            <input type="range" class="custom-range" id="customRange" name="points1">
+        </form>
+    <div class='col-sm-1' style="background-color:white;"></div>
+  </div>
+</div>
+
+<div class="container_fluid">
+    <div class="row pb-4">
+        <div class='col-sm-1' style="background-color:lightgray;"></div>
+        <div class="col-sm-4 rounded text-white" style="background-color:rgb(0,49,83);">Number of Tests</div>
+        <div class="col-sm-6 rounded" style="background-color:gray" form action="/action_page.php">
+            <label for="customRange">Low to High</label>
+            <input type="range" class="custom-range" id="customRange" name="points1">
+        </form>
+        <div class='col-sm-1' style="background-color:white;"></div>
+    </div>
+</div>
+
+<div class="container_fluid">
+    <div class="row pb-4">
+        <div class='col-sm-1' style="background-color:lightgray;"></div>
+        <div class="col-sm-4 rounded text-white" style="background-color:rgb(0,49,83);">Number of Problem Sets</div>
+        <div class="col-sm-6 rounded" style="background-color:gray" form action="/action_page.php">
+            <label for="customRange">Low to High</label>
+            <input type="range" class="custom-range" id="customRange" name="points1">
+        </form>
+        <div class='col-sm-1' style="background-color:white;"></div>
+    </div>
+</div>
+
+<div class="container_fluid">
+    <div class="row pb-4">
+        <div class='col-sm-1' style="background-color:lightgray;"></div>
+        <div class="col-sm-4 rounded text-white" style="background-color:rgb(0,49,83);">Teachers</div>
+        <div class="col-sm-6 rounded" style="background-color:gray" form action="/action_page.php">
+            <label for="customRange">Easy to Difficult</label>
+            <input type="range" class="custom-range" id="customRange" name="points1">
+        </form>
+        <div class='col-sm-1' style="background-color:white;"></div>
+    </div>
+</div>
+
+<div class="container_fluid">
+    <div class="row pb-4">
+        <div class='col-sm-1' style="background-color:lightgray;"></div>
+        <div class="col-sm-4 rounded text-white" style="background-color:rgb(0,49,83);">Difficulty</div>
+        <div class="col-sm-6 rounded" style="background-color:gray" form action="/action_page.php">
+            <label for="customRange">Low to High</label>
+            <input type="range" class="custom-range" id="customRange" name="points1">
+        </form>
+        <div class='col-sm-1' style="background-color:white;"></div>
+    </div>
+</div>
+
+<div class="container">
+  <h2>More Information</h2>
+  <p>Enter any additional information regarding the class:</p>
+  <form>
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>
+  </form>
+</div>
+
+<div class="container">
+  <button type="button" class="btn btn-danger" style="background-color:rgb(0,49,83);">Submit</button>    
+</div>
+
+</body>
+</html>

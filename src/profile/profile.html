@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head style="background-color: yellow">
+    <title>Spew@UMass</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <style>
+        .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+
+<body>
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+                <a href="#" class="navbar-brand navbar-left"><img src="book.png" width="40px"></a>
+    
+            <a class="navbar-brand" style="color:white" href="index.html">Spew @UMass Amherst</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">???</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="advancedSearch.html">Advanced Search</a>
+                </li>
+    
+            </ul>
+    
+            <ul class="nav navbar-nav navbar-right">
+                <ul class="navbar-nav ml-auto">
+                    <form class="form-inline" style="padding-right: 20px;" action="#">
+                        <input class="form-control" type="text" style="padding-right:10px;" placeholder="Search">
+                        <a href="searchresults2.html"><button type="button" class="btn btn-primary btn btn-block">Search</button></a>
+    
+                    </form>
+                    <a class="navbar-brand" style="color: white"><img src="download.png" width="32px"></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="profile.html">Profile</a>
+                            <a class="dropdown-item" href="#">Messages</a>
+                            <a class="dropdown-item" href="#">Account Settings</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Register</a>
+                        <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                            <form class="px-4 py-3">
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Confirm Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Log In</a>
+                        <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
+                            <form class="px-4 py-3">
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleDropdownFormPassword1">Password</label>
+                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
+                                        placeholder="Password">
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
+                                    <label class="form-check-label" for="dropdownCheck">
+                                        Remember Me
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Sign in</button>
+                            </form>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Forgot password?</a>
+                        </div>
+                    </li>
+                </ul>
+    
+            </ul>
+    
+            </div>
+    
+    
+        </nav>
+    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
+        <h1 style="color: white"><a style="color: white">My Profile</a></h1>
+    </div>
+
+    <div class="row text-center", style="padding-top: 100px; padding-left: 150px; padding-right: 150px">
+        <div class="col-md-4 bg-light">
+            <p class="padding-top: 150px"></p>
+            <img class="img-rounded" src="dp.png" alt="Generic placeholder image" width="240" height="240">
+            <h2>FirstName LastName</h2>
+            <h5>Major: Computer Science <small>2020</small></h5>
+            <p>This section is all about me and what I want other people to know about me, like my hobbies and my dreams and aspirations or whatever else.</p>
+          
+
+            <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-1 px-md-1 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                  <h2 class="display-5">Favorites</h2>
+                </div>
+                <div class="bg-white box-shadow mx-auto" style="height: 100%; border-radius: 21px 21px 0 0;">
+                <table class="table">
+                <tr>
+                    <th>Course Number</th>
+                    <th>Course Name</th>
+                    <th>Average Rating</th>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">COMPSCI 326</a></td>
+                    <td>Web Programming</td>
+                    <td>4.8/5.0</td>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">MATH 331</a></td>
+                    <td>Differential Equations</td>
+                    <td>4.2/5.0</td>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">HONORS 201H</a></td>
+                    <td>Ideas that Change the World</td>
+                    <td>3.8/5.0</td>
+                </tr>
+            </table>
+                </div>
+              </div>
+            </div>
+            <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-1 px-md-1 text-center overflow-hidden">
+                <div class="my-3 p-3">
+                  <h2 class="display-5">Current Courses</h2>
+                </div>
+                <div class="bg-white box-shadow mx-auto" style="height: 85%; border-radius: 21px 21px 0 0;">
+                <table class="table">
+                <tr>
+                    <th>Course Number</th>
+                    <th>Course Name</th>
+                    <th>Average Rating</th>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">COMPSCI 326</a></td>
+                    <td>Web Programming</td>
+                    <td>4.8/5.0</td>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">COMPSCI 311</a></td>
+                    <td>Introduction to Algorithms Programming</td>
+                    <td>3.7/5.0</td>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">COMPSCI 305</a></td>
+                    <td>Social Issues in Computing</td>
+                    <td>3.9/5.0</td>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">MATH 545</a></td>
+                    <td>Linear Algebra for Applied Mathematics</td>
+                    <td>4.1/5.0</td>
+                </tr>
+                <tr>
+                    <td><a href="class.html" class="text-success">JAPANESE 326</a></td>
+                    <td>Intensive Intermediate Japan I</td>
+                    <td>4.7/5.0</td>
+                </tr>
+            </table>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+        <div class="col-md-8">
+            <div class="row" style="padding-top: 50px">
+                <div class="col-md-4"><h3><a href="#" class="text-success">Written Reviews</a><br><small>4</small></h3></div>
+                <div class="col-md-4"><h3><a href="#" class="text-success">Liked Reviews</a><br><small>24</small></h3></div>
+                <div class="col-md-4"><h3><a href="#" class="text-success">Classes Taken</a><br><small>26</small></h3></div>
+            </div>
+            <div class="bg-white mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+            <div class="my-3 p-3">
+              <h2 class="display-5">Recent Reviews</h2>
+            </div>
+            <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 100%; border-radius: 21px 21px 0 0;">
+                <table class="table table-condensed">
+                <tr>
+                    <th><font color="white">Semester Taken</font></th>
+                    <th><font color="white">Course Number</font></th>
+                    <th><font color="white">User Rating</font></th>
+                    <th><font color="white">Comment</font></th>
+                </tr>
+                <tr>
+                    <td><font color="white">Spring 2018</font></td>
+                    <td><a href="class.html" class="text-success">COMPSCI 250</a></td>
+                    <td><font color="white">2.5/5.0</font></td>
+                    <td><font color="white">One of the hardest classes I've taken. Was cool when I understood things, but man what a force.</font></td>
+                </tr>
+                <tr>
+                    <td><font color="white">Fall 2017</font></td>
+                    <td><a href="class.html" class="text-success">MACRO 104</a></td>
+                    <td><font color="white">4.0/5.0</font></td>
+                    <td><font color="white">Straight-forward, professor grades fairly. Not too much work, but you can't really BS it.</font></td>
+                </tr>
+                <tr>
+                    <td><font color="white">Fall 2017</font></td>
+                    <td><a href="class.html" class="text-success">MATH 331</a></td>
+                    <td><font color="white">4.8/5.0</font></td>
+                    <td><font color="white">Professor gave good extra credit, and class was easy to follow.</font></td>
+                </tr>
+                <tr>
+                    <td><font color="white">Spring 2017</font></td>
+                    <td><a href="class.html" class="text-success">HONORS 201H</a></td>
+                    <td><font color="white">4.5/5.0</font></td>
+                    <td><font color="white">Workload was a bit much, but the discussions the professor led always left me with something to think about. It's a nice break from the STEM routine.</font></td>
+                </tr>
+            </table>
+            </div>
+          </div>
+            </div>
+        </div>
+    
+    
+    <br>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Footer</p>
+    </div>
+
+</body>
+
+</html>
