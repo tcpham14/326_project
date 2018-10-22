@@ -1,5 +1,9 @@
+{% extends "base_generic.html" %}
+{% block title %} Class Page {% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
+{% block content %}
   <head>
     <title>Class Info</title>
     <meta charset="utf-8">
@@ -17,95 +21,6 @@
     <link rel="icon" href="imgs/home_icon.png">
   <body>
 
-
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-                <a href="#" class="navbar-brand navbar-left"><img src="imgs/book.png" width="40px"></a>
-    
-            <a class="navbar-brand" style="color:white" href="index.html">Spew @UMass Amherst</a>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">???</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="advancedSearch.html">Advanced Search</a>
-                </li>
-    
-            </ul>
-    
-            <ul class="nav navbar-nav navbar-right">
-                <ul class="navbar-nav ml-auto">
-                    <form class="form-inline" style="padding-right: 20px;" action="#">
-                        <input class="form-control" type="text" style="padding-right:10px;" placeholder="Search">
-                        <a href="searchresults2.html"><button type="button" class="btn btn-primary btn btn-block">Search</button></a>
-    
-                    </form>
-                    <a class="navbar-brand" style="color: white"><img src="imgs/download.png" width="32px"></a>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="profile.html">Profile</a>
-                            <a class="dropdown-item" href="#">Messages</a>
-                            <a class="dropdown-item" href="#">Account Settings</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Register</a>
-                        <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
-                            <form class="px-4 py-3">
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Confirm Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                        placeholder="Password">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
-                            </form>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Log In</a>
-                        <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
-                            <form class="px-4 py-3">
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormEmail1">Email address</label>
-                                    <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleDropdownFormPassword1">Password</label>
-                                    <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                        placeholder="Password">
-                                </div>
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                    <label class="form-check-label" for="dropdownCheck">
-                                        Remember Me
-                                    </label>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
-                            </form>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Forgot password?</a>
-                        </div>
-                    </li>
-                </ul>
-    
-            </ul>
-    
-            </div>
-    
-    
-        </nav>
     <div id="carousel" class="carousel-main container-fluid">
         <div class="row">
             <div id="myCarousel" class="carousel slide mx-auto" style="</*padding-right:50px; padding-left: 50px*/"
@@ -153,7 +68,7 @@
                     <div class="card-body">
                         <p class="card-title" style="font-size: 30px;">Computer Science 326</p>
                         <p class="card-text" style="font-size: 16px">Web Programming (3 Credits)</p>
-                        <p><a href="Submissions_Page.html" class="btn btn-success">Rate this class</a>
+                        <p><a href="/submissions_page" class="btn btn-success">Rate this class</a>
                         <a href="#" class="btn btn-primary">Add to Favorites</a></p>
                     </div>
                 </div>
@@ -278,8 +193,8 @@
                         <div class="col-md-8 my-5 py-5">
                             <h6>Share your thoughts on this class</h6>
                             <p>Your review will give better insight for other students</p>
-                            <a href="Submissions_Page.html" class="btn btn-success">Rate this class</a>
-                            <a href="Submissions_Page.html" class="btn btn-primary">Write Reviews</a>
+                            <a href="/submissions_page" class="btn btn-success">Rate this class</a>
+                            <a href="/submissions_page" class="btn btn-primary">Write Reviews</a>
 
                         </div>
                     </div>
@@ -313,4 +228,5 @@
 
 
   </body>
+{% endblock %}
 </html>

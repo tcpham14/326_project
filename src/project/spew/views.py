@@ -26,7 +26,8 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, "index.html", context=context)
 
-def cs326(request):
+
+def class_page(request):
     """View function for home page of site."""
     # Generate counts of some of the main objects
     num_books = Book.objects.all().count()
@@ -47,5 +48,35 @@ def cs326(request):
     }
 
     # Render the HTML template index.html with the data in the context variable
-    return render(request, "index.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+    return render(request, "class_page.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 
+def profile(request):
+
+    context = {
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, "profile.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+
+def search_results(request):
+
+    context = {
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, "search_results.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+
+def submissions_page(request):
+
+    context = {
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, "submissions_page.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+def advanced_search(request):
+
+    context = {
+    }
+
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, "advanced_search.html", context=context) ##THIS IS HWERE HTE PAGE GOES

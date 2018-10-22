@@ -1,18 +1,301 @@
 {% extends "base_generic.html" %}
-{% block title%} TEST TITLE {% endblock%}
+{% block title %} Home Page {% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
 {% block content %}
-<h1>Local Library Home</h1>
-<p>
-  Welcome to LocalLibrary,
-  a website developed by
-  <em>Mozilla Developer Network</em>!
-</p>
-<h2>Dynamic content</h2>
-<p>The library has the following record counts:</p>
-<ul>
-  <li><strong>Books:</strong> {{ num_books }}</li>
-  <li><strong>Copies:</strong> {{ num_instances }}</li>
-  <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-  <li><strong>Authors:</strong> {{ num_authors }}</li>
-</ul>
+<head style="background-color: yellow">
+    <title>Spew@UMass</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/styleLucas.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <style>
+        .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+
+<body>
+    <div class="jumbotron" style="background-image: url(imgs/boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
+        <h1 style="color: white"><a href="/class_page" style="color: white">FEATURED CLASS</a></h1>
+        <p style="color: white">Course Description OF THE CLASS HERE!</p>
+    </div>
+
+    <div class="row">
+        <div class="container-fluid" style="margin-top:20px">
+            <div id="myCarousel" class="carousel slide carousel-fade mx-auto" data-ride="carousel">
+
+                <!-- Indicators -->
+                <!-- The slideshow -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active">
+                        <div class="container-fluid">
+                            <div class="jumbotron img-fluid" style="background-image: url(imgs/boris-stefanik-131519-unsplash.jpg); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
+                                <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
+                                        Classes</small></a></h1>
+                                <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">MATH331:
+                                        <small>Differential
+                                            Equations</small></a></h1>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <p class="drop-shadow">Introduction to ordinary differential equations. First
+                                            and second order linear differential equations, systems of linear
+                                            differential equations, Laplace transform, numerical methods, applications.
+                                        </p>
+                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                                href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
+                                                href="/class_page">MATH136</a>;
+                                            corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
+                                        </h6>
+                                        <h6 class="drop-shadow"> Fulfills: <a class="drop-shadow" style="color:white"
+                                                href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                        </h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Rich</a>
+                                            said:</h6>
+
+                                        <p class="drop-shadow">Probably the worst class I've ever taken. Would not
+                                            recommend to anyone.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container-fluid">
+
+
+                            <div class="jumbotron img-fluid" style="background-image: url(imgs/old_dark_background-wallpaper-2560x1440.jpg); max-width:100%;  height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px; margin: auto">
+                                <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
+                                        Classes</small></a></h1>
+                                <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI326:
+                                        <small>Web Programming</small></a></h1>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <p class="drop-shadow">The World Wide Web was proposed originally as a
+                                            collection of static documents inter-connected by hyperlinks. Today, the
+                                            web has grown into a rich platform, built on a variety of protocols,
+                                            standards, and programming languages, that aims to replace many of the
+                                            services traditionally provided by a desktop operating system. This course
+                                            will study core technologies, concepts, and techniques behind the creation
+                                            of modern web-based systems and applications. This course satisfies the
+                                            Integrative Experience requirement for BS/BA CS majors.
+                                        </p>
+                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                                href="#">MATH132</a>, or <a class="drop-shadow" style="color:white"
+                                                href="#">MATH136</a>;
+                                            corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
+                                        </h6>
+                                        <h6 class="drop-shadow"> Fulfills: <a class="drop-shadow" style="color:white"
+                                                href="#">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Thanh</a>
+                                            said:</h6>
+
+                                        <p class="drop-shadow">Nah dude not a good class.</p>
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Michael</a>
+                                            said:</h6>
+
+                                        <p class="drop-shadow">Mediocre.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container-fluid">
+                            <div class="jumbotron img-fluid" style="background-image: url(imgs/internals.jpg); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                                <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
+                                        Classes</small></a></h1>
+                                <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI311:
+                                        <small>Introduction to
+                                            Algorithms</small></a></h1>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <div class="col-sm-6">
+
+                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <p class="drop-shadow">The design and analysis of efficient algorithms for
+                                            important computational problems. Emphasis on the relationships between
+                                            algorithms and data structures and on measures of algorithmic efficiency.
+                                            Sorting (heapsort, mergesort, quicksort), searching, graph algorithms.
+                                            Experimental analysis of algorithms also emphasized. Use of computer
+                                            required.</p>
+                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                                href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
+                                                href="/class_page">MATH136</a>;
+                                            corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
+                                        </h6>
+                                        <h6 class="drop-shadow"> Fulfills: <a class="drop-shadow" style="color:white"
+                                                href="search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Taesan</a>
+                                            said:</h6>
+                                        <p class="drop-shadow">Sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum consectetur.</p>
+                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Lucas</a>
+                                            said:</h6>
+                                        <p class="drop-shadow">Sunt in culpa qui officia deserunt mollit anim id est
+                                            laborum consectetur
+                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <a class="carousel-control-prev" style="margin-left: -300px;" href="#myCarousel" data-slide="prev"> -->
+                        <a class="carousel-control-prev carousel-control prev-c" href="#myCarousel" data-slide="prev">
+
+                        <!-- <span class="carousel-control-prev-icon" style="margin-left: 280px" aria-hidden="true"></span> -->
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+
+                        <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next carousel-control next-c" href="#myCarousel" data-slide="next">
+                        <!-- <a class="carousel-control-next" style="margin-right: -300px;" href="#myCarousel" data-slide="next"> -->
+
+                        <!-- <span class="carousel-control-next-icon" style="margin-right: 280px" aria-hidden="true"></span> -->
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+
+                        <span class="sr-only">Next</span>
+                </a>
+
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <!-- <div class="container card mx-auto">
+        <h1 style="text-align: center">Featured Professor: <a href="#" style="color: black">Gordon Anderson</a></h1>
+    </div> -->
+    <br>
+
+    <div class="container-fluid mx-auto">
+        <div class="row justify-content-center">
+
+
+            <div class="col-sm-6">
+                <h2 style="text-align: left; padding: 5px">Most Popular Classes</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+
+
+                </ul>
+
+
+            </div>
+            <div class="col-sm-6">
+                <h2 style="text-align: left; padding: 5px">Highest Rated Classes</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
+                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <br>
+                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <br>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Footer</p>
+    </div>
+</body>
 {% endblock %}
+</html>

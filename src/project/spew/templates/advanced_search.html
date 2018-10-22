@@ -1,6 +1,9 @@
+{% extends "base_generic.html" %}
+{% block title %} Advanced Search Page {% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
-
+{% block content %}
 <head>
     <title>Spew@UMass - Advanced Search</title>
     <meta charset="utf-8">
@@ -22,94 +25,7 @@
 
 
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-            <a href="#" class="navbar-brand navbar-left"><img src="imgs/book.png" width="40px"></a>
-
-        <a class="navbar-brand" style="color:white" href="index.html">Spew @UMass Amherst</a>
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">???</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="advancedSearch.html">Advanced Search</a>
-            </li>
-
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-            <ul class="navbar-nav ml-auto">
-                <form class="form-inline" style="padding-right: 20px;" action="#">
-                    <input class="form-control" type="text" style="padding-right:10px;" placeholder="Search">
-                    <a href="searchresults2.html"><button type="button" class="btn btn-primary btn btn-block">Search</button></a>
-
-                </form>
-                <a class="navbar-brand" style="color: white"><img src="imgs/download.png" width="32px"></a>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="profile.html">Profile</a>
-                        <a class="dropdown-item" href="#">Messages</a>
-                        <a class="dropdown-item" href="#">Account Settings</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Register</a>
-                    <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
-                        <form class="px-4 py-3">
-                            <div class="form-group">
-                                <label for="exampleDropdownFormEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleDropdownFormPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                    placeholder="Password">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleDropdownFormPassword1">Confirm Password</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                    placeholder="Password">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </form>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">Log In</a>
-                    <div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
-                        <form class="px-4 py-3">
-                            <div class="form-group">
-                                <label for="exampleDropdownFormEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleDropdownFormPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleDropdownFormPassword1"
-                                    placeholder="Password">
-                            </div>
-                            <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="dropdownCheck">
-                                <label class="form-check-label" for="dropdownCheck">
-                                    Remember Me
-                                </label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Sign in</button>
-                        </form>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Forgot password?</a>
-                    </div>
-                </li>
-            </ul>
-
-        </ul>
-
-        </div>
-
-
-    </nav>
+   
     <div class="jumbotron">
         <div class="container-fluid" style="text-align: center">
             <h1 style="font-size: 500%">Advanced Search</h1>
@@ -256,7 +172,7 @@
         <div class="container">
             <div class="row" style="padding-left: 20px; padding-right:20px; padding-top:50px">
 
-                <a href="searchresults2.html"><button type="button" class="btn btn-primary btn-lg btn-block">Search</button></a>
+                <a href="/advanced_search"><button type="button" class="btn btn-primary btn-lg btn-block">Search</button></a>
 
             </div>
         </div>
@@ -267,5 +183,5 @@
 
 
 </body>
-
+{% endblock %}
 </html>
