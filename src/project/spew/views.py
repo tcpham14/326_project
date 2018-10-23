@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from spew.models import Book, Author, BookInstance
+from spew.models import User, Class, Professor, Feedback
 
 
 # Create your views here.
