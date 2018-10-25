@@ -67,9 +67,6 @@ class User(models.Model):
 
     # A character field for the major.
     major = models.CharField(max_length=100)
-
-    # A list for the classes that were favorited
-    favorite_classes = models.ManyToManyField(Class, help_text="Select the classes this user favorites")
     
     # A particular id for this user
     user_id = models.UUIDField(
@@ -78,7 +75,10 @@ class User(models.Model):
         help_text="Unique ID for this particular user",
     )
 
-    def display_class(self):
+    # A list for the classes that were favorited
+    course = models.ManyToManyField(Class, help_text="Select the classes this user favorites")
+    
+    def display_course(self):
         """Create a string for the Genre. This is required to display genre in Admin."""
         # This function uses the string object's join method to "join"
         # all the genre strings into a single string separated by ',
@@ -88,9 +88,13 @@ class User(models.Model):
         #
         # We also use Python's list slicing notation ([:3]). This
         # indicates that we will only take the first 3 elements from
+        # indicates that we will only take the first 3 elements from
+        # indicates that we will only take the first 3 elements from
         # the list. This is done so we only display some of the genres
         # rather than all of them - efficiency!
-        return ", ".join(favorite_class.title for favorite_class in self.favorite_class.all()[:5])
+        return ", ".join(course.title for course in self.course.all()[:3])
+    
+    course.short_description = "Favorite Courses"
 
     class Meta:
         ordering = ["last_name", "first_name"]
@@ -123,7 +127,7 @@ class Professor(models.Model):
     # A list field for the courses taught
     course = models.ManyToManyField(Class, help_text="Select a class this professor teaches")
 
-    def display_genre(self):
+    def display_course(self):
         """Create a string for the Genre. This is required to display genre in Admin."""
         # This function uses the string object's join method to "join"
         # all the genre strings into a single string separated by ',
@@ -137,7 +141,9 @@ class Professor(models.Model):
         # indicates that we will only take the first 3 elements from
         # the list. This is done so we only display some of the genres
         # rather than all of them - efficiency!
-        return ", ".join(genre.name for genre in self.genre.all()[:3])
+        return ", ".join(course.title for course in self.course.all()[:3])
+    
+#    course.short_description = "Taught Courses"
     
     # A character field for the office
     office = models.CharField(max_length=100)
