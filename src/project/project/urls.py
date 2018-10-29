@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', include('spew.urls')),
@@ -26,3 +27,5 @@ urlpatterns = [
     path('profile', include('spew.urls')),
     path('submissions_page', include('spew.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

@@ -1,3 +1,7 @@
+{% load staticfiles %}
+
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +30,7 @@
 <body>
     <!-- {% block navbar %} -->
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a href="#" class="navbar-brand navbar-left"><img src="book.png" width="40px"></a>
+        <a href="#" class="navbar-brand navbar-left"><img src="{% static 'imgs/book.png' %}" width="40px"></a>
 
         <a class="navbar-brand" style="color:white" href="/ ">Spew @UMass Amherst</a>
         <ul class="navbar-nav mr-auto">
@@ -34,7 +38,7 @@
                 <a class="nav-link" href="/ ">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">???</a>
+                <a class="nav-link" href="https://venmo.com/thanhfam">Donate</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/advanced_search">Advanced Search</a>
@@ -49,7 +53,7 @@
                     <a href="/search_results"><button type="button" class="btn btn-primary btn btn-block">Search</button></a>
 
                 </form>
-                <a class="navbar-brand" style="color: white"><img src="download.png" width="32px"></a>
+                <a class="navbar-brand" style="color: white"><img src="{% static 'imgs/download.png' %}" width="32px"></a>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
                     <div class="dropdown-menu dropdown-menu-right">

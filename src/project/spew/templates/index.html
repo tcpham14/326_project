@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 {% block title %} Home Page {% endblock %}
 
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 {% block content %}
@@ -26,7 +28,7 @@
 </head>
 
 <body>
-    <div class="jumbotron" style="background-image: url(imgs/boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
+    <div class="jumbotron" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
         <h1 style="color: white"><a href="/class_page" style="color: white">FEATURED CLASS</a></h1>
         <p style="color: white">Course Description OF THE CLASS HERE!</p>
     </div>
@@ -40,7 +42,7 @@
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url(imgs/boris-stefanik-131519-unsplash.jpg); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">MATH331:
@@ -50,28 +52,28 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <h5 class="drop-shadow" style="color: white">Course Description</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <p class="drop-shadow">Introduction to ordinary differential equations. First
+                                        <p class="drop-shadow" style="color: white">Introduction to ordinary differential equations. First
                                             and second order linear differential equations, systems of linear
                                             differential equations, Laplace transform, numerical methods, applications.
                                         </p>
-                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                        <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
-                                        <h6 class="drop-shadow"> Fulfills: <a class="drop-shadow" style="color:white"
+                                        <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
                                                 href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
                                         </h6>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Rich</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Rich</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow">Probably the worst class I've ever taken. Would not
+                                        <p class="drop-shadow" style="color: white">Probably the worst class I've ever taken. Would not
                                             recommend to anyone.</p>
                                     </div>
                                 </div>
@@ -82,7 +84,7 @@
                         <div class="container-fluid">
 
 
-                            <div class="jumbotron img-fluid" style="background-image: url(imgs/old_dark_background-wallpaper-2560x1440.jpg); max-width:100%;  height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px; margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/old_dark_background-wallpaper-2560x1440.jpg' %}); max-width:100%;  height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px; margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI326:
@@ -91,9 +93,9 @@
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h5 class="drop-shadow">Course Description</h5>
+                                        <h5 class="drop-shadow" style="color: white">Course Description</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <p class="drop-shadow">The World Wide Web was proposed originally as a
+                                        <p class="drop-shadow" style="color: white">The World Wide Web was proposed originally as a
                                             collection of static documents inter-connected by hyperlinks. Today, the
                                             web has grown into a rich platform, built on a variety of protocols,
                                             standards, and programming languages, that aims to replace many of the
@@ -102,25 +104,25 @@
                                             of modern web-based systems and applications. This course satisfies the
                                             Integrative Experience requirement for BS/BA CS majors.
                                         </p>
-                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                        <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="#">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="#">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
-                                        <h6 class="drop-shadow"> Fulfills: <a class="drop-shadow" style="color:white"
+                                        <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
                                                 href="#">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h5 class="drop-shadow">Popular Reviews</h5>
+                                        <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Thanh</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Thanh</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow">Nah dude not a good class.</p>
-                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Michael</a>
+                                        <p class="drop-shadow" style="color: white">Nah dude not a good class.</p>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Michael</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow">Mediocre.</p>
+                                        <p class="drop-shadow" style="color: white">Mediocre.</p>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +130,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url(imgs/internals.jpg); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/internals.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI311:
@@ -139,30 +141,30 @@
                                 <div class="row">
                                     <div class="col-sm-6">
 
-                                        <h5 class="drop-shadow">Course Description</h5>
-                                        <p class="drop-shadow">The design and analysis of efficient algorithms for
+                                        <h5 class="drop-shadow" style="color: white">Course Description</h5>
+                                        <p class="drop-shadow" style="color: white">The design and analysis of efficient algorithms for
                                             important computational problems. Emphasis on the relationships between
                                             algorithms and data structures and on measures of algorithmic efficiency.
                                             Sorting (heapsort, mergesort, quicksort), searching, graph algorithms.
                                             Experimental analysis of algorithms also emphasized. Use of computer
                                             required.</p>
-                                        <h6 class="drop-shadow"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                        <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
-                                        <h6 class="drop-shadow"> Fulfills: <a class="drop-shadow" style="color:white"
+                                        <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
                                                 href="search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <h5 class="drop-shadow">Popular Reviews</h5>
-                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Taesan</a>
+                                        <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Taesan</a>
                                             said:</h6>
-                                        <p class="drop-shadow">Sunt in culpa qui officia deserunt mollit anim id est
+                                        <p class="drop-shadow" style="color: white">Sunt in culpa qui officia deserunt mollit anim id est
                                             laborum consectetur.</p>
-                                        <h6 class="drop-shadow"><a class="drop-shadow" style="color:white" href="#">Lucas</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Lucas</a>
                                             said:</h6>
-                                        <p class="drop-shadow">Sunt in culpa qui officia deserunt mollit anim id est
+                                        <p class="drop-shadow" style="color: white">Sunt in culpa qui officia deserunt mollit anim id est
                                             laborum consectetur
                                             adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                                             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
