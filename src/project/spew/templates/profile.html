@@ -1,6 +1,8 @@
 {% extends "base_generic.html" %}
 {% block title %} Profile Page {% endblock %}
 
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 {% block content %}
@@ -9,7 +11,7 @@
     <title>Spew@UMass</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -28,141 +30,227 @@
 
 <body>
 
-    <div class="jumbotron" style="background-image: url(boris-stefanik-131519-unsplash.jpg); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
-        <h1 style="color: white"><a style="color: white">My Profile</a></h1>
+    <div id="carousel" class="carousel-main container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide mx-auto" style="</*padding-right:50px; padding-left: 50px*/"
+                data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-pic1 carousel-item active">
+
+                    </div>
+                    <div class="carousel-pic2 carousel-item">
+                                
+                    </div>
+                    <div class="carousel-pic3 carousel-item">
+                                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" style="margin-left: 0px;" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" style="margin-right: 0px;" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+            </div>
+
+        </div>
     </div>
 
-    <div class="row text-center", style="padding-top: 100px; padding-left: 150px; padding-right: 150px">
-        <div class="col-md-4 bg-light">
-            <p class="padding-top: 150px"></p>
-            <img class="img-rounded" src="imgs/dp.png" alt="Generic placeholder image" width="240" height="240">
-            <h2>FirstName LastName</h2>
-            <h5>Major: Computer Science <small>2020</small></h5>
-            <p>This section is all about me and what I want other people to know about me, like my hobbies and my dreams and aspirations or whatever else.</p>
-          
+    <div class="container-fluid">
 
-            <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-1 px-md-1 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                  <h2 class="display-5">Favorites</h2>
+
+
+
+
+        <div class="container-fluid">
+
+            <div class="row" style="height: 100px;">
+            </div>
+            <div class="row">
+                <div class="col-md-2">
                 </div>
-                <div class="bg-white box-shadow mx-auto" style="height: 100%; border-radius: 21px 21px 0 0;">
-                <table class="table">
-                <tr>
-                    <th>Course Number</th>
-                    <th>Course Name</th>
-                    <th>Average Rating</th>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">COMPSCI 326</a></td>
-                    <td>Web Programming</td>
-                    <td>4.8/5.0</td>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">MATH 331</a></td>
-                    <td>Differential Equations</td>
-                    <td>4.2/5.0</td>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
-                    <td>Ideas that Change the World</td>
-                    <td>3.8/5.0</td>
-                </tr>
-            </table>
+                <div class="col-md-5">
+                    <div class="profile-header-card card" style="">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col" style="flex: 0 0 230px;">
+                                    <img class="img-rounded" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="200" height="200" style="margin-bottom: 30px; border: 3px solid #3887ff">
+                                </div>   
+                                <div class="col">
+                                    <h2>Jimmy Garoppolo</h2>
+                                    <p>Twenty-seven-years old footballer Jimmy Garoppolo was born with the name with James R. Garoppolo celebrates his birthday on every 2nd November. He was born on 1991 in Arlington Height, Illinois. He is American by nationality and belongs to White American ethnicity. His zodiac sign is Scorpio. He is a son of Tony Garoppolo and Denise Garoppolo.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="profile-info-card card">
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <h5><a>Major: </a><a style="color: #3887ff; font-size: 18px">Computer Science</a></h5>
+                            </div>
+                            <div class="row text-center">
+                                <h5><a>Concentration: </a><a style="color: #3887ff; font-size: 18px;">Software Engineering</a></h5>
+                            </div>
+                            <div class="row text-center">
+                                <h5><a>Graduation Class: </a><a style="color: #3887ff; font-size: 18px; margin-bottom: 100px"> 2020</a></h5>
+                            </div>
+                            <div class="row text-center" style="margin-top: 30px">
+                                <div class="col-md-4"><h5><a>Written Reviews</a><br><small class="text-success">4</small></h5></div>
+                                <div class="col-md-4"><h5><a>Liked Reviews</a><br><small class="text-success">24</small></h5></div>
+                                <div class="col-md-4"><h5><a>Classes Taken</a><br><small class="text-success">26</small></h5></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+            <div class="row" style="height: 25px;">
+            </div>
+
+
+
+
+
+
+        <div class="row text-center", style="padding-top:     0px;">
+            <div class="col-md-2">
+            </div>
+
+            <div class="col-md-4 info" style="padding-top: 50px;">
+                <div class="" style="margin-top: 20px">
+                <div class="my-3 p-3">
+                  <h2 class="display-5 text-primary">Recent Reviews</h2>
+                </div>
+                <div class="box-shadow mx-auto" style="width: 100%; height: 100%; border-radius: 21px 21px 0 0;">
+                    <table class="table table-condensed">
+                    <tr>
+                        <th><font color="black">Semester Taken</font></th>
+                        <th><font color="black">Course Number</font></th>
+                        <th><font color="black">User Rating</font></th>
+                        <th><font color="black">Comment</font></th>
+                    </tr>
+                    <tr>
+                        <td><font color="black">Spring 2018</font></td>
+                        <td><a href="/class_page" class="text-success">COMPSCI 250</a></td>
+                        <td><font color="black">2.5/5.0</font></td>
+                        <td><font color="black">One of the hardest classes I've taken. Was cool when I understood things, but man what a force.</font></td>
+                    </tr>
+                    <tr>
+                        <td><font color="black">Fall 2017</font></td>
+                        <td><a href="/class_page" class="text-success">MACRO 104</a></td>
+                        <td><font color="black">4.0/5.0</font></td>
+                        <td><font color="black">Straight-forward, professor grades fairly. Not too much work, but you can't really BS it.</font></td>
+                    </tr>
+                    <tr>
+                        <td><font color="black">Fall 2017</font></td>
+                        <td><a href="/class_page" class="text-success">MATH 331</a></td>
+                        <td><font color="black">4.8/5.0</font></td>
+                        <td><font color="black">Professor gave good extra credit, and class was easy to follow.</font></td>
+                    </tr>
+                    <tr>
+                        <td><font color="black">Spring 2017</font></td>
+                        <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
+                        <td><font color="black">4.5/5.0</font></td>
+                        <td><font color="black">Workload was a bit much, but the discussions the professor led always left me with something to think about. It's a nice break from the STEM routine.</font></td>
+                    </tr>
+                </table>
                 </div>
               </div>
             </div>
-            <div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
-            <div class="bg-light mr-md-3 pt-3 px-3 pt-md-1 px-md-1 text-center overflow-hidden">
-                <div class="my-3 p-3">
-                  <h2 class="display-5">Current Courses</h2>
+
+            <div class="col-md-4 info" style="padding-top: 50px">
+                <div class="">
+                <div class="mr-md-3 pt-3 px-3 pt-md-1 px-md-1 text-center overflow-hidden" style="margin: auto">
+                    <div class="my-3 p-3">
+                      <h2 class="display-5 text-primary">Favorites</h2>
+                    </div>
+                    <div class="box-shadow mx-auto" style="height: 100%; border-radius: 21px 21px 0 0;">
+                    <table class="table">
+                    <tr>
+                        <th>Course Number</th>
+                        <th>Course Name</th>
+                        <th>Average Rating</th>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">COMPSCI 326</a></td>
+                        <td>Web Programming</td>
+                        <td>4.8/5.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">MATH 331</a></td>
+                        <td>Introduction to Algorithms Programming</td>
+                        <td>4.2/5.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
+                        <td>Ideas that Change the World</td>
+                        <td>3.8/5.0</td>
+                    </tr>
+                </table>
+                    </div>
+                  </div>
                 </div>
-                <div class="bg-white box-shadow mx-auto" style="height: 85%; border-radius: 21px 21px 0 0;">
-                <table class="table">
-                <tr>
-                    <th>Course Number</th>
-                    <th>Course Name</th>
-                    <th>Average Rating</th>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">COMPSCI 326</a></td>
-                    <td>Web Programming</td>
-                    <td>4.8/5.0</td>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">COMPSCI 311</a></td>
-                    <td>Introduction to Algorithms Programming</td>
-                    <td>3.7/5.0</td>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">COMPSCI 305</a></td>
-                    <td>Social Issues in Computing</td>
-                    <td>3.9/5.0</td>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">MATH 545</a></td>
-                    <td>Linear Algebra for Applied Mathematics</td>
-                    <td>4.1/5.0</td>
-                </tr>
-                <tr>
-                    <td><a href="/class_page" class="text-success">JAPANESE 326</a></td>
-                    <td>Intensive Intermediate Japan I</td>
-                    <td>4.7/5.0</td>
-                </tr>
-            </table>
+                <div class="" style="margin: auto">
+                <div class="mr-md-3 pt-3 px-3 pt-md-1 px-md-1 text-center overflow-hidden" style="margin: auto">
+                    <div class="my-3 p-3">
+                      <h2 class="display-5 text-primary">Current Courses</h2>
+                    </div>
+                    <div class="box-shadow mx-auto" style="height: 85%; border-radius: 21px 21px 0 0;">
+                    <table class="table">
+                    <tr>
+                        <th>Course Number</th>
+                        <th>Course Name</th>
+                        <th>Average Rating</th>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">COMPSCI 326</a></td>
+                        <td>Web Programming</td>
+                        <td>4.8/5.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">COMPSCI 311</a></td>
+                        <td>Introduction to Algorithms Programming</td>
+                        <td>3.7/5.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">COMPSCI 305</a></td>
+                        <td>Social Issues in Computing</td>
+                        <td>3.9/5.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">MATH 545</a></td>
+                        <td>Linear Algebra for Applied Mathematics</td>
+                        <td>4.1/5.0</td>
+                    </tr>
+                    <tr>
+                        <td><a href="/class_page" class="text-success">JAPANESE 326</a></td>
+                        <td>Intensive Intermediate Japan I</td>
+                        <td>4.7/5.0</td>
+                    </tr>
+                </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
-        </div>
-        
-        <div class="col-md-8">
-            <div class="row" style="padding-top: 50px">
-                <div class="col-md-4"><h3><a href="#" class="text-success">Written Reviews</a><br><small>4</small></h3></div>
-                <div class="col-md-4"><h3><a href="#" class="text-success">Liked Reviews</a><br><small>24</small></h3></div>
-                <div class="col-md-4"><h3><a href="#" class="text-success">Classes Taken</a><br><small>26</small></h3></div>
+            
+
+            <div class="col-md-2">
             </div>
-            <div class="bg-white mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-            <div class="my-3 p-3">
-              <h2 class="display-5">Recent Reviews</h2>
             </div>
-            <div class="bg-dark box-shadow mx-auto" style="width: 80%; height: 100%; border-radius: 21px 21px 0 0;">
-                <table class="table table-condensed">
-                <tr>
-                    <th><font color="white">Semester Taken</font></th>
-                    <th><font color="white">Course Number</font></th>
-                    <th><font color="white">User Rating</font></th>
-                    <th><font color="white">Comment</font></th>
-                </tr>
-                <tr>
-                    <td><font color="white">Spring 2018</font></td>
-                    <td><a href="/class_page" class="text-success">COMPSCI 250</a></td>
-                    <td><font color="white">2.5/5.0</font></td>
-                    <td><font color="white">One of the hardest classes I've taken. Was cool when I understood things, but man what a force.</font></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Fall 2017</font></td>
-                    <td><a href="/class_page" class="text-success">MACRO 104</a></td>
-                    <td><font color="white">4.0/5.0</font></td>
-                    <td><font color="white">Straight-forward, professor grades fairly. Not too much work, but you can't really BS it.</font></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Fall 2017</font></td>
-                    <td><a href="/class_page" class="text-success">MATH 331</a></td>
-                    <td><font color="white">4.8/5.0</font></td>
-                    <td><font color="white">Professor gave good extra credit, and class was easy to follow.</font></td>
-                </tr>
-                <tr>
-                    <td><font color="white">Spring 2017</font></td>
-                    <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
-                    <td><font color="white">4.5/5.0</font></td>
-                    <td><font color="white">Workload was a bit much, but the discussions the professor led always left me with something to think about. It's a nice break from the STEM routine.</font></td>
-                </tr>
-            </table>
-            </div>
-          </div>
-            </div>
-        </div>
-    
+    </div>
     
     <br>
     <div class="jumbotron text-center" style="margin-bottom:0">

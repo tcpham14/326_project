@@ -1,0 +1,108 @@
+
+body {
+    background-color: lightblue;
+}
+
+.drop-shadow{
+    text-shadow: 1px 1px 4px black;
+    color: white;
+}
+
+.navbar-account-logo {
+	width: 20px;
+}
+
+.carousel-main {
+	width: 2200px;
+	height: 600px;
+	position: absolute;
+	z-index: 1;
+}
+
+.carousel {
+	width: 2200px;
+	height: 600px;
+
+}
+
+.carousel-pic1 {
+	background-image: url("../imgs/class_pic1.png");
+	background-color: green
+	width: 2200px;
+	height: 600px;
+	box-shadow: inset 0px -40px 50px #FFF;
+}
+
+.carousel-pic2 {
+	background-image: url("../imgs/class_pic2.png");
+	background-color: green
+	filter: opacity(0.5)
+	width: 2200px;
+	height: 600px;
+	box-shadow: inset 0px -40px 50px #FFF;
+}
+
+.carousel-pic3 {
+	background-image: url("../imgs/class_pic3.png");
+	background-color: green
+	filter: opacity(0.5)
+	width: 2200px;
+	height: 600px;
+	box-shadow: inset 0px -40px 50px #FFF;
+}
+
+.profile-header-card {
+
+	font-family: Verdana;
+	right: 16px;
+	position: relative;
+	height: auto;
+	width: 100%;
+	z-index: 2;
+	opacity: .9;
+}
+
+.profile-info-card {
+	font-family: Verdana;
+	right: 16px;
+	position: relative;
+	height: 250px;
+	width: 500px;
+	z-index: 2;
+	opacity: .9;
+}
+
+.related-classes-card p{
+}
+
+
+
+.card-body {
+	left: 10px;
+	position: relative;
+	height: 100%;;
+}
+
+.info {
+	background: white;
+	height: auto;
+	z-index: 2;
+	position: relative;
+	opacity: .9;
+	font-family: Verdana;
+}
+
+.ratings {
+	width: 100%;
+	z-index: 2;
+	font-family: Verdana;
+}
+
+
+
+
+
+
+
+
+
