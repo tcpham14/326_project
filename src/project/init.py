@@ -5,85 +5,69 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from faker import Faker
 
-from catalog.models import Author, Book, BookInstance, Genre
+from spew.models import Professor, Book, BookInstance, Subject, Class
 
 fake = Faker()
 
 # Create Genres
-genres = [
-    Genre(name="Science Fiction"),
-    Genre(name="Satire"),
-    Genre(name="Drama"),
-    Genre(name="Adventure"),
-    Genre(name="Romance"),
-    Genre(name="Mystery"),
+subjects = [
+    Subject(name="ENGLISH"),
+    Subject(name="MATH"),
+    Subject(name="COMPSCI"),
 ]
 
 # Save the genres to the database
-for genre in genres:
-    genre.save()
+for subject in subjects:
+    subject.save()
 
 # Create Authors
-authors = []
+professors = []
 for i in range(1, 10):
-    a_fname = fake.first_name()
-    a_lname = fake.last_name()
-    a_dob = fake.date_of_birth()
-    a_dod = a_dob + timedelta(days=365 * fake.random_int(65, 100))
-    author = Author(
-        first_name=a_fname, last_name=a_lname, date_of_birth=a_dob, date_of_death=a_dod
+    p_fname = fake.first_name()
+    p_lname = fake.last_name()
+    p_contact = fake.phone_number()
+    professor = Professor(
+        first_name=p_fname, last_name=p_lname, position="professor", contact=p_contact
     )
-    author.save()
-    authors.append(author)
+    professor.save()
+    professors.append(professor)
 
 
 # Create Books
-books = []
+classes = []
 for i in range(1, 10):
-    a_title = fake.text(50)
-    a_author = authors[fake.random_int(0, len(authors)) - 1]
-    a_summary = fake.text(1000)
-    a_isbn = fake.isbn13()
-    book = Book(title=a_title, author=a_author, summary=a_summary, isbn=a_isbn)
-    book.save()
-    book.genre.add(genres[fake.random_int(0, len(genres)) - 1])
-    book.save()
-    books.append(book)
+    c_title = fake.text(50)
+    c_professor = professors[fake.random_int(0, len(professors)) - 1]
+    c_description = fake.text(1000)
+    c_exams = fake.boolean(chance_of_getting_true=50)
+    c_attendance = fake.boolean(chance_of_getting_true=50)
+    c_textbooks = fake.text(1000)
+    class_ = Class(title=c_title, professor=c_professor, description=c_description, exams=c_exams, attendance = c_attendance, textbooks = c_textbooks)
+    classes.save()
+    classes.genre.add(subjects[fake.random_int(0, len(genres)) - 1])
+    classes.save()
+    classes.append(class_)
 
-instances = []
-for i in range(1, 400):
-    a_book = books[fake.random_int(0, len(books)) - 1]
-    a_imprint = fake.text(200)
-    a_status = "a"
-    instance = BookInstance(book=a_book, imprint=a_imprint, status=a_status)
-    instance.save()
-    instances.append(instance)
-
-print("Genre:")
-for g in Genre.objects.all():
+print("Subject:")
+for g in Subject.objects.all():
     print(g)
 
-print("\nAuthor:")
-for a in Author.objects.all():
+print("\nProfessor:")
+for a in Professor.objects.all():
     print(a)
 
-print("\nBook:")
-for b in Book.objects.all():
+print("\nClass:")
+for b in Class.objects.all():
     print(b)
 
-print("\nBookInstance:")
-for i in BookInstance.objects.all():
-    print(i)
-
 # Retrieve a random book from model and print it.
-books_count = Book.objects.count()
-book = Book.objects.all()[fake.random_int(0, books_count - 1)]
+class_count = Class.objects.count()
+class_ = Class.objects.all()[fake.random_int(0, class_count - 1)]
 
 print("\nExample Book:")
-print(f"Title: {book.title}")
-print(f"Author: {book.author}")
-print(f"ISBN: {book.isbn}")
-print(f"Summary:\n{textwrap.fill(book.summary, 77)}")
+print(f"Title: {class_.title}")
+print(f"Author: {class_.professor}")
+print(f"Summary:\n{textwrap.fill(class_.summary, 77)}")
 
 
 username = "admin"
