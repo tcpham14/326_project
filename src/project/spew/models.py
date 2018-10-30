@@ -3,10 +3,23 @@ import uuid
 from django.db import models
 from django.urls import reverse
 
+class Subject(models.Model):
+    """Model representing a book genre."""
+
+    subject_name = models.CharField(
+        max_length=200, help_text="Enter a class subject (e.g. Computer Science)"
+    )
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.subject_name
+
 class Class(models.Model):
     """Model representing a class."""
 
     title = models.CharField(max_length=200)
+
+    subject = models.
 
     # Description is a simple text field.
     description = models.TextField(
@@ -30,6 +43,8 @@ class Class(models.Model):
         default=uuid.uuid4,
         help_text="Unique ID for this particular class across the website",
     )
+
+    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
 
 #    related_class = models.ManyToManyField(Class, help_text="Select a class that is related to this one")
 #
@@ -105,8 +120,9 @@ class User(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return f"{self.first_name}, {self.last_name}"
-        
+        #return f"{self.first_name}, {self.last_name}"
+        return '%s %s' % (self.first_name, self.last_name)
+
 class Professor(models.Model):
     """Model representing the Professor."""
 
@@ -157,8 +173,9 @@ class Professor(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return f"{self.last_name}, {self.first_name}"
-        
+        #return f"{self.last_name}, {self.first_name}"
+        return '%s %s' % (self.first_name, self.last_name)
+
 class Feedback(models.Model):
     """Model representing the feedback/reviews"""
     
