@@ -19,8 +19,6 @@ class Class(models.Model):
 
     title = models.CharField(max_length=200)
 
-    subject = models.
-
     # Description is a simple text field.
     description = models.TextField(
         max_length=1000, help_text="Enter a brief description of the class"
