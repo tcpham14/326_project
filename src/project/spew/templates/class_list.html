@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Class List</h1>
+
+{% if class_list %}
+<ul>
+  {% for class in class_list %}
+  <li>
+    <a href="{{ class.get_absolute_url }}">{{ class.name }}</a> ({{class.professor}})
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>There are no classes available at the moment.</p>
+{% endif %}       
+{% endblock %}

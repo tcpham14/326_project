@@ -9,6 +9,34 @@ from spew.models import Class, User, Professor, Feedback
 #    model = Class
 
 
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    # By setting the list_display variable in an Admin class will have
+    # it display only the fields in the model that are specified.
+    list_display = ("subject_name")
+
+    # By setting the fields variable in an Admin class will only
+    # display the specified fields in the "detail view" of the
+    # model. Fields are displayed vertically by default, but will
+    # display horizontally if you further group them in a tuple as we
+    # do here for the birth and death dates.
+
+    inlines = [ClassInline]
+
+
+# Sometimes, it is useful to display associated information of a
+# related model in the detail view. In this case, we define a tabular
+# inline class that will allow us to display BookInstance data in the
+# same Book detail view. See where it is used in the BookAdmin class.
+
+
+#class ProfessorInline(admin.TabularInline):
+#    model = Professor
+
+class ClassInline(admin.TabularInline):
+    model = Class
+
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     # By setting the list_display variable in an Admin class will have
@@ -44,7 +72,7 @@ class ClassAdmin(admin.ModelAdmin):
     # a costly operation when accessing the database. So, we have it
     # display the results of a function call (display_genre) - see the
     # defintion of this function in the Book class in models.py.
-    list_display = ("title", "class_id")
+    list_display = ("title", "class_id", "subject")
 
     # This allows us to display information about the corresponding
     # book instances of this book. It is clearly useful to be able to
