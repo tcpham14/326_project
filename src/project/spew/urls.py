@@ -8,5 +8,7 @@ urlpatterns = [
     path("profile", views.profile, name="profile"), #HOMEPAGE
     path("search_results", views.search_results, name="search_results"),
     path("submissions_page", views.submissions_page, name="submissions_page"),
-    path("advanced_search", views.advanced_search, name="advanced_search")
+    path("advanced_search", views.advanced_search, name="advanced_search"),
+    path("classes/", views.ClassListView.as_view(), name="class"),
+    path("classes/<int:pk>", views.ClassDetailView.as_view(), name="class-detail"),
 ]
