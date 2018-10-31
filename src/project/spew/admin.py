@@ -73,7 +73,7 @@ class ClassAdmin(admin.ModelAdmin):
     # a costly operation when accessing the database. So, we have it
     # display the results of a function call (display_genre) - see the
     # defintion of this function in the Book class in models.py.
-    list_display = ("title", "class_id", "subject")
+    list_display = ("class_id", "title", "subject", "code")
 
     # This allows us to display information about the corresponding
     # book instances of this book. It is clearly useful to be able to

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from spew.models import User, Class, Professor, Feedback
+from spew.models import User, Class, Professor, Feedback, Subject
 from django.views import generic
 
 from django.views import generic
@@ -32,9 +32,7 @@ def class_page(request):
     context = {
 
     }
-
-    return render(request, "class_page.html", context=context)
-
+    
     # Render the HTML template index.html with the data in the context variable
     return render(request, "class_page.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 

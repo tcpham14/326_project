@@ -19,6 +19,8 @@ class Class(models.Model):
 
     title = models.CharField(max_length=200)
 
+    code = models.CharField(max_length=100, default='404')
+
     # Description is a simple text field.
     description = models.TextField(
         max_length=1000, help_text="Enter a brief description of the class"
@@ -36,13 +38,15 @@ class Class(models.Model):
     )
     
     # A particular id for this class
-    class_id = models.UUIDField(
+    class_id = models.CharField(
         primary_key=True,
-        default=uuid.uuid4,
+        max_length=1000,
+        default=uuid.uuid1,
         help_text="Unique ID for this particular class across the website",
     )
 
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+    #subject = models.ManyToManyField(Subject, help_text="Select a subject for this class")
 
 #    related_class = models.ManyToManyField(Class, help_text="Select a class that is related to this one")
 #
@@ -66,7 +70,7 @@ class Class(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a detail record for this book."""
-        return reverse("book-detail", args=[str(self.id)])
+        return reverse("class-detail", args=[str(self.class_id)])
 
 
 class User(models.Model):
@@ -79,7 +83,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=100)
 
     # A character field for the major.
-    major = models.CharField(max_length=100)
+    major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
     
     # A particular id for this user
     user_id = models.UUIDField(

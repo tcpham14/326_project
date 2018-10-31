@@ -7,7 +7,7 @@
 <ul>
   {% for class in class_list %}
   <li>
-    <a href="{{ class.get_absolute_url }}">{{ class.name }}</a> ({{class.professor}})
+    <a href="spew/class/{{ class.class_id }}"</a> ({{class.title}})
   </li>
   {% endfor %}
 </ul>
