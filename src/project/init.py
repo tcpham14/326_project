@@ -42,11 +42,21 @@ for i in range(1, 10):
     c_exams = fake.boolean(chance_of_getting_true=50)
     c_attendance = fake.boolean(chance_of_getting_true=50)
     c_textbooks = fake.text(1000)
-    class_ = Class(title=c_title, professor=c_professor, description=c_description, exams=c_exams, attendance = c_attendance, textbooks = c_textbooks)
+    course = Class(title=c_title, professor=c_professor, description=c_description, exams=c_exams, attendance = c_attendance, textbooks = c_textbooks)
     classes.save()
-    classes.genre.add(subjects[fake.random_int(0, len(genres)) - 1])
+    classes.subject.add(subjects[fake.random_int(0, len(genres)) - 1])
     classes.save()
-    classes.append(class_)
+    classes.append(course)
+
+users = []
+for i in range(1,10):
+    u_fname = fake.firstname()
+    u_lname = fake.lastname()
+    u_major = subjects[fake.random_int(0, len(subjects)) - 1]
+    user = User(first_name = u_fname, last_name = u_lastname, major = u_major)
+    users.save()
+    users.append(author)
+    
 
 print("Subject:")
 for g in Subject.objects.all():

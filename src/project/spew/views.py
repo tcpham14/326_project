@@ -2,6 +2,7 @@ from django.shortcuts import render
 from spew.models import User, Class, Professor, Feedback
 from django.views import generic
 
+from django.views import generic
 
 # Create your views here.
 def index(request):
@@ -68,43 +69,12 @@ def advanced_search(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, "advanced_search.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 
+
+class ClassListView(generic.ListView):
+    model = Class
+    template_name = "class_list.html"
+
+
 class ClassDetailView(generic.DetailView):
     model = Class
-    template_name = "class_page.html"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    template_name = "class_detail.html"
