@@ -112,7 +112,18 @@ course_descriptions = [
     ]
 ]
 
-
+comments = [
+    [
+    "Amazingly smart guy and is really charming. The homework can be overwhelming but the exams are not as bad. Prepare to work really hard especially because of the raw amount of material covered in class. Couldn't see anybody else teaching this rough course apart from him, he really makes it the best experience possible"
+    "The homework problems are very specific, and took a lot of time. However, they were rewarding once you managed to solve them yourself."
+    "Great guy, super smart. Put in the work, you will learn. If discrete math/proofs aren't your thing you will have to work really hard or you will struggle hard in the course."
+    "His lectures can be a bit dry and very dense but he is very kind and will answer any questions."
+    "There's tons of work so you'll want to start the HW early and compare with other people for sure. The scale at the end of the semester is pretty forgiving too."
+    "Great Professor!!! Horrible class!!!"
+    "There is just so much material. The topics you learn are very useful later on though."
+    "The textbook is written by him and is very concise, but you need to work hard, pay attention at all times and put in work after class to pass"
+    ]
+]
 
 # Save the genres to the database
 for subject in subjects:
