@@ -18,14 +18,13 @@ We have implemented several data points in our data model for Spew. We have the 
 For our important URL routes, we have paths for several web pages including: the class list page, class details page, a student profile page, the search results page, the submissions page, and the advanced search page. For each of these pages, we have the requests for the paths above, where Django would then call the views function for the particular path. We also have the name of the path for reference.
 
 For the implemented UI views, TODO
-
-# Problems/Successes: 
-SUCCESSES
--We have had success in creating an HTML template for each of our class pages and extending the base template
--We have had success in implementing Django in our design using views, templates, and urls
--We have had success in creating submission deadlines and staying consistent with them
-FAILURES
--Since many of us have not used GitHub to a great extent, we have had issues in the organization and of files and folders in the project repo
--We have had issues in our ability to communicate as effectively
--We have had issues in finding time where everyone could meet and work together (scheduling conflicts)
+ 
+# SUCCESSES
+* We have had success in creating an HTML template for each of our class pages and extending the base template
+* We have had success in implementing Django in our design using views, templates, and urls
+* We have had success in creating submission deadlines and staying consistent with them
+# PROBLEMS
+* Since many of us have not used GitHub to a great extent, we have had issues in the organization and of files and folders in the project repo
+* We have had issues in our ability to communicate as effectively
+* We have had issues in finding time where everyone could meet and work together (scheduling conflicts)
 
