@@ -5,6 +5,5 @@
 
   <p><strong>Professor:</strong> <a href="">{{ class.professor }}</a></p> <!-- author detail link not yet defined -->
   <p><strong>Description:</strong> {{ class.description }}</p>
-  <p><strong>Subject:</strong> {{{% for subject in class.subject.all %} {{ subject }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>  }}
   </div>
 {% endblock %}

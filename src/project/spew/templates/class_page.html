@@ -67,8 +67,8 @@
             <div class="col-md-3">
                 <div class="class-header-card card">
                     <div class="card-body" style="overflow: auto;">
-                        <p class="card-title" style="font-size: 30px;">Computer Science 326</p>
-                        <p class="card-text" style="font-size: 16px">Web Programming (3 Credits)</p>
+                        <p class="card-title" style="font-size: 30px;">{{ class.subject }} {{ class.code }}</p>
+                        <p class="card-text" style="font-size: 16px">{{ class.title }}</p>
                         <p><a href="/submissions_page" class="btn btn-success">Rate this class</a>
                         <a href="#" class="btn btn-primary">Add to Favorites</a></p>
                     </div>
@@ -77,13 +77,23 @@
             <div class="col-md-2">
                 <div class="related-classes-card card">
                     <div class="card-body">
+
+
+                            <p class="card-title" style="font-size: 24px; margin-bottom: 10px" href="#">Related Courses</p>
+                            {% for related_class in class.related_classes.all %}
+                                <a class="card-text" style="font-size: 16px" href="{{ related_class.get_absolute_url }}">{{ related_class.title }}</a>
+                            <br>
+                            {% endfor %}
+
+
+                        <!--
                         <p class="card-title" style="font-size: 24px; margin-bottom: 0px" href="#">Related Courses</p>
                         <br>
-                        <a class="card-text" style="font-size: 16px" href="#">COMPSCI 311 - Software Engineering</a>
+                        <a class="card-text" style="font-size: 16px" href="#">{{ class.related_classes.title }}</a>
                         <br>
                         <a class="card-text" style="font-size: 16px" href="#">COMPSCI 446 - Search Engines</a>
                         <br>
-                        <a class="card-text" style="font-size: 16px" href="#">COMPSCI 453 - Computer Networks</a>
+                        <a class="card-text" style="font-size: 16px" href="#">COMPSCI 453 - Computer Networks</a>-->
                     </div>
                 </div>
             </div>
@@ -103,24 +113,28 @@
     		</div>
             <div class="info col-md-8">
                 <p style="font-size: 30px; margin: 20px">Course Description</p>
-                <p style="font-size: 14px; margin: 20px">The World Wide Web was proposed originally as a collection of static documents inter-connected by hyperlinks. Today, the web has grown into a rich platform, built on a variety of protocols, standards, and programming languages, that aims to replace many of the services traditionally provided by a desktop operating system. Topics will include: producing dynamic content using a server-based language, content serving databases and XML documents, session state management, multi-tier web-based architectures, web security, and core technologies including HTTP, HTML5, CSS, JavaScript, and SQL will be emphasized. This course will also study concepts and technologies including AJAX, social networking, mashups, JavaScript libraries (e.g., jQuery), and web security. This course is hands-on and project-based; students will construct a substantial dynamic web application based on the concepts, technologies, and techniques presented during lecture. This course satisfies the IE Requirement. Prerequisites: COMPSCI 187/190D and Junior/Senior status. 3 credits.</p>
+                <p style="font-size: 14px; margin: 20px">{{ class.description }}</p>
 
                 <div class="row">
                     <div class="col-md-6">
                         <p style="font-size: 30px; margin: 20px">Prerequisites</p>
                         <p style="font-size: 14px; margin: 20px">COMPSCI 220 or 230 with a grade of 'C' or better.</p>
                     </div>
-                    <div class="col-md-1">
-                        <p style="font-size: 20px; margin: 20px">Exams</p>
-                        <p style="font-size: 14px; margin: 20px; color: green">None</p>
+                    <div class="col-md-1" style="text-align: center;">
+                        <p style="font-size: 20px; margin-top: 20px;">Exams</p>
+                        <p style="font-size: 14px; margin-top: 20px; color: green">{{ class.exams }}</p>
                     </div>
-                    <div class="col-md-1">
-                        <p style="font-size: 20px; margin: 20px">Attendance</p>
-                        <p style="font-size: 14px; margin: 20px; color: orange">Mandatory</p>
+                    <div class="col-md-1" style="text-align: center;">
+                        <p style="font-size: 20px; margin-top: 20px;">Attendance</p>
+                        <p style="font-size: 14px; margin-top: 20px; color: orange">{{ class.attendance }}</p>
                     </div>
-                    <div class="col-md-1">
-                        <p style="font-size: 20px; margin: 20px">Textbooks</p>
-                        <p style="font-size: 14px; margin: 20px; color: green">None</p>
+                    <div class="col-md-1" style="text-align: center;">
+                        <p style="font-size: 20px; margin-top: 20px;">Textbooks</p>
+                        <p style="font-size: 14px; margin-top: 20px; color: green">{{ class.textbooks }}</p>
+                    </div>
+                    <div class="col-md-1" style="text-align: center;">
+                        <p style="font-size: 20px; margin-top: 20px;">Credits</p>
+                        <p style="font-size: 14px; margin-top: 20px; color: green">{{ class.num_credits }}</p>
                     </div>
                 </div>
 

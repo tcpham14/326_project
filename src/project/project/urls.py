@@ -20,12 +20,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', include('spew.urls')),
     # path('index', include('spew.urls')),
-    path('admin', admin.site.urls),
-    path('class_page', include('spew.urls')),
-    path('advanced_search', include('spew.urls')),
-    path('search_results', include('spew.urls')),
-    path('profile', include('spew.urls')),
-    path('submissions_page', include('spew.urls')),
+    path('admin/', admin.site.urls),
+    path('spew/', include('spew.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

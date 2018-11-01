@@ -75,4 +75,4 @@ class ClassListView(generic.ListView):
 
 class ClassDetailView(generic.DetailView):
     model = Class
-    template_name = "class_detail.html"
+    template_name = "class_page.html"

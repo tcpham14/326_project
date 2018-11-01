@@ -65,9 +65,10 @@ body {
 	right: 16px;
 	position: relative;
 	height: 180px;
-	width: 500px;
+	width: 550px;
 	z-index: 2;
 	opacity: .9;
+	overflow-y: scroll;
 }
 
 .related-classes-card p{

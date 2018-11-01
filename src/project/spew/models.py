@@ -25,16 +25,24 @@ class Class(models.Model):
     description = models.TextField(
         max_length=1000, help_text="Enter a brief description of the class"
     )
+
+    num_credits = models.TextField(
+        max_length=1000, help_text="Enter a the number of credits this class fulfills"
+    )
     
     # A boolean field for if there are exams
-    exams = models.BooleanField()
+    exams = models.TextField(
+        max_length=1000, help_text="Does this class have exams?"
+    )
     
     # A boolean field for if attendance is required
-    attendance = models.BooleanField()
+    attendance = models.TextField(
+        max_length=1000, help_text="Is attendance taken at this class?"
+    )
     
     # A text field for the required textbooks
     textbooks = models.TextField(
-        max_length=1000, help_text="Enter the textbooks needed for the class"
+        max_length=1000, help_text="Does this class require textbooks?"
     )
     
     # A particular id for this class
@@ -48,7 +56,7 @@ class Class(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
     #subject = models.ManyToManyField(Subject, help_text="Select a subject for this class")
 
-#    related_class = models.ManyToManyField(Class, help_text="Select a class that is related to this one")
+    related_classes = models.ManyToManyField("self", help_text="Select a class that is related to this one")
 #
 #    def display_related(self):
 #        """Create a string for the related class. This is required to display related class in Admin."""
