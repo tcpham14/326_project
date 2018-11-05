@@ -113,15 +113,28 @@ course_descriptions = [
 ]
 
 comments = [
+    "The worst class ever. Too much homework that takes way too much time to do",
+    "A very difficult class with a teacher that rushes through the material way too quickly",
+    "Very unforgiving grade scale",
+    "Hard material with an even harder teacher",
+    "Amazingly smart guy and is really charming. The homework can be overwhelming but the exams are not as bad. Prepare to work really hard especially because of the raw amount of material covered in class.",
+    "The homework problems are very specific, and took a lot of time. However, they were rewarding once you managed to solve them yourself.",
+    "Great guy, super smart. Put in the work, you will learn. If discrete math/proofs aren't your thing you will have to work really hard or you will struggle hard in the course.",
+    "His lectures can be a bit dry and very dense but he is very kind and will answer any questions.",
+    "There's tons of work so you'll want to start the HW early and compare with other people for sure. The scale at the end of the semester is pretty forgiving too.",
+    "A very difficult class but you will actually learn",
+    "The textbook is written by him and is very concise, but you need to work hard, pay attention at all times and put in work after class to pass",
+    "Great professor that genuinely wants to help the students learn",
+    "A very smart teacher teaching a very difficult class"
+]
+
+ratings = [
     [
-    "Amazingly smart guy and is really charming. The homework can be overwhelming but the exams are not as bad. Prepare to work really hard especially because of the raw amount of material covered in class. Couldn't see anybody else teaching this rough course apart from him, he really makes it the best experience possible"
-    "The homework problems are very specific, and took a lot of time. However, they were rewarding once you managed to solve them yourself."
-    "Great guy, super smart. Put in the work, you will learn. If discrete math/proofs aren't your thing you will have to work really hard or you will struggle hard in the course."
-    "His lectures can be a bit dry and very dense but he is very kind and will answer any questions."
-    "There's tons of work so you'll want to start the HW early and compare with other people for sure. The scale at the end of the semester is pretty forgiving too."
-    "Great Professor!!! Horrible class!!!"
-    "There is just so much material. The topics you learn are very useful later on though."
-    "The textbook is written by him and is very concise, but you need to work hard, pay attention at all times and put in work after class to pass"
+    "1"
+    "2"
+    "3"
+    "4"
+    "5"
     ]
 ]
 
@@ -175,7 +188,8 @@ for subject_name in classes:
                 print("\n")
                 course1.related_classes.add(course2)
 
-
+#r_int = random.randint(1,5)
+#print("RANDOM VALUE: %d" % r_int)
 
 
 users = []
@@ -186,6 +200,28 @@ for i in range(1,10):
     user = User(first_name = u_fname, last_name = u_lname, major = u_major)
     user.save()
     users.append(user)
+
+feedbacks = []
+for i in range(0, 13):
+    r_int = random.randint(1,5)
+    print("RANDOM VALUE:" + r_int)
+    if(r_int == 1 or r_int == 2):
+        r2_int = random.randint(0,3)
+    elif(r_int == 3 or r_int == 4):
+        r2_int = random.randint(4,8)
+    else:
+        r2_int = random.randint(9,12)  
+    c_comment = comments[r2_int]
+    user_rand = random.randint(0,3)
+    c_user_name = users[user_rand].first_name
+    class_rand = random.randint(0,2)
+    c_class_title = classes[class_rand].title
+    submission = Class(comment = c_comment, course = c_class_title, user = c_user_name, rating = r_int)
+    submission.save()
+    feedbacks.append(submission)
+
+#for i in range(0,13):
+#    print("%d   %s "%(feedbacks[i].rating ,feedbacks[i].comment))
     
 
 '''print("Subject:")
