@@ -202,34 +202,6 @@ for i in range(1,10):
     users.append(user)
 
 feedbacks = []
-<<<<<<< HEAD
-for subject_index in range(0, 3):
-    for course_index in range (0, len(courses_list[subject_index])):
-        used_reviews = []
-        num_reviews = random.randint(1, 10)
-        for review in range(0, num_reviews):
-            r_int = random.randint(1,5)
-            str(r_int)
-            if(r_int == "1" or r_int == "2"):
-                r2_int = random.randint(0,3)
-            elif(r_int == "3" or r_int == "4"):
-                r2_int = random.randint(4,8)
-            else:
-                r2_int = random.randint(9,12)  
-            if r2_int in used_reviews:
-                continue
-            c_comment = comments[r2_int]
-            c_course = classes[subject_index][course_index]
-            c_user = users[random.randint(0,4)]
-            submission = Feedback(comment = c_comment, course = c_course, user = c_user, rating = r_int)
-            submission.save()
-            #feedbacks.append(submission)
-            classes[subject_index][course_index].class_feedback.add(submission)
-            used_reviews.append(r2_int)
-
-
-
-=======
 for i in range(0, 13):
     r_int = random.randint(1,5)
     str(r_int)
@@ -243,7 +215,6 @@ for i in range(0, 13):
     submission = Feedback(comment = c_comment, rating = r_int)
     submission.save()
     feedbacks.append(submission)
->>>>>>> fff96d4d4d56fccb5a89fac5b09e3b44f5e276ba
 
 #for i in range(0,13):
 #    print("%d   %s "%(feedbacks[i].rating ,feedbacks[i].comment))
