@@ -103,3 +103,11 @@ class ClassDetailView(generic.DetailView):
 class SearchResults(generic.ListView):
    model = Class
    template_name = "search_results.html"
+
+class UserListView(generic.ListView):
+    model = User
+    template_name = "user_list.html"
+
+class UserDetailView(generic.DetailView):
+    model = User
+    template_name = "user_detail.html"
