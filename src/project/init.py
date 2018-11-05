@@ -204,21 +204,17 @@ for i in range(1,10):
 feedbacks = []
 for i in range(0, 13):
     r_int = random.randint(1,5)
-    print("RANDOM VALUE:" + r_int)
-    if(r_int == 1 or r_int == 2):
+    str(r_int)
+    if(r_int == "1" or r_int == "2"):
         r2_int = random.randint(0,3)
-    elif(r_int == 3 or r_int == 4):
+    elif(r_int == "3" or r_int == "4"):
         r2_int = random.randint(4,8)
     else:
         r2_int = random.randint(9,12)  
     c_comment = comments[r2_int]
-    user_rand = random.randint(0,3)
-    c_user_name = users[user_rand].first_name
-    class_rand = random.randint(0,2)
-    c_class_title = classes[class_rand].title
-    submission = Class(comment = c_comment, course = c_class_title, user = c_user_name, rating = r_int)
+    submission = Class(comment = c_comment, rating = r_int)
     submission.save()
-    feedbacks.append(submission)
+    feedbacks[i].append(submission)
 
 #for i in range(0,13):
 #    print("%d   %s "%(feedbacks[i].rating ,feedbacks[i].comment))
