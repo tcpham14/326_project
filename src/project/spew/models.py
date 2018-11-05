@@ -57,6 +57,8 @@ class Class(models.Model):
     #subject = models.ManyToManyField(Subject, help_text="Select a subject for this class")
 
     related_classes = models.ManyToManyField("self", help_text="Select a class that is related to this one")
+
+    class_feedback = models.ManyToManyField("Feedback", help_text="Provide feedback for this class")
 #
 #    def display_related(self):
 #        """Create a string for the related class. This is required to display related class in Admin."""
@@ -202,3 +204,9 @@ class Feedback(models.Model):
     
     # A char field for the rating; should be average of all ratings but we'll just leave it as is for now.
     rating = models.CharField(max_length=100, help_text="Give a rating from 1 to 5")
+
+
+    def __str__(self):
+        """String for representing the Model object."""
+        #return f"{self.first_name}, {self.last_name}"
+        return '%s %s %s' % (self.user, self.comment, self.rating)

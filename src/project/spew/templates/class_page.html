@@ -149,6 +149,7 @@
             <div class="col-md-2">
             </div>
             <div class="info col-md-4">
+                <!--
                 <p style="font-size: 30px; margin: 20px">Reviews</p>
                 <p style="font-size: 18px; margin: 20px; margin-bottom: 10px; font-weight: bold">Connor Flynn</p>
                 <p style="font-size: 14px; margin: 20px;">I love it when Tim talks about his chickens during class.</p>
@@ -157,7 +158,16 @@
                 <p style="font-size: 18px; margin: 20px; margin-bottom: 10px; font-weight: bold">Tim Richards</p>
                 <p style="font-size: 14px; margin: 20px;">Do not judge me for self-voting.</p>
                 <p style="font-size: 18px; margin: 20px; margin-bottom: 10px; font-weight: bold">David Barrington</p>
-                <p style="font-size: 14px; margin: 20px;">Tim is cool.</p>
+                <p style="font-size: 14px; margin: 20px;">Tim is cool.</p>-->
+
+                <p style="font-size: 30px; margin: 20px">Reviews</p>
+
+                {% for feedback in class.class_feedback.all %}
+                <p style="font-size: 18px; margin: 20px; margin-bottom: 10px; font-weight: bold">{{ feedback.user.first_name }} {{ feedback.user.last_name }}</p>
+                <p style="font-size: 14px; margin: 20px;">{{ feedback.comment }}</p>
+                {% endfor %}
+
+
             </div>
             <div class="ratings col-md-4">
 
