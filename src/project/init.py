@@ -38,8 +38,10 @@ subjects = [
     Subject(subject_name="Philosophy"),
 ]
 
-
-courses_list = [ #[Title, Code, Credits, Exams, Attendence, Textbooks]
+# OUTER NEST = SUBJECT AS PER ORDER OF subjects[] above
+# INNER NEST = COURSE WITHIN THAT SUBJECT
+#[Title, Code, Credits, Exams, Attendence, Textbooks]
+courses_list = [
     [
     ["Introduction to Programming", 119, 3, 'Yes', 'Mandatory', 'None'],
     ["Introduction to Problem Solving with Computers", 121, 4, 'Yes', 'Not Required', 'None'],
@@ -75,7 +77,8 @@ courses_list = [ #[Title, Code, Credits, Exams, Attendence, Textbooks]
     ]
 ]
 
-
+# OUTER NEST = SUBJECT AS PER ORDER OF subjects[] above
+# INNER NEST = COURSE WITHIN THAT SUBJECT
 course_descriptions = [
     [
     "An introduction to computer programming with multimedia applications. Students will create Python programs to process image, video, and audio data. No prior programming experience expected. Not open to Computer Science majors.",
@@ -112,6 +115,7 @@ course_descriptions = [
     ]
 ]
 
+# Comments in the order of ratings(1.0-5.0)
 comments = [
     "The worst class ever. Too much homework that takes way too much time to do",
     "A very difficult class with a teacher that rushes through the material way too quickly",
@@ -128,21 +132,14 @@ comments = [
     "A very smart teacher teaching a very difficult class"
 ]
 
-ratings = [
-    [
-    "1"
-    "2"
-    "3"
-    "4"
-    "5"
-    ]
-]
 
 # Save the genres to the database
 for subject in subjects:
     subject.save()
 
-# Create Authors
+#############################################
+###### CREATION OF PROFESSOR OBJECTS ########
+#############################################
 professors = []
 for i in range(1, 10):
     p_fname = fake.first_name()
@@ -158,9 +155,15 @@ for i in range(1, 10):
 # Create Books
 classes = []
 
+######################################
+##### CREATION OF CLASS OBJECTS ######
+######################################
+# Iterate through each subject(0 -> 2)
 for subject_index in range(0, 3):
     classes.append([])
+    # Iterate through each course in that subject (0 -> len)
     for course_index in range (0, len(courses_list[subject_index])):
+        # Create all class fields
         c_subject = subjects[subject_index]
         c_code = courses_list[subject_index][course_index][1]
         c_id = int(str(subject_index) + str(course_index))
@@ -171,27 +174,37 @@ for subject_index in range(0, 3):
         c_attendance = courses_list[subject_index][course_index][4]
         c_textbooks = courses_list[subject_index][course_index][5]
         c_credits = courses_list[subject_index][course_index][2]
+        # Create class object and populated with c_ parameters
         course = Class(class_id = c_id, title=c_title, code = c_code, num_credits = c_credits, professor=c_professor, description=c_description,
             exams=c_exams, attendance = c_attendance, textbooks = c_textbooks, subject = c_subject)
         course.save()
+        # Append to nested classes list
         classes[subject_index].append(course)
 
+
+###################################################################################
+##### MAPPING OF EACH CLASS OBJECT TO OTHER CLASS OBJECTS AS RELATED CLASSES ######
+###################################################################################
+# For each subject
 for subject_name in classes:
     course2_start_index = 0
+    # For each course
     for course1 in subject_name:
+        # course2_start_index incremented by 1 to prevent course1 from adding itself
+        # as a related class
         course2_start_index = course2_start_index + 1
+        # Shuffle the list of courses
         subject_name_shuffled = subject_name[course2_start_index:].copy()
         random.shuffle(subject_name_shuffled)
+        # Add every other course in the same subject as a related course
         for course2 in subject_name_shuffled:
             if(course1.title != course2.title):
-                '''print(course1.title + "   " + course2.title)
-                print("\n")'''
                 course1.related_classes.add(course2)
 
-#r_int = random.randint(1,5)
-#print("RANDOM VALUE: %d" % r_int)
 
-
+######################################
+##### CREATION OF USER OBJECTS #######
+######################################
 users = []
 for i in range(1,10):
     u_fname = fake.first_name()
@@ -201,36 +214,90 @@ for i in range(1,10):
     user.save()
     users.append(user)
 
+
+##########################################
+###### CREATION OF FEEDBACK OBJECTS ######
+##########################################
+# feedbacks[] currently not used, no point to keep track of feedback through array
+# when feedback for a class is accessible through classes[x][y].course_feedback.all()
 feedbacks = []
-for i in range(0, 13):
-    r_int = random.randint(1,5)
-    str(r_int)
-    if(r_int == "1" or r_int == "2"):
-        r2_int = random.randint(0,3)
-    elif(r_int == "3" or r_int == "4"):
-        r2_int = random.randint(4,8)
-    else:
-        r2_int = random.randint(9,12)  
-    c_comment = comments[r2_int]
-    submission = Feedback(comment = c_comment, rating = r_int)
-    submission.save()
-    feedbacks.append(submission)
+# Iterate through each subject(0 -> 2)
+for subject_index in range(0, 3):
+    # Iterate through each course in that subject (0 -> len)
+    for course_index in range (0, len(courses_list[subject_index])):
+        # Store pre-fabricated comments used from comments[] into
+        # used_comments so that there are no duplicates comments for each class
+        used_comments = []
+        # Each class will have a random number of reviews num_reviews
+        num_reviews = random.randint(1, 10)
+        for review in range(0, num_reviews):
+            # Map the randomly generated rating to a comment that matches the rating
+            r_int = random.randint(1,5)
+            str(r_int)
+            if(r_int == "1" or r_int == "2"):
+                r2_int = random.randint(0,3)
+            elif(r_int == "3" or r_int == "4"):
+                r2_int = random.randint(4,8)
+            else:
+                r2_int = random.randint(9,12)  
+            if r2_int in used_comments:
+                continue
+            c_comment = comments[r2_int]
+            c_course = classes[subject_index][course_index]
+            c_user = users[random.randint(0,4)]
+            c_date = fake.date_this_decade(before_today=True, after_today=False)
+            # Create the feedback submission
+            submission = Feedback(date = c_date, comment = c_comment, course = c_course, user = c_user, rating = r_int)
+            submission.save()
+            #feedbacks.append(submission)
+            # Add current feedback submission to the current class to reference
+            # when rendering class page
+            classes[subject_index][course_index].class_feedback.add(submission)
+            used_comments.append(r2_int)
 
-#for i in range(0,13):
-#    print("%d   %s "%(feedbacks[i].rating ,feedbacks[i].comment))
-    
 
-'''print("Subject:")
-for g in Subject.objects.all():
-    print(g)
 
-print("\nProfessor:")
-for a in Professor.objects.all():
-    print(a)
 
-print("\nClass:")
-for b in Class.objects.all():
-    print(b)'''
+
+
+
+
+
+################################################################################################################
+################################################################################################################
+################################################################################################################
+################################################################################################################
+################################################################################################################
+################################################################################################################
+################################################################################################################
+################################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Retrieve a random book from model and print it.
 class_count = Class.objects.count()
