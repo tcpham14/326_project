@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from spew.models import User, Class, Professor, Feedback, Subject
 from django.views import generic
-
+import random
 from django.views import generic
 
 # Create your views here.
@@ -17,9 +17,32 @@ def index(request):
 
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()'''
+    num_classes = Class.objects.all().count()
+    popular_class_list = Class.objects.all()
+    class_list = Class.objects.all()
+    class_featured = random.choice(popular_class_list)
+    class_featured_1 = random.choice(popular_class_list)
+    class_featured_2 = random.choice(popular_class_list)
+    class_featured_3 = random.choice(popular_class_list)
 
+    feedback_list = Feedback.objects.all()
+    user_list = User.objects.all()
+    highest_rated_class_list = Class.objects.all()
+    # feedback_count = {}
+    # for course in class_list:
+    #     feedback_count[course.class_id] = Class.objects.filter(feedback__courses=course).count()
     context = {
-
+        "num_classes": num_classes,
+        "class_featured": class_featured,
+        "class_featured_1": class_featured_1,
+        "class_featured_2": class_featured_2,
+        "class_featured_3": class_featured_3,
+        "popular_class_list": popular_class_list,
+        "feedback_list": feedback_list,
+        "user_list": user_list,
+        "class_list": class_list,
+        "highest_rated_class_list": highest_rated_class_list,
+        # "class_list_popular": class_list_popular
     }
 
     # Render the HTML template index.html with the data in the context variable
@@ -76,3 +99,7 @@ class ClassListView(generic.ListView):
 class ClassDetailView(generic.DetailView):
     model = Class
     template_name = "class_page.html"
+
+class SearchResults(generic.ListView):
+   model = Class
+   template_name = "search_results.html"

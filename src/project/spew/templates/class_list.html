@@ -7,7 +7,7 @@
 <ul>
   {% for class in class_list %}
   <li>
-    <a href="{{ class.get_absolute_url }}">{{ class.subject }}</a> ({{class.title}})
+    <a href="{{ class.get_absolute_url }}">{{ class.subject }} {{ class.code }}</a> ({{class.title}})
   </li>
   {% endfor %}
 </ul>

@@ -29,8 +29,8 @@
 
 <body>
     <div class="jumbotron" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
-        <h1 style="color: white"><a href="/class_page" style="color: white">FEATURED CLASS</a></h1>
-        <p style="color: white">Course Description OF THE CLASS HERE!</p>
+        <h1 style="color: white"><a href="/class_page" style="color: white">{{ class_featured.title }}</a></h1>
+        <p style="color: white">{{ class_featured.description }}</p>
     </div>
 
     <div class="row">
@@ -45,18 +45,15 @@
                             <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
-                                <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">MATH331:
-                                        <small>Differential
-                                            Equations</small></a></h1>
+                                <h1 style="color: white"><a href="{{ class_featured_2.get_absolute_url }}" style="color: white; text-shadow: 1px 1px 4px black;">{{ class_featured_2.subject }} {{class_featured_2.code}}
+                                        <small>{{ class_featured_2.title }}</small></a></h1>
                                 <br>
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Course Description</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <p class="drop-shadow" style="color: white">Introduction to ordinary differential equations. First
-                                            and second order linear differential equations, systems of linear
-                                            differential equations, Laplace transform, numerical methods, applications.
+                                        <p class="drop-shadow" style="color: white">{{ class_featured_2.description }}
                                         </p>
                                         <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
@@ -82,47 +79,36 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container-fluid">
-
-
-                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/old_dark_background-wallpaper-2560x1440.jpg' %}); max-width:100%;  height:500px; background-size: cover; margin-bottom: 0; border-radius: 0px; margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
-                                <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI326:
-                                        <small>Web Programming</small></a></h1>
+                                <h1 style="color: white"><a href="{{ class_featured_1.get_absolute_url }}" style="color: white; text-shadow: 1px 1px 4px black;">{{ class_featured_1.subject }} {{class_featured_1.code}}
+                                        <small>{{ class_featured_1.title }}</small></a></h1>
                                 <br>
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Course Description</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <p class="drop-shadow" style="color: white">The World Wide Web was proposed originally as a
-                                            collection of static documents inter-connected by hyperlinks. Today, the
-                                            web has grown into a rich platform, built on a variety of protocols,
-                                            standards, and programming languages, that aims to replace many of the
-                                            services traditionally provided by a desktop operating system. This course
-                                            will study core technologies, concepts, and techniques behind the creation
-                                            of modern web-based systems and applications. This course satisfies the
-                                            Integrative Experience requirement for BS/BA CS majors.
+                                        <p class="drop-shadow" style="color: white">{{ class_featured_1.description }}
                                         </p>
                                         <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
-                                                href="#">MATH132</a>, or <a class="drop-shadow" style="color:white"
-                                                href="#">MATH136</a>;
+                                                href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
+                                                href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
                                         <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
-                                                href="#">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                                href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                        </h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Thanh</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Rich</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow" style="color: white">Nah dude not a good class.</p>
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Michael</a>
-                                            said:</h6>
-
-                                        <p class="drop-shadow" style="color: white">Mediocre.</p>
+                                        <p class="drop-shadow" style="color: white">Probably the worst class I've ever taken. Would not
+                                            recommend to anyone.</p>
                                     </div>
                                 </div>
                             </div>
@@ -130,44 +116,36 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/internals.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
-                                <h1 style="color: white"><a href="/class_page" style="color: white; text-shadow: 1px 1px 4px black;">COMPSCI311:
-                                        <small>Introduction to
-                                            Algorithms</small></a></h1>
+                                <h1 style="color: white"><a href="{{ class_featured_3.get_absolute_url }}" style="color: white; text-shadow: 1px 1px 4px black;">{{ class_featured_3.subject }} {{class_featured_3.code}}
+                                        <small>{{ class_featured_3.title }}</small></a></h1>
                                 <br>
                                 <br>
                                 <div class="row">
                                     <div class="col-sm-6">
-
                                         <h5 class="drop-shadow" style="color: white">Course Description</h5>
-                                        <p class="drop-shadow" style="color: white">The design and analysis of efficient algorithms for
-                                            important computational problems. Emphasis on the relationships between
-                                            algorithms and data structures and on measures of algorithmic efficiency.
-                                            Sorting (heapsort, mergesort, quicksort), searching, graph algorithms.
-                                            Experimental analysis of algorithms also emphasized. Use of computer
-                                            required.</p>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <p class="drop-shadow" style="color: white">{{ class_featured_3.description }}
+                                        </p>
                                         <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
                                         <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
-                                                href="search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                                href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
+                                        </h6>
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Taesan</a>
+                                        <!-- <div class="fakeimg">Fake Image</div> -->
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Rich</a>
                                             said:</h6>
-                                        <p class="drop-shadow" style="color: white">Sunt in culpa qui officia deserunt mollit anim id est
-                                            laborum consectetur.</p>
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Lucas</a>
-                                            said:</h6>
-                                        <p class="drop-shadow" style="color: white">Sunt in culpa qui officia deserunt mollit anim id est
-                                            laborum consectetur
-                                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+
+                                        <p class="drop-shadow" style="color: white">Probably the worst class I've ever taken. Would not
+                                            recommend to anyone.</p>
                                     </div>
                                 </div>
                             </div>
@@ -216,34 +194,34 @@
                 <h2 style="text-align: left; padding: 5px">Most Popular Classes</h2>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ popular_class_list.0.get_absolute_url }}" style="float: left">{{ popular_class_list.0.subject }} {{ popular_class_list.0.code }} : {{ popular_class_list.0.title }}</a>
+                        <p style="float:right">{{ feedback_list.0.comment }} - <a href="#">{{ user_list.0.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ popular_class_list.0.exams }}, Attendance: {{ popular_class_list.0.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ popular_class_list.1.get_absolute_url }}" style="float: left">{{ popular_class_list.1.subject }} {{ popular_class_list.1.code }} : {{ popular_class_list.1.title }}</a>
+                        <p style="float:right">{{ feedback_list.1.comment }} - <a href="#">{{ user_list.1.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ popular_class_list.1.exams }}, Attendance: {{ popular_class_list.1.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ popular_class_list.2.get_absolute_url }}" style="float: left">{{ popular_class_list.2.subject }} {{ popular_class_list.2.code }} : {{ popular_class_list.2.title }}</a>
+                        <p style="float:right">{{ feedback_list.2.comment }} - <a href="#">{{ user_list.2.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ popular_class_list.2.exams }}, Attendance: {{ popular_class_list.2.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ popular_class_list.3.get_absolute_url }}" style="float: left">{{ popular_class_list.3.subject }} {{ popular_class_list.3.code }} : {{ popular_class_list.3.title }}</a>
+                        <p style="float:right">{{ feedback_list.3.comment }} - <a href="#">{{ user_list.3.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ popular_class_list.3.exams }}, Attendance: {{ popular_class_list.3.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ popular_class_list.4.get_absolute_url }}" style="float: left">{{ popular_class_list.4.subject }} {{ popular_class_list.4.code }} : {{ popular_class_list.4.title }}</a>
+                        <p style="float:right">{{ feedback_list.4.comment }} - <a href="#">{{ user_list.4.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ popular_class_list.4.exams }}, Attendance: {{ popular_class_list.4.attendance }}</p>
                     </li>
 
 
@@ -255,35 +233,36 @@
                 <h2 style="text-align: left; padding: 5px">Highest Rated Classes</h2>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ highest_rated_class_list.0.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.0.subject }} {{ highest_rated_class_list.0.code }} : {{ highest_rated_class_list.0.title }}</a>
+                        <p style="float:right">{{ feedback_list.0.comment }} - <a href="#">{{ user_list.0.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ highest_rated_class_list.0.exams }}, Attendance: {{ highest_rated_class_list.0.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ highest_rated_class_list.1.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.1.subject }} {{ highest_rated_class_list.1.code }} : {{ highest_rated_class_list.1.title }}</a>
+                        <p style="float:right">{{ feedback_list.1.comment }} - <a href="#">{{ user_list.1.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ highest_rated_class_list.1.exams }}, Attendance: {{ highest_rated_class_list.1.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ highest_rated_class_list.2.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.2.subject }} {{ highest_rated_class_list.2.code }} : {{ highest_rated_class_list.2.title }}</a>
+                        <p style="float:right">{{ feedback_list.2.comment }} - <a href="#">{{ user_list.2.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ highest_rated_class_list.2.exams }}, Attendance: {{ highest_rated_class_list.2.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ highest_rated_class_list.3.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.3.subject }} {{ highest_rated_class_list.3.code }} : {{ highest_rated_class_list.3.title }}</a>
+                        <p style="float:right">{{ feedback_list.3.comment }} - <a href="#">{{ user_list.3.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ highest_rated_class_list.3.exams }}, Attendance: {{ highest_rated_class_list.3.attendance }}</p>
                     </li>
                     <li class="list-group-item">
-                        <a href="/class_page" style="float: left">CS121: Introduction to Problem Solving with Computers</a>
-                        <p style="float:right">Honestly an amazing class! - <a href="#">Danny</a></p>
+                        <a href= "{{ highest_rated_class_list.4.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.4.subject }} {{ highest_rated_class_list.4.code }} : {{ highest_rated_class_list.4.title }}</a>
+                        <p style="float:right">{{ feedback_list.4.comment }} - <a href="#">{{ user_list.4.first_name }}</a></p>
                         <br>
-                        <p style="float:left">Fulfills: <a href="#">R2</a>, <a href="#">R2</a>, <a href="#">R2</a></p>
+                        <p style="float:left">Exams: {{ highest_rated_class_list.4.exams }}, Attendance: {{ highest_rated_class_list.4.attendance }}</p>
                     </li>
+
 
                 </ul>
 
