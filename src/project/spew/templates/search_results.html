@@ -11,9 +11,10 @@
     <title>Spew@UMass</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'css/class_style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -42,125 +43,95 @@
 </head>
 
 <body>
+
+    <div id="carousel" class="carousel-main container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide mx-auto" style="</*padding-right:50px; padding-left: 50px*/"
+                data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-pic1 carousel-item active">
+
+                    </div>
+                    <div class="carousel-pic2 carousel-item">
+                                
+                    </div>
+                    <div class="carousel-pic3 carousel-item">
+                                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" style="margin-left: 0px;" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" style="margin-right: 0px;" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
         
     <br>
     <br>
-    <div class="container">
-        <hgroup class="mb20">
-            <h1>Search Results</h1>
-            <h2 class="lead"><strong class="text-primary">3</strong> results were found for the search for <strong
+    <div class="container info" style="border: 4px solid white; top: 100px">
+        <hgroup class="mb20" style="margin: 35px;">
+            <h3>Search Results</h3>
+            <h2 class="lead"><strong class="text-primary">3</strong> classes were found for "<strong
                     class="text-primary">Comp
-                    Sci</strong></h2>
+                    Sci</strong>"</h2>
         </hgroup>
+
+        {% for class in class_list %}
 
         <section class="col-xs-12 col-sm-6 col-md-12">
             <article class="search-result row">
-                <div class="col-xs-12 col-sm-12 col-md-2">
+                <div class="col-xs-12 col-sm-12 col-md-3">
                     <ul class="meta-search">
-                        <li><i class="glyphicon glyphicon"></i> <span>Computer Science</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>3 Credits</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Prerequisite: <a href="/class_page" style="color:black;">COMPSCI
-                                    220</a> or <a href="/class_page" style="color:black;">COMPSCI230</a></span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Requirements: <a href="#" style="color:black;">IE</a></span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Tue/Thur: 1:00pm-2:15pm</span></li>
+                        <li><span class="text-success">Course Subject</span></li>
+                        <h6>{{ class.subject.subject_name }}</h6>
+                        <hr>
+                        <li><span class="text-success">Credits</span></li>
+                        <h6>{{ class.num_credits }}</h6>
+                        <hr>
+                        <li><span class="text-success">Prerequisites</span></li>
+                        <h6><a href="/class_page" style="color:black;">COMPSCI
+                                    220</a> or <a href="/class_page" style="color:black;">COMPSCI230</a></h6>
+                        <hr>
+                        <li><span class="text-success">Requirements</span><h6>IE</h6></li>
+                        <hr>
+                        <li><span class="text-success">Meeting Times</span></li>
+                        <h6>Tue/Thur: 1:00pm-2:15pm</h6>
                     </ul>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                    <h3><a href="/class_page" title="">COMPSCI 326: WEB PROGRAMMING</a></h3>
-                    <h4>INSTRUCTOR(S): Timothy Richards</h4>
-                    <p>The World Wide Web was proposed originally as a collection of static documents inter-connected
-                        by hyperlinks.
-                        Today, the web has grown into a rich platform, built on a variety of protocols, standards, and
-                        programming languages, that aims to replace many of the services traditionally provided by a
-                        desktop operating system.
-                        Topics will include: producing dynamic content using a server-based language, content serving
-                        databases and XML documents, session state management, multi-tier web-based architectures, web
-                        security, and core technologies
-                        including HTTP, HTML5, CSS, JavaScript, and SQL will be emphasized.
-                        This course will also study concepts and technologies including AJAX, social networking,
-                        mashups, JavaScript libraries (e.g., jQuery), and web security.
-                        This course is hands-on and project-based; students will construct a substantial dynamic web
-                        application based on the concepts, technologies, and techniques presented during lecture.
-                        This course satisfies the IE Requirement.</p>
+                <div class="col-xs-12 col-sm-12 col-md-8 excerpet">
+                    <h3><a href="{{ class.get_absolute_url }}" title="">{{ class.subject.subject_name }} {{ class.code }}: {{ class.title }}</a></h3>
+                    <div style="color: gold">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </div>
+                    <ul>
+                    </ul>
+                    <hr style="background-color: #c6c6c6;">
+                    <h5>Instructors(s): Timothy Richards</h5>
+                    <p>{{ class.description }}</p>
                     <span class="plus"><a href="#" title="Web Programming"><i class="glyphicon glyphicon-plus"></i></a></span>
                 </div>
                 <span class="clearfix borda"></span>
             </article>
 
-            <article class="search-result row">
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                    <ul class="meta-search">
-                        <li><i class="glyphicon glyphicon"></i> <span>Computer Science</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>3 Credits</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Prerequisite: None</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Requirements: None</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Wed: 4:00pm-5:15pm</span></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-7">
-                    <h3><a href="/class_page" title="">COMPSCI 325: INTRODUCTION TO HUMAN COMPUTER INTERACTION</a></h3>
-                    <h4>INSTRUCTOR(S): DEEPAK GANESAN, JEREMY GUMMESON</h4>
-                    <p>In this course we examine the important problems in Usability, Human Computer Interaction, User
-                        Interfaces and Human Centered Computing.
-                        We will examine elements of HCI history, human information processing capabilities, HCI design,
-                        user interface prototyping methods and new applications and directions in HCI,
-                        including affective HCI. This is not a course on how to make better dialog boxes, but rather a
-                        much more thorough exploration of how humans interact with computers and how to evaluate the
-                        effectiveness of HCI designs.
-                        Some elementary programming, or the use of UI prototyping tools, will be required, but students
-                        without prior programming experience should feel right at home in this class.
-                        The course is available to any undergraduate student and is not limited to computer scientists.
-                        IT-minor students are especially encouraged to participate. The course emphasizes group
-                        projects and students will be required to work in teams.
-                        There is one midterm exam, numerous class presentations of on-going project work, and a final
-                        demo and presentation of the major class project.
-                        The course will be taught in a mixed format, with both on-line and regular classroom
-                        components. Lectures wlll be on-line, and weekly discussion groups and studios will be
-                        conducted in regular classroom settings.
-                        Attendance of some of the studio classes will be required, and there will be several project
-                        presentations throughout the semester.
-                        Students will be encouraged to use the available class time to work on their team projects. No
-                        prerequisites but Junior/Senior standing required. 3 credits.</p>
-                    <span class="plus"><a href="#" title="CS325"><i class="glyphicon glyphicon-plus"></i></a></span>
-                </div>
-                <span class="clearfix borda"></span>
-            </article>
+            <hr style="background-color: #c6c6c6;">
 
-            <article class="search-result row">
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                    <ul class="meta-search">
-                        <li><i class="glyphicon glyphicon"></i> <span>Computer Science</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>3 credits</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Prerequisite: <a href="/class_page" style="color:black;">COMPSCI
-                                    187</a> (or equivalent)</span></li>
-                        <li><i class="glyphicon glyphicon"></i> <span>Requirements: None </span></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-7">
-                    <h3><a href="#" title="">COMPSCI 328: MOBILE HEALTH SENSING AND ANALYTICS</a></h3>
-                    <h4>INSTRUCTOR(S): ALEXANDRA MELIOU</h4>
-                    <p>In recent years, the ability to continuously monitor activities, health, and lifestyles of
-                        individuals using sensor technologies has reached unprecedented levels.
-                        The typical smartphone comes equipped with a plethora of sensors for monitoring activity,
-                        speech patterns, social interactions, and location.
-                        In addition, mobile accessories such as wearable wristbands and chestbands now enable routine
-                        and continuous monitoring of a host of physiological signals (e.g., heart rate, respiratory
-                        rate, skin Conductance, and others.).
-                        In conjunction, these sensors can enable higher-order inferences about more complex human
-                        activities/behavioral states (e.g., activity patterns, stress, sleep, etc.).
-                        Such ubiquitous sensing in daily life, referred to as mobile health sensing and monitoring,
-                        promises to revolutionize our understanding of human activities and health conditions.
-                        This course is an introduction to personal health sensing and monitoring through mobile phones
-                        and on-body sensors and addresses several aspects
-                        including mobile devices and applications for health, sensor data quality and reliability
-                        challenges, inference of key health assessments from
-                        sensor data including such as activity patterns, sleep patterns, or stress, sensor data
-                        visualization and feedback, and practical considerations such as battery lifetime.
-                        This course counts as a CS Elective toward the CS major (BA/BS).</p>
-                    <span class="plus"><a href="#" title="CS328"><i class="glyphicon glyphicon-plus"></i></a></span>
-                </div>
-            </article>
         </section>
+
+        {% endfor %}
         
     </div>
     <div class="row d-flex">

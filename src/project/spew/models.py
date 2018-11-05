@@ -1,64 +1,52 @@
 import uuid
-
+from django.db.models import Q
 from django.db import models
 from django.urls import reverse
 
 class Subject(models.Model):
     """Model representing a book genre."""
 
-    subject_name = models.CharField(
-        max_length=200, help_text="Enter a class subject (e.g. Computer Science)"
-    )
+    subject_name = models.CharField(max_length=200, help_text="Enter a class subject (e.g. Computer Science)")
 
     def __str__(self):
         """String for representing the Model object."""
         return self.subject_name
 
+
+
+
+
+
+
 class Class(models.Model):
     """Model representing a class."""
 
     title = models.CharField(max_length=200)
-
+    # Code of the class (326 for CS326 or 250 for CS250)
     code = models.CharField(max_length=100, default='404')
-
-    # Description is a simple text field.
-    description = models.TextField(
-        max_length=1000, help_text="Enter a brief description of the class"
-    )
-
-    num_credits = models.TextField(
-        max_length=1000, help_text="Enter a the number of credits this class fulfills"
-    )
-    
+    # Description of class
+    description = models.TextField(max_length=1000, help_text="Enter a brief description of the class")
+    # Maps to the subject of this class
+    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+    # Number of credits for this class
+    num_credits = models.TextField(max_length=1000, help_text="Enter a the number of credits this class fulfills")
     # A boolean field for if there are exams
-    exams = models.TextField(
-        max_length=1000, help_text="Does this class have exams?"
-    )
-    
+    exams = models.TextField(max_length=1000, help_text="Does this class have exams?")
     # A boolean field for if attendance is required
-    attendance = models.TextField(
-        max_length=1000, help_text="Is attendance taken at this class?"
-    )
-    
+    attendance = models.TextField(max_length=1000, help_text="Is attendance taken at this class?")
     # A text field for the required textbooks
-    textbooks = models.TextField(
-        max_length=1000, help_text="Does this class require textbooks?"
-    )
-    
-    # A particular id for this class
+    textbooks = models.TextField(max_length=1000, help_text="Does this class require textbooks?")
+    # Maps to other classes that are related to this class
+    related_classes = models.ManyToManyField("self", help_text="Select a class that is related to this one")
+    # Maps to the feedback for this class 
+    class_feedback = models.ManyToManyField("Feedback", help_text="Provide feedback for this class")
+    # A particular id for this class (simply an integer)
     class_id = models.CharField(
         primary_key=True,
         max_length=1000,
         default=uuid.uuid1,
         help_text="Unique ID for this particular class across the website",
     )
-
-    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
-    #subject = models.ManyToManyField(Subject, help_text="Select a subject for this class")
-
-    related_classes = models.ManyToManyField("self", help_text="Select a class that is related to this one")
-
-    class_feedback = models.ManyToManyField("Feedback", help_text="Provide feedback for this class")
 #
 #    def display_related(self):
 #        """Create a string for the related class. This is required to display related class in Admin."""
@@ -88,22 +76,18 @@ class User(models.Model):
 
     # A character field for the first name.
     first_name = models.CharField(max_length=100)
-
     # A character field for the last name.
     last_name = models.CharField(max_length=100)
-
     # A character field for the major.
     major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
-    
+    # A list for the classes that were favorited
+    course = models.ManyToManyField(Class, help_text="Select the classes this user favorites")
     # A particular id for this user
     user_id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         help_text="Unique ID for this particular user",
     )
-
-    # A list for the classes that were favorited
-    course = models.ManyToManyField(Class, help_text="Select the classes this user favorites")
     
     def display_course(self):
         """Create a string for the Genre. This is required to display genre in Admin."""
@@ -128,7 +112,7 @@ class User(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
-        return reverse("user-detail", args=[str(self.id)])
+        return reverse("user-detail", args=[str(self.user_id)])
 
     def __str__(self):
         """String for representing the Model object."""
@@ -140,20 +124,14 @@ class Professor(models.Model):
 
     # A character field for the first name.
     first_name = models.CharField(max_length=100)
-
     # A character field for the last name.
     last_name = models.CharField(max_length=100)
-
     # A character field for the position.
     position = models.CharField(max_length=100)
-
-    # A text field for the contact info
-    contact = models.TextField(
-        max_length=1000, help_text="Enter a brief description of the class"
-    )
-    
     # A list field for the courses taught
     course = models.ManyToManyField(Class, help_text="Select a class this professor teaches")
+    # A text field for the contact info
+    contact = models.TextField(max_length=1000, help_text="Enter a brief description of the class")
 
     def display_course(self):
         """Create a string for the Genre. This is required to display genre in Admin."""
@@ -192,18 +170,15 @@ class Feedback(models.Model):
     """Model representing the feedback/reviews"""
     
     # A text field for the comment of the review
-    comment = models.TextField(
-        max_length=1000, help_text="Enter a brief comment about the class."
-    )
-    
+    comment = models.TextField(max_length=1000, help_text="Enter a brief comment about the class.")
     # A foreign key for the class it's for
     course = models.ForeignKey("Class", on_delete=models.SET_NULL, null=True)
-    
     # A foreign key for the user it's from
     user = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
-    
     # A char field for the rating; should be average of all ratings but we'll just leave it as is for now.
     rating = models.CharField(max_length=100, help_text="Give a rating from 1 to 5")
+    # A 
+    date = models.DateField(null=True, blank=True)
 
 
     def __str__(self):
