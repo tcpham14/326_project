@@ -212,9 +212,9 @@ for i in range(0, 13):
     else:
         r2_int = random.randint(9,12)  
     c_comment = comments[r2_int]
-    submission = Class(comment = c_comment, rating = r_int)
+    submission = Feedback(comment = c_comment, rating = r_int)
     submission.save()
-    feedbacks[i].append(submission)
+    feedbacks.append(submission)
 
 #for i in range(0,13):
 #    print("%d   %s "%(feedbacks[i].rating ,feedbacks[i].comment))
