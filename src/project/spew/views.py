@@ -3,6 +3,7 @@ from spew.models import User, Class, Professor, Feedback, Subject
 from django.views import generic
 import random
 from django.views import generic
+from django.db.models import Count
 
 # Create your views here.
 def index(request):
@@ -18,7 +19,6 @@ def index(request):
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()'''
     num_classes = Class.objects.all().count()
-    popular_class_list = Class.objects.all()
     class_list = Class.objects.all()        
     random_index_list = random.sample(range(len(class_list)), 4)
     class_featured = class_list[random_index_list[0]]
@@ -28,16 +28,23 @@ def index(request):
     feedback_1 = random.choice(Feedback.objects.filter(course = class_featured_1))
     feedback_2 = random.choice(Feedback.objects.filter(course = class_featured_2))
     feedback_3 = random.choice(Feedback.objects.filter(course = class_featured_3))
+    popular_class_list = Class.objects.all().annotate(num_feedback=Count('feedback')).order_by('-num_feedback')
+
     highest_rated_class_list = Class.objects.all()
     
-    feedback_list = {}
-    user_list = {}
+    popular_feedback_list = {}
+    popular_user_list = {}
+    for i in range(0, len(popular_class_list) - 1):
+        popular_feedback_list[i] = random.choice(Feedback.objects.filter(course=popular_class_list[i]))
+        popular_user_list[i] = popular_feedback_list[i].user
+        
+    highest_rated_feedback_list = {}
+    highest_rated_user_list = {}
     for i in range(0, len(highest_rated_class_list) - 1):
-        feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
-        user_list[i] = feedback_list[i].user
-    # feedback_count = {}
-    # for course in class_list:
-    #     feedback_count[course.class_id] = Class.objects.filter(feedback__courses=course).count()
+        highest_rated_feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
+        highest_rated_user_list[i] = highest_rated_feedback_list[i].user
+    
+    
 
     sorted_classes = []
     class_list = Class.objects.all()
@@ -59,8 +66,11 @@ def index(request):
         "class_featured_2": class_featured_2,
         "class_featured_3": class_featured_3,
         "popular_class_list": popular_class_list,
-        "feedback_list": feedback_list,
-        "user_list": user_list,
+        "highest_rated_feedback_list": highest_rated_feedback_list,
+        "popular_feedback_list": popular_feedback_list,
+        "popular_user_list": popular_user_list,
+        "highest_rated_user_list": highest_rated_user_list,
+#        "user_list": user_list,
         "class_list": class_list,
         "highest_rated_class_list": highest_rated_class_list,
         "feedback_1": feedback_1,
