@@ -265,9 +265,9 @@ for i in range(1,10):
     users.append(user)
 
 
-##########################################
-###### CREATION OF FEEDBACK OBJECTS ######
-##########################################
+################################################
+###### CREATION OF CLASS FEEDBACK OBJECTS ######
+################################################
 # feedbacks[] currently not used, no point to keep track of feedback through array
 # when feedback for a class is accessible through classes[x][y].course_feedback.all()
 feedbacks = []
@@ -306,6 +306,11 @@ for subject_index in range(0, 3):
             # when rendering class page
             used_comments.append(r2_int)
             used_users.append(u_int)
+
+
+################################################
+###### CREATION OF PROF FEEDBACK OBJECTS #######
+################################################
 
 
 
