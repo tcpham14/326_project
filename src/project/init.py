@@ -203,7 +203,9 @@ for i in range(1, 10):
     professors.append(professor)
     professor_subject = fake.random_int(0, 2)
     for course in classes[professor_subject]:
-        professor.course.add(course)
+        skip_course = fake.random_int(0, 1)
+        if skip_course == 1:
+            professor.course.add(course)
 
 
 ###################################################################################
@@ -351,8 +353,8 @@ adminuser = User.objects.create_user(username, email, password)
 adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True
-adminuser.save()
-message = "Success"'''
+adminuser.save()'''
+message = "Success"
 """
 ====================================================================
 The database has been setup with the following credentials:
