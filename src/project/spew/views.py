@@ -25,8 +25,6 @@ def index(request):
     class_featured_2 = random.choice(popular_class_list)
     class_featured_3 = random.choice(popular_class_list)
     
-    highest_rated_class_list = Class.objects.all()
-    
     feedback_list = {}
     user_list = {}
     for i in range(0, len(highest_rated_class_list) - 1):
@@ -35,6 +33,20 @@ def index(request):
     # feedback_count = {}
     # for course in class_list:
     #     feedback_count[course.class_id] = Class.objects.filter(feedback__courses=course).count()
+
+    sorted_classes = []
+    class_list = Class.objects.all()
+    for course in class_list:
+       sorted_classes.append((course, 0))
+       for course_feedback in Feedback.objects.filter(course=course.class_id):
+           sorted_classes[len(sorted_classes)-1] = (sorted_classes[len(sorted_classes)-1][0], sorted_classes[len(sorted_classes)-1][1] + int(course_feedback.rating))
+       sorted_classes[len(sorted_classes)-1] = (sorted_classes[len(sorted_classes)-1][0], sorted_classes[len(sorted_classes)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+
+    sorted_classes.sort(key=lambda x: x[1])
+    sorted_classes.reverse()
+
+    highest_rated_class_list = [i[0] for i in sorted_classes]
+
     context = {
         "num_classes": num_classes,
         "class_featured": class_featured,
