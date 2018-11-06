@@ -160,23 +160,13 @@
                     <tr>
                         <th>Course Number</th>
                         <th>Course Name</th>
-                        <th>Average Rating</th>
                     </tr>
+                    {% for course in favorite_courses %}
                     <tr>
-                        <td><a href="/class_page" class="text-success">COMPSCI 326</a></td>
-                        <td>{{ user.course.title }}</td>
-                        <td>4.8/5.0</td>
+                        <td><a href="{{ feedback.course.get_absolute_url }}">{{ course.subject.subject_name }} {{ course.code }} </a></td>
+                        <td>{{ course.title }}</td>
                     </tr>
-                    <tr>
-                        <td><a href="/class_page" class="text-success">MATH 331</a></td>
-                        <td>Introduction to Algorithms Programming</td>
-                        <td>4.2/5.0</td>
-                    </tr>
-                    <tr>
-                        <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
-                        <td>Ideas that Change the World</td>
-                        <td>3.8/5.0</td>
-                    </tr>
+                    {% endfor %}
                 </table>
                     </div>
                   </div>

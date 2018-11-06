@@ -24,10 +24,14 @@ def index(request):
     class_featured_1 = random.choice(popular_class_list)
     class_featured_2 = random.choice(popular_class_list)
     class_featured_3 = random.choice(popular_class_list)
-
-    feedback_list = Feedback.objects.all()
-    user_list = User.objects.all()
+    
     highest_rated_class_list = Class.objects.all()
+    
+    feedback_list = {}
+    user_list = {}
+    for i in range(0, len(highest_rated_class_list) - 1):
+        feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
+        user_list[i] = feedback_list[i].user
     # feedback_count = {}
     # for course in class_list:
     #     feedback_count[course.class_id] = Class.objects.filter(feedback__courses=course).count()
@@ -124,4 +128,5 @@ class UserDetailView(generic.DetailView):
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['user_feedback'] = Feedback.objects.filter(user=pk).all()
         context['feedback_count'] = Feedback.objects.filter(user=pk).count()
+        context['favorite_courses'] = Class.objects.filter(user=pk).all()
         return context
