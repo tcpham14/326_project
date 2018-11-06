@@ -198,7 +198,7 @@ for i in range(1, 10):
     p_fname = fake.first_name()
     p_lname = fake.last_name()
     p_contact = fake.phone_number()
-    professor = Professor(first_name=p_fname, last_name=p_lname, position="professor", contact=p_contact)
+    professor = Professor(prof_id=i, first_name=p_fname, last_name=p_lname, position="professor", contact=p_contact)
     professor.save()
     professors.append(professor)
     professor_subject = fake.random_int(0, 2)
@@ -343,7 +343,7 @@ print("Title: {class_.title}")
 print("Author: {class_.professor}")
 print("Summary:\n{textwrap.fill(class_.summary, 77)}")'''
 
-
+'''
 username = "admin"
 password = "admin"
 email = "admin@326.edu"
@@ -352,7 +352,7 @@ adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True
 adminuser.save()
-message = "Success"
+message = "Success"'''
 """
 ====================================================================
 The database has been setup with the following credentials:
