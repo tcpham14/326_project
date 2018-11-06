@@ -1,0 +1,17 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Professor List</h1>
+
+{% if professor_list %}
+<ul>
+  {% for prof in professor_list %}
+  <li>
+    <a href="{{ user.get_absolute_url }}">{{ prof.first_name }} {{ prof.last_name }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>There are no professors available at the moment.</p>
+{% endif %}       
+{% endblock %}
