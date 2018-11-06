@@ -7,11 +7,17 @@ from spew.models import Class, User, Professor, Feedback, Subject
 
 #class ClassInline(admin.TabularInline):
 #    model = Class
-
+class UserInline(admin.TabularInline):
+    model = User
 
 class ClassInline(admin.TabularInline):
     model = Class
 
+class FeedbackInline(admin.TabularInline):
+    model = Feedback
+
+class ProfessorInline(admin.TabularInline):
+    model = Professor
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
@@ -51,7 +57,7 @@ class UserAdmin(admin.ModelAdmin):
     # do here for the birth and death dates.
     fields = ["first_name", "last_name", "major"]
 
-#    inlines = [ClassInline]
+    inlines = [FeedbackInline]
 
 
 # Sometimes, it is useful to display associated information of a
@@ -73,14 +79,16 @@ class ClassAdmin(admin.ModelAdmin):
     # a costly operation when accessing the database. So, we have it
     # display the results of a function call (display_genre) - see the
     # defintion of this function in the Book class in models.py.
-    list_display = ("class_id", "title", "subject", "code")
-
+    list_display = ("title", "class_id", "subject", "code") #need to add the professor
+    fields = ["title"]
     # This allows us to display information about the corresponding
     # book instances of this book. It is clearly useful to be able to
     # see which book instances we have for a book. Because the
     # BookInstance model defines a "foreign key" on Book, Django will
     # automatically be able to look up the associated book instances.
     # inlines = [ProfessorInline]
+    inlines = [FeedbackInline]
+
 
 
 @admin.register(Professor)
@@ -98,9 +106,12 @@ class ProfessorAdmin(admin.ModelAdmin):
     # tuple is the title of the section (None, if no title), followed
     # by a dictionary containing the entry "fields" that correspond to
     # the fields the section will have.
-#    inlines = [ClassInline]
+    # inlines = [ClassInline]
+    # inlines = [FeedbackInline]
     
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ("course", "user")
+    list_display = ("course", "user", "rating", "date", "comment")
+
+    # inlines = [UserInline]
     
