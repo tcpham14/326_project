@@ -127,7 +127,7 @@
                         </tr>
                     {% for row in courses_taught %}
                     <tr>
-                        <td><a href="{{ row.0.get_absolute_url }}" class="text-success">{{ row.subject.subject_name }} {{ row.code }} </a></td>
+                        <td><a href="{{ row.get_absolute_url }}" class="text-success">{{ row.subject.subject_name }} {{ row.code }} </a></td>
                         <td>{{ row.title }}</td>
                         <td>{{ row.1 }}</td>
                     </tr>
