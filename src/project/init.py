@@ -154,7 +154,6 @@ for i in range(1, 10):
 
 # Create Books
 classes = []
-
 ######################################
 ##### CREATION OF CLASS OBJECTS ######
 ######################################
@@ -212,11 +211,15 @@ for i in range(1,10):
     u_user_id = i
     u_bio = fake.text(500)
     u_grad_year = fake.year()
-    u_major = subjects[fake.random_int(0, len(subjects)-1)]
-    u_course = classes[fake.random_int(0, len(classes)-1)]
+    u_major = subjects[fake.random_int(0, len(subjects))-1]
+    # u_course =
+    # u_course.save
     user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major)
-    # user.save()
-    # user.course.add(u_course)
+    user.save()
+    subject_index=fake.random_int(0,2)
+    num_courses = random_int(1,4)
+    for x in range(0, num_courses):
+        user.course.add(classes[subject_index][fake.random_int(0, len(classes[subject_index]))-1])
     user.save()
     users.append(user)
 
