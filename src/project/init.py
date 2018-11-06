@@ -270,7 +270,7 @@ for i in range(1,10):
 ################################################
 # feedbacks[] currently not used, no point to keep track of feedback through array
 # when feedback for a class is accessible through classes[x][y].course_feedback.all()
-feedbacks = []
+course_feedbacks = []
 # Iterate through each subject(0 -> 2)
 for subject_index in range(0, 3):
     # Iterate through each course in that subject (0 -> len)
@@ -301,7 +301,7 @@ for subject_index in range(0, 3):
             # Create the feedback submission
             submission = Feedback(date = c_date, comment = c_comment, course = c_course, user = c_user, rating = r_int)
             submission.save()
-            #feedbacks.append(submission)
+            course_feedbacks.append(submission)
             # Add current feedback submission to the current class to reference
             # when rendering class page
             used_comments.append(r2_int)
@@ -311,6 +311,30 @@ for subject_index in range(0, 3):
 ################################################
 ###### CREATION OF PROF FEEDBACK OBJECTS #######
 ################################################
+# feedbacks[] currently not used, no point to keep track of feedback through array
+# when feedback for a class is accessible through classes[x][y].course_feedback.all()
+prof_feedbacks = []
+for professor in professors:
+    num_reviews = random.randint(1, 10)
+    used_users = []
+    for review in range(0, num_reviews):
+        u_int = random.randint(0,len(users)) - 1
+        if u_int in used_users:
+            continue
+        # Map the randomly generated rating to a comment that matches the rating
+        r_int = random.randint(1,5)
+        c_professor = professor
+        c_comment = fake.text(20)
+        c_user = users[u_int]
+        c_date = fake.date_this_decade(before_today=True, after_today=False)
+        # Create the feedback submission
+        submission = Feedback(professor = c_professor, date = c_date, comment = c_comment, user = c_user, rating = r_int)
+        submission.save()
+        prof_feedbacks.append(submission)
+        # Add current feedback submission to the current class to reference
+        # when rendering class page
+        used_comments.append(r2_int)
+        used_users.append(u_int)
 
 
 
