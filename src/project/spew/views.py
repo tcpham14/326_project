@@ -24,6 +24,8 @@ def index(request):
     class_featured_1 = random.choice(popular_class_list)
     class_featured_2 = random.choice(popular_class_list)
     class_featured_3 = random.choice(popular_class_list)
+
+    highest_rated_class_list = Class.objects.all()
     
     feedback_list = {}
     user_list = {}
