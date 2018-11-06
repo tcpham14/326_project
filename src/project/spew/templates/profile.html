@@ -85,8 +85,8 @@
                                     <img class="img-rounded" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="200" height="200" style="margin-bottom: 30px; border: 3px solid #3887ff">
                                 </div>   
                                 <div class="col">
-                                    <h2>Jimmy Garoppolo</h2>
-                                    <p>Twenty-seven-years old footballer Jimmy Garoppolo was born with the name with James R. Garoppolo celebrates his birthday on every 2nd November. He was born on 1991 in Arlington Height, Illinois. He is American by nationality and belongs to White American ethnicity. His zodiac sign is Scorpio. He is a son of Tony Garoppolo and Denise Garoppolo.</p>
+                                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                                    <p>{{ user.bio }}</p>
 
                                 </div>
                             </div>
@@ -98,13 +98,13 @@
                     <div class="profile-info-card card">
                         <div class="card-body">
                             <div class="row text-center">
-                                <h5><a>Major: </a><a style="color: #3887ff; font-size: 18px">Computer Science</a></h5>
+                                <h5><a>Major: </a><a style="color: #3887ff; font-size: 18px">{{ user.major }}</a></h5>
                             </div>
-                            <div class="row text-center">
+                            {% comment %} <div class="row text-center">
                                 <h5><a>Concentration: </a><a style="color: #3887ff; font-size: 18px;">Software Engineering</a></h5>
-                            </div>
+                            </div> {% endcomment %}
                             <div class="row text-center">
-                                <h5><a>Graduation Class: </a><a style="color: #3887ff; font-size: 18px; margin-bottom: 100px"> 2020</a></h5>
+                                <h5><a>Graduation Class: </a><a style="color: #3887ff; font-size: 18px; margin-bottom: 100px">{{ user.grad_year }}</a></h5>
                             </div>
                             <div class="row text-center" style="margin-top: 30px">
                                 <div class="col-md-4"><h5><a>Written Reviews</a><br><small class="text-success">4</small></h5></div>
@@ -121,10 +121,6 @@
             </div>
 
 
-
-
-
-
         <div class="row text-center", style="padding-top:     0px;">
             <div class="col-md-2">
             </div>
@@ -134,6 +130,7 @@
                 <div class="my-3 p-3">
                   <h2 class="display-5 text-primary">Recent Reviews</h2>
                 </div>
+
                 <div class="box-shadow mx-auto" style="width: 100%; height: 100%; border-radius: 21px 21px 0 0;">
                     <table class="table table-condensed">
                     <tr>
@@ -144,7 +141,7 @@
                     </tr>
                     <tr>
                         <td><font color="black">Spring 2018</font></td>
-                        <td><a href="/class_page" class="text-success">COMPSCI 250</a></td>
+                        <td><a href="/class_page" class="text-success">{{ user.course.1.code }}</a></td>
                         <td><font color="black">2.5/5.0</font></td>
                         <td><font color="black">One of the hardest classes I've taken. Was cool when I understood things, but man what a force.</font></td>
                     </tr>
