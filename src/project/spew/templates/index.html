@@ -29,7 +29,7 @@
 
 <body>
     <div class="jumbotron" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); background-size: cover; margin-bottom: 0; max-width:100%; border-radius: 0px;margin: auto">
-        <h1 style="color: white"><a href="/class_page" style="color: white">{{ class_featured.title }}</a></h1>
+        <h1 style="color: white"><a href="{{ class_featured.get_absolute_url }}" style="color: white">{{ class_featured.subject }} {{class_featured.code}} {{ class_featured.title }}</a></h1>
         <p style="color: white">{{ class_featured.description }}</p>
     </div>
 
@@ -55,23 +55,22 @@
                                         <!-- <div class="fakeimg">Fake Image</div> -->
                                         <p class="drop-shadow" style="color: white">{{ class_featured_2.description }}
                                         </p>
-                                        <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                        {% comment %} <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
                                         <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
                                                 href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
-                                        </h6>
+                                        </h6> {% endcomment %}
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Rich</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">{{ feedback_1.user }}</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow" style="color: white">Probably the worst class I've ever taken. Would not
-                                            recommend to anyone.</p>
+                                        <p class="drop-shadow" style="color: white">{{ feedback_1.comment }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -92,23 +91,22 @@
                                         <!-- <div class="fakeimg">Fake Image</div> -->
                                         <p class="drop-shadow" style="color: white">{{ class_featured_1.description }}
                                         </p>
-                                        <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                        {% comment %} <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
                                         <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
                                                 href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
-                                        </h6>
+                                        </h6> {% endcomment %}
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Rich</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">{{ feedback_2.user }}</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow" style="color: white">Probably the worst class I've ever taken. Would not
-                                            recommend to anyone.</p>
+                                        <p class="drop-shadow" style="color: white">{{ feedback_2.comment }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -129,23 +127,22 @@
                                         <!-- <div class="fakeimg">Fake Image</div> -->
                                         <p class="drop-shadow" style="color: white">{{ class_featured_3.description }}
                                         </p>
-                                        <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
+                                        {% comment %} <h6 class="drop-shadow" style="color: white"> Prerequisite: <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH132</a>, or <a class="drop-shadow" style="color:white"
                                                 href="/class_page">MATH136</a>;
                                             corequisite: <a class="drop-shadow" style="color:white" href="#">MATH233</a>.
                                         </h6>
                                         <h6 class="drop-shadow" style="color: white"> Fulfills: <a class="drop-shadow" style="color:white"
                                                 href="/search_results">R2</a>, <a class="drop-shadow" style="color:white" href="#">??</a>
-                                        </h6>
+                                        </h6> {% endcomment %}
                                     </div>
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">Rich</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">{{ feedback_3.user }}</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow" style="color: white">Probably the worst class I've ever taken. Would not
-                                            recommend to anyone.</p>
+                                        <p class="drop-shadow" style="color: white">{{ feedback_3.comment }}</p>
                                     </div>
                                 </div>
                             </div>

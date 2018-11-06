@@ -19,12 +19,15 @@ def index(request):
     num_authors = Author.objects.count()'''
     num_classes = Class.objects.all().count()
     popular_class_list = Class.objects.all()
-    class_list = Class.objects.all()
-    class_featured = random.choice(popular_class_list)
-    class_featured_1 = random.choice(popular_class_list)
-    class_featured_2 = random.choice(popular_class_list)
-    class_featured_3 = random.choice(popular_class_list)
-
+    class_list = Class.objects.all()        
+    random_index_list = random.sample(range(len(class_list)), 4)
+    class_featured = class_list[random_index_list[0]]
+    class_featured_1 = class_list[random_index_list[1]]
+    class_featured_2 = class_list[random_index_list[2]]
+    class_featured_3 = class_list[random_index_list[3]]
+    feedback_1 = random.choice(Feedback.objects.filter(course = class_featured_1))
+    feedback_2 = random.choice(Feedback.objects.filter(course = class_featured_2))
+    feedback_3 = random.choice(Feedback.objects.filter(course = class_featured_3))
     highest_rated_class_list = Class.objects.all()
     
     feedback_list = {}
@@ -60,6 +63,9 @@ def index(request):
         "user_list": user_list,
         "class_list": class_list,
         "highest_rated_class_list": highest_rated_class_list,
+        "feedback_1": feedback_1,
+        "feedback_2": feedback_2,
+        "feedback_3": feedback_3
         # "class_list_popular": class_list_popular
     }
 
