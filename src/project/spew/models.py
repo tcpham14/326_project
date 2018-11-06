@@ -56,8 +56,8 @@ class Class(models.Model):
         return reverse("class-detail", args=[str(self.class_id)])
 
 
-class User(models.Model):
-    """Model representing the User."""
+class SpewUser(models.Model):
+    """Model representing the SpewUser."""
 
     # A character field for the first name.
     first_name = models.CharField(max_length=100)
@@ -144,7 +144,7 @@ class Feedback(models.Model):
     # A foreign key for the class it's for
     course = models.ForeignKey("Class", on_delete=models.SET_NULL, null=True)
     # A foreign key for the user it's from
-    user = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey("SpewUser", on_delete=models.SET_NULL, null=True)
     # A foreign key for the professor it's for
     professor = models.ForeignKey("Professor", on_delete=models.SET_NULL, null=True)
     # A char field for the rating; should be average of all ratings but we'll just leave it as is for now.
