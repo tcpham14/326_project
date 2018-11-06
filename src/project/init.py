@@ -162,21 +162,6 @@ comments = [
 for subject in subjects:
     subject.save()
 
-#############################################
-###### CREATION OF PROFESSOR OBJECTS ########
-#############################################
-professors = []
-for i in range(1, 10):
-    p_fname = fake.first_name()
-    p_lname = fake.last_name()
-    p_contact = fake.phone_number()
-    professor = Professor(
-        first_name=p_fname, last_name=p_lname, position="professor", contact=p_contact
-    )
-    professor.save()
-    professors.append(professor)
-
-
 # Create Books
 classes = []
 ######################################
@@ -192,18 +177,35 @@ for subject_index in range(0, 3):
         c_code = courses_list[subject_index][course_index][1]
         c_id = int(str(subject_index) + str(course_index))
         c_title = courses_list[subject_index][course_index][0]
-        c_professor = professors[fake.random_int(0, len(professors)) - 1]
         c_description = course_descriptions[subject_index][course_index]
         c_exams = courses_list[subject_index][course_index][3]
         c_attendance = courses_list[subject_index][course_index][4]
         c_textbooks = courses_list[subject_index][course_index][5]
         c_credits = courses_list[subject_index][course_index][2]
         # Create class object and populated with c_ parameters
-        course = Class(class_id = c_id, title=c_title, code = c_code, num_credits = c_credits, professor=c_professor, description=c_description,
+        course = Class(class_id = c_id, title=c_title, code = c_code, num_credits = c_credits, description=c_description,
             exams=c_exams, attendance = c_attendance, textbooks = c_textbooks, subject = c_subject)
         course.save()
         # Append to nested classes list
         classes[subject_index].append(course)
+
+
+#############################################
+###### CREATION OF PROFESSOR OBJECTS ########
+#############################################
+professors = []
+for i in range(1, 10):
+    p_fname = fake.first_name()
+    p_lname = fake.last_name()
+    p_contact = fake.phone_number()
+    professor = Professor(first_name=p_fname, last_name=p_lname, position="professor", contact=p_contact)
+    professor.save()
+    professors.append(professor)
+
+    professor_subject = fake.random_int(0, 2)
+
+    for course in classes[professor_subject]:
+        professor.course.add(course)
 
 
 ###################################################################################
