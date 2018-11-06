@@ -100,6 +100,13 @@ class ClassDetailView(generic.DetailView):
     model = Class
     template_name = "class_page.html"
 
+    def get_context_data(self, **kwargs):
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        context = super(ClassDetailView, self).get_context_data(**kwargs)
+        context['class_feedback'] = Feedback.objects.filter(course=pk)
+        return context
+
+
 class SearchResults(generic.ListView):
    model = Class
    template_name = "search_results.html"
