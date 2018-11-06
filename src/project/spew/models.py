@@ -145,6 +145,8 @@ class Feedback(models.Model):
     course = models.ForeignKey("Class", on_delete=models.SET_NULL, null=True)
     # A foreign key for the user it's from
     user = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
+    # A foreign key for the professor it's for
+    professor = models.ForeignKey("Professor", on_delete=models.SET_NULL, null=True)
     # A char field for the rating; should be average of all ratings but we'll just leave it as is for now.
     rating = models.CharField(max_length=100, help_text="Give a rating from 1 to 5")
     # A 

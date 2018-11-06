@@ -107,7 +107,6 @@ class ProfessorAdmin(admin.ModelAdmin):
     # by a dictionary containing the entry "fields" that correspond to
     # the fields the section will have.
     # inlines = [ClassInline]
-    # inlines = [FeedbackInline]
     
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
