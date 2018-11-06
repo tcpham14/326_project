@@ -106,7 +106,7 @@
                                         <h6><a>Concentration</a></h6>
                                     </div>
                                     <div class="row text-center">
-                                        <h6><a">Graduation Class</a></h6>
+                                        <h6><a>Graduation Class</a></h6>
                                     </div>
                                     <hr>
                                     <div class="row text-center">
@@ -220,34 +220,16 @@
                     <table class="table table-condensed">
                     <tr>
                         <td style="width: 20%"><font color="black">Course</font></td>
-                        <td><font color="black">Semester</font></td>
                         <td><font color="black">Rating</font></td>
                         <td><font color="black">Comment</font></td>
                     </tr>
-                    <tr>
-                        <td><a href="/class_page" class="text-success">COMPSCI 250</a></td>
-                        <td><font color="black">S2018</font></td>
-                        <td><font color="black">2.5</font></td>
-                        <td><font color="black">One of the hardest classes I've taken. Was cool when I understood things, but man what a force.</font></td>
-                    </tr>
-                    <tr>
-                        <td><a href="/class_page" class="text-success">MACRO 104</a></td>
-                        <td><font color="black">F2017</font></td>
-                        <td><font color="black">4.0</font></td>
-                        <td><font color="black">Straight-forward, professor grades fairly. Not too much work, but you can't really BS it.</font></td>
-                    </tr>
-                    <tr>
-                        <td><a href="/class_page" class="text-success">MATH 331</a></td>
-                        <td><font color="black">F2017</font></td>
-                        <td><font color="black">4.8</font></td>
-                        <td><font color="black">Professor gave good extra credit, and class was easy to follow.</font></td>
-                    </tr>
-                    <tr>
-                        <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
-                        <td><font color="black">S2017</font></td>
-                        <td><font color="black">4.5</font></td>
-                        <td><font color="black">Workload was a bit much, but the discussions the professor led always left me with something to think about. It's a nice break from the STEM routine.</font></td>
-                    </tr>
+                    {% for feedback in user_feedback %}
+                        <tr>
+                            <td><a href="{{ feedback.course.get_absolute_url }}" class="text-success">{{ feedback.course.subject.subject_name }} {{ feedback.course.code }} </a></td>
+                            <td><font color="black">{{ feedback.rating }}/5.0</font></td>
+                            <td><font color="black">{{ feedback.comment }}</font></td>
+                        </tr>
+                    {% endfor %}
                 </table>
                 </div>
               </div>
