@@ -21,6 +21,7 @@ class Subject(models.Model):
 class Class(models.Model):
     """Model representing a class."""
 
+    # Title of the class (such as Web Programming or Linear Algebra)
     title = models.CharField(max_length=200)
     # Code of the class (326 for CS326 or 250 for CS250)
     code = models.CharField(max_length=100, default='404')
@@ -38,29 +39,13 @@ class Class(models.Model):
     textbooks = models.TextField(max_length=1000, help_text="Does this class require textbooks?")
     # Maps to other classes that are related to this class
     related_classes = models.ManyToManyField("self", help_text="Select a class that is related to this one")
-    # Maps to the feedback for this class 
-    class_feedback = models.ManyToManyField("Feedback", help_text="Provide feedback for this class")
-    # A particular id for this class (simply an integer)
+    # Maps to the feedback for this class
     class_id = models.CharField(
         primary_key=True,
         max_length=1000,
         default=uuid.uuid1,
         help_text="Unique ID for this particular class across the website",
     )
-#
-#    def display_related(self):
-#        """Create a string for the related class. This is required to display related class in Admin."""
-#        return ", ".join(related_class.name for related_class in self.related_class.all()[:3])
-#
-#    related_class.short_description = "Related Class"
-#    
-#    prereq = models.ManyToManyField(Class, help_text="Select a class that is s prerequisite to this one")
-#
-#    def display_related(self):
-#        """Create a string for the prerequisite. This is required to display the class in Admin."""
-#        return ", ".join(prereq.name for prereq in self.prereq.all())
-#
-#    prereq.short_description = "Prerequisite"
 
     def __str__(self):
         """String for representing the Model object."""
@@ -78,14 +63,22 @@ class User(models.Model):
     first_name = models.CharField(max_length=100)
     # A character field for the last name.
     last_name = models.CharField(max_length=100)
-    # A character field for the major.
+    # A forigen key field for the major.
     major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+    # A CharField for the user's concentration within their major
+    concentration = models.CharField(max_length=100, default='NA')
     # A list for the classes that were favorited
-    course = models.ManyToManyField(Class, help_text="Select the classes this user favorites")
+    fav_courses = models.ManyToManyField(Class, help_text="Select the classes this user favorites", related_name='fav_courses')
+    # A list for the classes that the user is currently taking
+    current_courses = models.ManyToManyField(Class, help_text="Select the classes this user is currently taking", related_name='current_courses')
     # A textfield for the user's biography
     bio = models.TextField(max_length=1000, help_text="Enter a bio for this user", default = "")
     # A charField for the user's graduation year
     grad_year = models.CharField(max_length=100, default="2020")
+    # of classes taken by this user
+    num_classes_taken = models.TextField(max_length=1000, help_text="# of classes taken by this user", default = "")
+    # of reviews this user liked
+    num_liked_reviews = models.TextField(max_length=1000, help_text="# of reviews this user liked", default = "")
     # A particular id for this user
     user_id = models.CharField(
         primary_key=True,
@@ -93,24 +86,8 @@ class User(models.Model):
         help_text="Unique ID for this particular user",
         max_length=1000
     )
-    
-    def display_course(self):
-        """Create a string for the Genre. This is required to display genre in Admin."""
-        # This function uses the string object's join method to "join"
-        # all the genre strings into a single string separated by ',
-        # '. This uses Python's list comprehension feature. If you do
-        # not know what this is you should look this up to see what
-        # this is. It is a very powerful language feature!
-        #
-        # We also use Python's list slicing notation ([:3]). This
-        # indicates that we will only take the first 3 elements from
-        # indicates that we will only take the first 3 elements from
-        # indicates that we will only take the first 3 elements from
-        # the list. This is done so we only display some of the genres
-        # rather than all of them - efficiency!
-        return ", ".join(course.title for course in self.course.all()[:3])
-    
-    course.short_description = "Favorite Courses"
+
+    fav_courses.short_description = "Favorite Courses"
 
     class Meta:
         ordering = ["last_name", "first_name"]
@@ -137,25 +114,6 @@ class Professor(models.Model):
     course = models.ManyToManyField(Class, help_text="Select a class this professor teaches")
     # A text field for the contact info
     contact = models.TextField(max_length=1000, help_text="Enter a brief description of the class")
-
-    def display_course(self):
-        """Create a string for the Genre. This is required to display genre in Admin."""
-        # This function uses the string object's join method to "join"
-        # all the genre strings into a single string separated by ',
-        # '. This uses Python's list comprehension feature. If you do
-        # not know what this is you should look this up to see what
-        # this is. It is a very powerful language feature!
-        #
-        # We also use Python's list slicing notation ([:3]). This
-        # indicates that we will only take the first 3 elements from
-        # indicates that we will only take the first 3 elements from
-        # indicates that we will only take the first 3 elements from
-        # the list. This is done so we only display some of the genres
-        # rather than all of them - efficiency!
-        return ", ".join(course.title for course in self.course.all()[:3])
-    
-#    course.short_description = "Taught Courses"
-    
     # A character field for the office
     office = models.CharField(max_length=100)
 

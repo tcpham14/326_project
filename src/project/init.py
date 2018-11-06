@@ -38,6 +38,31 @@ subjects = [
     Subject(subject_name="Philosophy"),
 ]
 
+concentrations = [
+
+    [
+    'Software Engineering',
+    'Artificial Intelligence',
+    'Networking',
+    'Theory of Computation',
+    'Search & Data Mining',
+    'Computer Architechure'
+    ],
+
+    [
+    'Scientific Computing',
+    'Mathematical Economics',
+    'Mathematical Education'
+    ],
+
+    [
+    'Chemical Biology ',
+    'Environmental Chemistry',
+    'Materials/Industrial Chemistry'
+    ]
+
+]
+
 # OUTER NEST = SUBJECT AS PER ORDER OF subjects[] above
 # INNER NEST = COURSE WITHIN THAT SUBJECT
 #[Title, Code, Credits, Exams, Attendence, Textbooks]
@@ -206,25 +231,38 @@ for subject_name in classes:
 ######################################
 users = []
 for i in range(1,10):
+    subject_index = fake.random_int(0, 2)
     u_fname = fake.first_name()
     u_lname = fake.last_name()
     u_user_id = i
     u_bio = fake.text(500)
     u_grad_year = fake.year()
-    u_major = subjects[fake.random_int(0, len(subjects))-1]
-    # u_course =
-    # u_course.save
-    user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major)
+    u_major = subjects[subject_index]
+    u_concentration = concentrations[subject_index][fake.random_int(1, len(concentrations[subject_index])-1)]
+    u_liked_reviews = fake.random_int(0, 30)
+    u_classes_taken = fake.random_int(0, 30)
+    user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major, concentration = u_concentration, num_classes_taken = u_classes_taken, num_liked_reviews = u_liked_reviews)
     user.save()
-    subject_index = fake.random_int(0, 2)
-    num_courses = fake.random_int(1, len(classes[subject_index])-1)
-    used_courses = []
-    for x in range(0, num_courses):
+
+    num_fav_courses = fake.random_int(1, len(classes[subject_index])-1)
+    num_current_courses = fake.random_int(4, len(classes[subject_index])-1)
+    
+    used_fav_courses = []
+    for x in range(0, num_fav_courses):
         course_index = fake.random_int(0, len(classes[subject_index])-1)
-        if course_index in used_courses:
+        if course_index in used_fav_courses:
             continue
-        user.course.add(classes[subject_index][course_index])
-        used_courses.append(course_index)
+        user.fav_courses.add(classes[subject_index][course_index])
+        used_fav_courses.append(course_index)
+
+    used_current_courses = []
+    for x in range(0, num_current_courses):
+        course_index = fake.random_int(0, len(classes[subject_index])-1)
+        if course_index in used_current_courses:
+            continue
+        user.current_courses.add(classes[subject_index][course_index])
+        used_current_courses.append(course_index)
+
     user.save()
     users.append(user)
 
@@ -242,11 +280,13 @@ for subject_index in range(0, 3):
         # Store pre-fabricated comments used from comments[] into
         # used_comments so that there are no duplicates comments for each class
         used_comments = []
+        used_users = []
         # Each class will have a random number of reviews num_reviews
         num_reviews = random.randint(1, 10)
         for review in range(0, num_reviews):
             # Map the randomly generated rating to a comment that matches the rating
             r_int = random.randint(1,5)
+            u_int =random.randint(0,len(users)) - 1
             str(r_int)
             if(r_int == "1" or r_int == "2"):
                 r2_int = random.randint(0,3)
@@ -254,11 +294,11 @@ for subject_index in range(0, 3):
                 r2_int = random.randint(4,8)
             else:
                 r2_int = random.randint(9,12)  
-            if r2_int in used_comments:
+            if r2_int in used_comments or u_int in used_users:
                 continue
             c_comment = comments[r2_int]
             c_course = classes[subject_index][course_index]
-            c_user = users[random.randint(0,len(users)) - 1]
+            c_user = users[u_int]
             c_date = fake.date_this_decade(before_today=True, after_today=False)
             # Create the feedback submission
             submission = Feedback(date = c_date, comment = c_comment, course = c_course, user = c_user, rating = r_int)
@@ -266,8 +306,8 @@ for subject_index in range(0, 3):
             #feedbacks.append(submission)
             # Add current feedback submission to the current class to reference
             # when rendering class page
-            classes[subject_index][course_index].class_feedback.add(submission)
             used_comments.append(r2_int)
+            used_users.append(u_int)
 
 
 
@@ -285,14 +325,6 @@ for subject_index in range(0, 3):
 ################################################################################################################
 ################################################################################################################
 ################################################################################################################
-
-
-
-
-
-
-
-
 
 
 

@@ -43,21 +43,37 @@ def index(request):
     for i in range(0, len(highest_rated_class_list) - 1):
         highest_rated_feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
         highest_rated_user_list[i] = highest_rated_feedback_list[i].user
-    
-    
 
-    sorted_classes = []
+
+    popular_sorted = []
     class_list = Class.objects.all()
     for course in class_list:
-       sorted_classes.append((course, 0))
+       popular_sorted.append((course, 0))
        for course_feedback in Feedback.objects.filter(course=course.class_id):
-           sorted_classes[len(sorted_classes)-1] = (sorted_classes[len(sorted_classes)-1][0], sorted_classes[len(sorted_classes)-1][1] + int(course_feedback.rating))
-       sorted_classes[len(sorted_classes)-1] = (sorted_classes[len(sorted_classes)-1][0], sorted_classes[len(sorted_classes)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+           popular_sorted[len(popular_sorted)-1] = (popular_sorted[len(popular_sorted)-1][0], popular_sorted[len(popular_sorted)-1][1] + int(course_feedback.rating))
+       popular_sorted[len(popular_sorted)-1] = (popular_sorted[len(popular_sorted)-1][0], popular_sorted[len(popular_sorted)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
 
-    sorted_classes.sort(key=lambda x: x[1])
-    sorted_classes.reverse()
+    popular_sorted.sort(key=lambda x: x[1])
+    popular_sorted.reverse()
 
-    highest_rated_class_list = [i[0] for i in sorted_classes]
+    popular_class_list = [i[0] for i in popular_sorted]
+    popular_rating_list = [range(round(i[1])) for i in popular_sorted]
+    
+    
+
+    fav_average_ratings = []
+    class_list = Class.objects.all()
+    for course in class_list:
+       fav_average_ratings.append((course, 0))
+       for course_feedback in Feedback.objects.filter(course=course.class_id):
+           fav_average_ratings[len(fav_average_ratings)-1] = (fav_average_ratings[len(fav_average_ratings)-1][0], fav_average_ratings[len(fav_average_ratings)-1][1] + int(course_feedback.rating))
+       fav_average_ratings[len(fav_average_ratings)-1] = (fav_average_ratings[len(fav_average_ratings)-1][0], fav_average_ratings[len(fav_average_ratings)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+
+    fav_average_ratings.sort(key=lambda x: x[1])
+    fav_average_ratings.reverse()
+
+    highest_rated_class_list = [i[0] for i in fav_average_ratings]
+    highest_rated_rating_list = [range(round(i[1])) for i in fav_average_ratings]
 
     context = {
         "num_classes": num_classes,
@@ -66,17 +82,17 @@ def index(request):
         "class_featured_2": class_featured_2,
         "class_featured_3": class_featured_3,
         "popular_class_list": popular_class_list,
+        "popular_rating_list": popular_rating_list,
         "highest_rated_feedback_list": highest_rated_feedback_list,
         "popular_feedback_list": popular_feedback_list,
         "popular_user_list": popular_user_list,
         "highest_rated_user_list": highest_rated_user_list,
-#        "user_list": user_list,
         "class_list": class_list,
         "highest_rated_class_list": highest_rated_class_list,
+        "highest_rated_rating_list": highest_rated_rating_list,
         "feedback_1": feedback_1,
         "feedback_2": feedback_2,
-        "feedback_3": feedback_3
-        # "class_list_popular": class_list_popular
+        "feedback_3": feedback_3,
     }
 
     # Render the HTML template index.html with the data in the context variable
@@ -152,11 +168,38 @@ class UserListView(generic.ListView):
 class UserDetailView(generic.DetailView):
     model = User
     template_name = "profile.html"
+
     
     def get_context_data(self, **kwargs):
+
         pk = self.kwargs.get(self.pk_url_kwarg, None)
+
+        fav_average_ratings = []
+        fav_list = User.objects.get(user_id=pk).fav_courses.all()
+        for course in fav_list:
+           fav_average_ratings.append((course, 0))
+           for course_feedback in Feedback.objects.filter(course=course.class_id):
+               fav_average_ratings[len(fav_average_ratings)-1] = (fav_average_ratings[len(fav_average_ratings)-1][0], fav_average_ratings[len(fav_average_ratings)-1][1] + int(course_feedback.rating))
+           fav_average_ratings[len(fav_average_ratings)-1] = (fav_average_ratings[len(fav_average_ratings)-1][0], fav_average_ratings[len(fav_average_ratings)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+
+        fav_average_ratings = [round(i[1], 1) for i in fav_average_ratings]
+
+
+
+        current_average_ratings = []
+        current_list = User.objects.get(user_id=pk).current_courses.all()
+        for course in current_list:
+           current_average_ratings.append((course, 0))
+           for course_feedback in Feedback.objects.filter(course=course.class_id):
+               current_average_ratings[len(current_average_ratings)-1] = (current_average_ratings[len(current_average_ratings)-1][0], current_average_ratings[len(current_average_ratings)-1][1] + int(course_feedback.rating))
+           current_average_ratings[len(current_average_ratings)-1] = (current_average_ratings[len(current_average_ratings)-1][0], current_average_ratings[len(current_average_ratings)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+
+        current_average_ratings = [round(i[1], 1) for i in current_average_ratings]
+
+
         context = super(UserDetailView, self).get_context_data(**kwargs)
         context['user_feedback'] = Feedback.objects.filter(user=pk).all()
         context['feedback_count'] = Feedback.objects.filter(user=pk).count()
-        context['favorite_courses'] = Class.objects.filter(user=pk).all()
+        context['favorite_courses'] = zip(fav_list, fav_average_ratings)
+        context['current_courses'] = zip(current_list, current_average_ratings)       
         return context

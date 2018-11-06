@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/styleLucas.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
@@ -78,7 +79,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/internals.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="{{ class_featured_1.get_absolute_url }}" style="color: white; text-shadow: 1px 1px 4px black;">{{ class_featured_1.subject }} {{class_featured_1.code}}
@@ -114,7 +115,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container-fluid">
-                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/boris-stefanik-131519-unsplash.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
+                            <div class="jumbotron img-fluid" style="background-image: url({% static 'imgs/old_dark_background-wallpaper-2560x1440.jpg' %}); height:500px; max-width:100%; background-size: cover; margin-bottom: 0; border-radius: 0px;margin: auto">
                                 <h1 style="color: white"><a href="#" style="color: white; text-shadow: 1px 1px 4px black;">Trending
                                         Classes</small></a></h1>
                                 <h1 style="color: white"><a href="{{ class_featured_3.get_absolute_url }}" style="color: white; text-shadow: 1px 1px 4px black;">{{ class_featured_3.subject }} {{class_featured_3.code}}
@@ -191,34 +192,89 @@
                 <h2 style="text-align: left; padding: 5px">Most Popular Classes</h2>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a href= "{{ popular_class_list.0.get_absolute_url }}" style="float: left">{{ popular_class_list.0.subject }} {{ popular_class_list.0.code }} : {{ popular_class_list.0.title }}</a>
-                        <p style="float:right">{{ popular_feedback_list.0.comment }} - <a href="{{ user_list.0.get_absolute_url }}">{{ popular_user_list.0.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ popular_class_list.0.exams }}, Attendance: {{ popular_class_list.0.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ popular_class_list.0.get_absolute_url }}" style="float: left">{{ popular_class_list.0.subject }} {{ popular_class_list.0.code }} : {{ popular_class_list.0.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ popular_class_list.0.exams }}, Attendance: {{ popular_class_list.0.attendance }}</p>
+                            </div>
+                                <div class="col-md-2 text-warning" style="float: right">
+                                    {% for rating in popular_rating_list.0 %}
+                                        <i class="fa fa-star"></i>
+                                    {% endfor %}
+                                </div>
+                            <div class="col-md-5">
+                                <p style="float:left">{{ popular_feedback_list.0.comment }}<a href="{{ user_list.0.get_absolute_url }}"><br>- {{ popular_user_list.0.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ popular_class_list.1.get_absolute_url }}" style="float: left">{{ popular_class_list.1.subject }} {{ popular_class_list.1.code }} : {{ popular_class_list.1.title }}</a>
-                        <p style="float:right">{{ popular_feedback_list.1.comment }} - <a href="{{ user_list.1.get_absolute_url }}">{{ popular_user_list.1.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ popular_class_list.1.exams }}, Attendance: {{ popular_class_list.1.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ popular_class_list.1.get_absolute_url }}" style="float: left">{{ popular_class_list.1.subject }} {{ popular_class_list.1.code }} : {{ popular_class_list.1.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ popular_class_list.1.exams }}, Attendance: {{ popular_class_list.1.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in popular_rating_list.1 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                                <p style="float:left">{{ popular_feedback_list.1.comment }}<a href="{{ user_list.1.get_absolute_url }}"><br>- {{ popular_user_list.1.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ popular_class_list.2.get_absolute_url }}" style="float: left">{{ popular_class_list.2.subject }} {{ popular_class_list.2.code }} : {{ popular_class_list.2.title }}</a>
-                        <p style="float:right">{{ popular_feedback_list.2.comment }} - <a href="{{ user_list.2.get_absolute_url }}">{{ popular_user_list.2.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ popular_class_list.2.exams }}, Attendance: {{ popular_class_list.2.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ popular_class_list.2.get_absolute_url }}" style="float: left">{{ popular_class_list.2.subject }} {{ popular_class_list.2.code }} : {{ popular_class_list.2.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ popular_class_list.2.exams }}, Attendance: {{ popular_class_list.3.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in popular_rating_list.2 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                                <p style="float:left">{{ popular_feedback_list.2.comment }}<a href="{{ user_list.2.get_absolute_url }}"><br>- {{ popular_user_list.2.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ popular_class_list.3.get_absolute_url }}" style="float: left">{{ popular_class_list.3.subject }} {{ popular_class_list.3.code }} : {{ popular_class_list.3.title }}</a>
-                        <p style="float:right">{{ popular_feedback_list.3.comment }} - <a href="{{ user_list.3.get_absolute_url }}">{{ popular_user_list.3.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ popular_class_list.3.exams }}, Attendance: {{ popular_class_list.3.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ popular_class_list.3.get_absolute_url }}" style="float: left">{{ popular_class_list.3.subject }} {{ popular_class_list.3.code }} : {{ popular_class_list.3.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ popular_class_list.3.exams }}, Attendance: {{ popular_class_list.3.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in popular_rating_list.3 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                                <p style="float:left">{{ popular_feedback_list.3.comment }}<a href="{{ user_list.3.get_absolute_url }}"><br>- {{ popular_user_list.3.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ popular_class_list.4.get_absolute_url }}" style="float: left">{{ popular_class_list.4.subject }} {{ popular_class_list.4.code }} : {{ popular_class_list.4.title }}</a>
-                        <p style="float:right">{{ popular_feedback_list.4.comment }} - <a href="{{ user_list.4.get_absolute_url }}">{{ popular_user_list.4.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ popular_class_list.4.exams }}, Attendance: {{ popular_class_list.4.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ popular_class_list.4.get_absolute_url }}" style="float: left">{{ popular_class_list.4.subject }} {{ popular_class_list.4.code }} : {{ popular_class_list.4.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ popular_class_list.4.exams }}, Attendance: {{ popular_class_list.4.attendance }}</p>
+                               </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in popular_rating_list.4 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5"> 
+                        <p style="float:left">{{ popular_feedback_list.4.comment }}<a href="{{ user_list.4.get_absolute_url }}"><br>- {{ popular_user_list.4.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
 
 
@@ -230,34 +286,89 @@
                 <h2 style="text-align: left; padding: 5px">Highest Rated Classes</h2>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <a href= "{{ highest_rated_class_list.0.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.0.subject }} {{ highest_rated_class_list.0.code }} : {{ highest_rated_class_list.0.title }}</a>
-                        <p style="float:right">{{ highest_rated_feedback_list.0.comment }} - <a href="{{ user_list.0.get_absolute_url }}">{{ highest_rated_user_list.0.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ highest_rated_class_list.0.exams }}, Attendance: {{ highest_rated_class_list.0.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ highest_rated_class_list.0.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.0.subject }} {{ highest_rated_class_list.0.code }} : {{ highest_rated_class_list.0.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ highest_rated_class_list.0.exams }}, Attendance: {{ highest_rated_class_list.0.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in highest_rated_rating_list.0 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                        <p style="float:left">{{ highest_rated_feedback_list.0.comment }}<a href="{{ user_list.0.get_absolute_url }}"><br>- {{ highest_rated_user_list.0.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ highest_rated_class_list.1.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.1.subject }} {{ highest_rated_class_list.1.code }} : {{ highest_rated_class_list.1.title }}</a>
-                        <p style="float:right">{{ highest_rated_feedback_list.1.comment }} - <a href="{{ user_list.1.get_absolute_url }}">{{ highest_rated_user_list.1.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ highest_rated_class_list.1.exams }}, Attendance: {{ highest_rated_class_list.1.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ highest_rated_class_list.1.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.1.subject }} {{ highest_rated_class_list.1.code }} : {{ highest_rated_class_list.1.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ highest_rated_class_list.1.exams }}, Attendance: {{ highest_rated_class_list.1.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in highest_rated_rating_list.1 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                        <p style="float:left">{{ highest_rated_feedback_list.1.comment }}<a href="{{ user_list.1.get_absolute_url }}"><br>- {{ highest_rated_user_list.1.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ highest_rated_class_list.2.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.2.subject }} {{ highest_rated_class_list.2.code }} : {{ highest_rated_class_list.2.title }}</a>
-                        <p style="float:right">{{ highest_rated_feedback_list.2.comment }} - <a href="{{ user_list.2.get_absolute_url }}">{{ highest_rated_user_list.2.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ highest_rated_class_list.2.exams }}, Attendance: {{ highest_rated_class_list.2.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ highest_rated_class_list.2.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.2.subject }} {{ highest_rated_class_list.2.code }} : {{ highest_rated_class_list.2.title }}</a>
+                               <br>
+                                <p style="float:left">Exams: {{ highest_rated_class_list.2.exams }}, Attendance: {{ highest_rated_class_list.2.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in highest_rated_rating_list.2 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                        <p style="float:left">{{ highest_rated_feedback_list.2.comment }}<a href="{{ user_list.2.get_absolute_url }}"><br>- {{ highest_rated_user_list.2.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ highest_rated_class_list.3.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.3.subject }} {{ highest_rated_class_list.3.code }} : {{ highest_rated_class_list.3.title }}</a>
-                        <p style="float:right">{{ highest_rated_feedback_list.3.comment }} - <a href="{{ user_list.3.get_absolute_url }}">{{ highest_rated_user_list.3.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ highest_rated_class_list.3.exams }}, Attendance: {{ highest_rated_class_list.3.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ highest_rated_class_list.3.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.3.subject }} {{ highest_rated_class_list.3.code }} : {{ highest_rated_class_list.3.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ highest_rated_class_list.3.exams }}, Attendance: {{ highest_rated_class_list.3.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in highest_rated_rating_list.3 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                        <p style="float:left">{{ highest_rated_feedback_list.3.comment }}<a href="{{ user_list.3.get_absolute_url }}"><br>- {{ highest_rated_user_list.3.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                     <li class="list-group-item">
-                        <a href= "{{ highest_rated_class_list.4.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.4.subject }} {{ highest_rated_class_list.4.code }} : {{ highest_rated_class_list.4.title }}</a>
-                        <p style="float:right">{{ highest_rated_feedback_list.4.comment }} - <a href="{{ user_list.4.get_absolute_url }}">{{ highest_rated_user_list.4.first_name }}</a></p>
-                        <br>
-                        <p style="float:left">Exams: {{ highest_rated_class_list.4.exams }}, Attendance: {{ highest_rated_class_list.4.attendance }}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a href= "{{ highest_rated_class_list.4.get_absolute_url }}" style="float: left">{{ highest_rated_class_list.4.subject }} {{ highest_rated_class_list.4.code }} : {{ highest_rated_class_list.4.title }}</a>
+                                <br>
+                                <p style="float:left">Exams: {{ highest_rated_class_list.4.exams }}, Attendance: {{ highest_rated_class_list.4.attendance }}</p>
+                            </div>
+                            <div class="col-md-2 text-warning" style="float: right">
+                                {% for rating in highest_rated_rating_list.4 %}
+                                        <i class="fa fa-star"></i>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-5">
+                        <p style="float:left">{{ highest_rated_feedback_list.4.comment }}<a href="{{ user_list.4.get_absolute_url }}"><br>- {{ highest_rated_user_list.4.first_name }}</a></p>
+                            </div>
+                        </div>
                     </li>
                 </ul>
 
