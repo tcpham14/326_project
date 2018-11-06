@@ -236,9 +236,9 @@ class ProfessorDetailView(generic.DetailView):
                taught_course_ratings[len(taught_course_ratings)-1] = (taught_course_ratings[len(taught_course_ratings)-1][0], taught_course_ratings[len(taught_course_ratings)-1][1] + int(course_feedback.rating))
            taught_course_ratings[len(taught_course_ratings)-1] = (taught_course_ratings[len(taught_course_ratings)-1][0], taught_course_ratings[len(taught_course_ratings)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
 
-        fav_average_ratings = [round(i[1], 1) for i in fav_average_ratings]
+        taught_course_ratings = [round(i[1], 1) for i in taught_course_ratings]
 
 
-        context = super(UserDetailView, self).get_context_data(**kwargs)
-        context['courses_taught'] = Professor.objects.filter(prof=pk).course.all()
+        context = super(ProfessorDetailView, self).get_context_data(**kwargs)
+        context['courses_taught'] = Class.objects.filter(professor=pk).all()
         return context
