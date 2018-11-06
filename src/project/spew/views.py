@@ -122,5 +122,6 @@ class UserDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         pk = self.kwargs.get(self.pk_url_kwarg, None)
         context = super(UserDetailView, self).get_context_data(**kwargs)
-        context['user_feedback'] = Feedback.objects.filter(user=pk)
+        context['user_feedback'] = Feedback.objects.filter(user=pk).all()
+        context['feedback_count'] = Feedback.objects.filter(user=pk).count()
         return context

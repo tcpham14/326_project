@@ -107,9 +107,8 @@
                                 <h5><a>Graduation Class: </a><a style="color: #3887ff; font-size: 18px; margin-bottom: 100px">{{ user.grad_year }}</a></h5>
                             </div>
                             <div class="row text-center" style="margin-top: 30px">
-                                <div class="col-md-4"><h5><a>Written Reviews</a><br><small class="text-success">4</small></h5></div>
-                                <div class="col-md-4"><h5><a>Liked Reviews</a><br><small class="text-success">24</small></h5></div>
-                                <div class="col-md-4"><h5><a>Classes Taken</a><br><small class="text-success">26</small></h5></div>
+                                <div class="col-md-6"><h5><a>Written Reviews</a><br><small class="text-success">{{ feedback_count }}</small></h5></div>
+                                <div class="col-md-6"><h5><a>Classes Taken</a><br><small class="text-success">26</small></h5></div>
                             </div>
                         </div>
                     </div>
@@ -134,35 +133,17 @@
                 <div class="box-shadow mx-auto" style="width: 100%; height: 100%; border-radius: 21px 21px 0 0;">
                     <table class="table table-condensed">
                     <tr>
-                        <th><font color="black">Semester Taken</font></th>
                         <th><font color="black">Course Number</font></th>
                         <th><font color="black">User Rating</font></th>
                         <th><font color="black">Comment</font></th>
                     </tr>
-                    <tr>
-                        <td><font color="black">Spring 2018</font></td>
-                        <td><a href="/class_page" class="text-success">{{ user.course.0.subject }} {{ user.course.0.code }}</a></td>
-                        <td><font color="black">2.5/5.0</font></td>
-                        <td><font color="black"></font></td>
-                    </tr>
-                    <tr>
-                        <td><font color="black">Fall 2017</font></td>
-                        <td><a href="/class_page" class="text-success">MACRO 104</a></td>
-                        <td><font color="black">4.0/5.0</font></td>
-                        <td><font color="black">Straight-forward, professor grades fairly. Not too much work, but you can't really BS it.</font></td>
-                    </tr>
-                    <tr>
-                        <td><font color="black">Fall 2017</font></td>
-                        <td><a href="/class_page" class="text-success">MATH 331</a></td>
-                        <td><font color="black">4.8/5.0</font></td>
-                        <td><font color="black">Professor gave good extra credit, and class was easy to follow.</font></td>
-                    </tr>
-                    <tr>
-                        <td><font color="black">Spring 2017</font></td>
-                        <td><a href="/class_page" class="text-success">HONORS 201H</a></td>
-                        <td><font color="black">4.5/5.0</font></td>
-                        <td><font color="black">Workload was a bit much, but the discussions the professor led always left me with something to think about. It's a nice break from the STEM routine.</font></td>
-                    </tr>
+                    {% for feedback in user_feedback %}
+                        <tr>
+                            <td><a href="{{ feedback.course.get_absolute_url }}">{{ feedback.course.subject.subject_name }} {{ feedback.course.code }} </a></td>
+                            <td><font color="black">{{ feedback.rating }}/5.0</font></td>
+                            <td><font color="black">{{ feedback.comment }}</font></td>
+                        </tr>
+                    {% endfor %}
                 </table>
                 </div>
               </div>
