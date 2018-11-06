@@ -98,7 +98,7 @@ class User(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        #return f"{self.first_name}, {self.last_name}"
+        #return f"{self.first_name}, {se lf.last_name}"
         return '%s %s' % (self.first_name, self.last_name)
 
 class Professor(models.Model):
@@ -111,11 +111,18 @@ class Professor(models.Model):
     # A character field for the position.
     position = models.CharField(max_length=100)
     # A list field for the courses taught
-    course = models.ManyToManyField(Class, help_text="Select a class this professor teaches")
+    course = models.ManyToManyField(Class, help_text="Select the classes this professor teaches")
     # A text field for the contact info
     contact = models.TextField(max_length=1000, help_text="Enter a brief description of the class")
     # A character field for the office
     office = models.CharField(max_length=100)
+    # A unique ID given for each professor
+    prof_id = models.CharField(
+        primary_key=True,
+        default=uuid.uuid4,
+        help_text="Unique ID for this particular professor",
+        max_length=1000
+    )
 
     class Meta:
         ordering = ["last_name", "first_name"]

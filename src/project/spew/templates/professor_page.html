@@ -1,0 +1,160 @@
+{% extends "base_generic.html" %}
+{% block title %} Professor Information {% endblock %}
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<head style="background-color: yellow">
+    <title>Spew@UMass</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/profile_style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <style>
+        .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  </style>
+</head>
+
+<body>
+
+    <div id="carousel" class="carousel-main container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide mx-auto" style="</*padding-right:50px; padding-left: 50px*/"
+                data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-pic1 carousel-item active">
+
+                    </div>
+                    <div class="carousel-pic2 carousel-item">
+                                
+                    </div>
+                    <div class="carousel-pic3 carousel-item">
+                                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" style="margin-left: 0px;" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" style="margin-right: 0px;" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+
+
+
+
+        <div class="container-fluid">
+
+            <div class="row" style="height: 100px;">
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                                <div class="col-md-1" style="flex: 0 0 230px; z-index: 3; top: 5px;">
+                                    <img class="rounded-circle" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="230" height="230" style="margin-bottom: 30px; border: 3px solid #3887ff">
+                                </div> 
+                <div class="col-md-4">
+                    <div class="profile-header-card card" style="right: 50px">
+                        <div class="card-body">
+                            <div class="row">  
+                                <div class="col">
+                                    <h2 style="margin-left: 50px; margin-top: 10px">{{ professor.first_name }} {{ professor.last_name }}</h2>
+                                    <p style="margin-left: 50px">Position: {{ professor.position }} <br> Contact Information: {{ professor.contact }} <br> Office: {{professor.office}}</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                </div>
+            </div>
+            <div class="row" style="height: 50px;">
+            </div>
+
+
+
+
+
+
+        <div class="row", style="padding-top:     0px;">
+            <div class="col-md-2">
+            </div>
+
+            <div class="col-md-4 info" style="padding-top: 25px">
+                <div class="">
+                <div class="mr-md-3 pt-3 px-3 pt-md-1 px-md-1 overflow-hidden" style="margin: auto">
+                    <div class="my-3 p-3">
+                      <h4 class="display-5 text-primary">Courses Taught</h4>
+                    </div>
+                    <div class="box-shadow mx-auto" style="height: 100%; border-radius: 21px 21px 0 0;">
+                    <table class="table">
+                        <tr>
+                            <td>Course Number</td>
+                            <td>Course Name</td>
+                            <td>Average Rating</td>
+                        </tr>
+                    {% for row in courses_taught %}
+                    <tr>
+                        <td><a href="{{ row.0.get_absolute_url }}" class="text-success">{{ row.0.subject.subject_name }} {{ row.0.code }} </a></td>
+                        <td>{{ row.0.title }}</td>
+                        <td>{{ row.1 }}</td>
+                    </tr>
+                    {% endfor %}
+
+
+                </table>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 info" style="padding-top: 25px;">
+                <div class="" style="margin-top: 20px">
+                <div class="my-3 p-3">
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="col-md-2">
+            </div>
+            </div>
+    </div>
+    
+    <br>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Footer</p>
+    </div>
+
+</body>
+{% endblock %}
+</html>

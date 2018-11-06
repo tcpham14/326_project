@@ -245,8 +245,10 @@ for i in range(1,10):
     u_classes_taken = fake.random_int(0, 30)
     user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major, concentration = u_concentration, num_classes_taken = u_classes_taken, num_liked_reviews = u_liked_reviews)
     user.save()
+
     num_fav_courses = fake.random_int(1, len(classes[subject_index])-1)
     num_current_courses = fake.random_int(4, len(classes[subject_index])-1)
+    
     used_fav_courses = []
     for x in range(0, num_fav_courses):
         course_index = fake.random_int(0, len(classes[subject_index])-1)
@@ -254,6 +256,7 @@ for i in range(1,10):
             continue
         user.fav_courses.add(classes[subject_index][course_index])
         used_fav_courses.append(course_index)
+
     used_current_courses = []
     for x in range(0, num_current_courses):
         course_index = fake.random_int(0, len(classes[subject_index])-1)
@@ -261,6 +264,7 @@ for i in range(1,10):
             continue
         user.current_courses.add(classes[subject_index][course_index])
         used_current_courses.append(course_index)
+
     user.save()
     users.append(user)
 

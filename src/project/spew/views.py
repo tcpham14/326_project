@@ -120,6 +120,13 @@ def profile(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, "profile.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 
+def professor(request):
+    
+    context = {
+    }
+    
+    return render(request, "professor_page.html", context=context)
+
 def search_results(request):
 
     context = {
@@ -135,6 +142,7 @@ def submissions_page(request):
 
     # Render the HTML template index.html with the data in the context variable
     return render(request, "submissions_page.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+
 def advanced_search(request):
 
     context = {
@@ -205,4 +213,32 @@ class UserDetailView(generic.DetailView):
         context['feedback_count'] = Feedback.objects.filter(user=pk).count()
         context['favorite_courses'] = zip(fav_list, fav_average_ratings)
         context['current_courses'] = zip(current_list, current_average_ratings)       
+        return context
+
+class ProfessorListView(generic.ListView):
+    model = Professor
+    template_name = "professor_list.html"
+
+class ProfessorDetailView(generic.DetailView):
+    model = Professor
+    template_name = "professor_page.html"
+
+    
+    def get_context_data(self, **kwargs):
+
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+
+        taught_course_ratings = []
+        course_list = Professor.objects.get(prof_id=pk).course.all()
+        for course in course_list:
+           taught_course_ratings.append((course, 0))
+           for course_feedback in Feedback.objects.filter(course=course.class_id):
+               taught_course_ratings[len(taught_course_ratings)-1] = (taught_course_ratings[len(taught_course_ratings)-1][0], taught_course_ratings[len(taught_course_ratings)-1][1] + int(course_feedback.rating))
+           taught_course_ratings[len(taught_course_ratings)-1] = (taught_course_ratings[len(taught_course_ratings)-1][0], taught_course_ratings[len(taught_course_ratings)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+
+        fav_average_ratings = [round(i[1], 1) for i in fav_average_ratings]
+
+
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        context['courses_taught'] = Professor.objects.filter(prof=pk).course.all()
         return context
