@@ -48,7 +48,7 @@ class SubjectAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     # By setting the list_display variable in an Admin class will have
     # it display only the fields in the model that are specified.
-    list_display = ("first_name", "last_name", "major")
+    list_display = ("first_name", "last_name", "major", "concentration")
 
     # By setting the fields variable in an Admin class will only
     # display the specified fields in the "detail view" of the
@@ -56,7 +56,7 @@ class UserAdmin(admin.ModelAdmin):
     # display horizontally if you further group them in a tuple as we
     # do here for the birth and death dates.
     fields = ["first_name", "last_name", "major"]
-    list_filter = ("first_name", "last_name")
+    list_filter = ("major", "concentration")
     inlines = [FeedbackInline]
 
 
@@ -114,8 +114,8 @@ class ProfessorAdmin(admin.ModelAdmin):
     
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ("course", "user", "rating", "date", "comment")
-    list_filter = ("course", "user")
+    list_display = ("user","comment", "course", "professor",  "rating", "date", )
+    list_filter = ("course", "user", "professor")
     # inlines = [UserInline]
     
 
