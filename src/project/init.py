@@ -258,7 +258,7 @@ for subject_index in range(0, 3):
                 continue
             c_comment = comments[r2_int]
             c_course = classes[subject_index][course_index]
-            c_user = users[random.randint(0,4)]
+            c_user = users[random.randint(0,len(users)) - 1]
             c_date = fake.date_this_decade(before_today=True, after_today=False)
             # Create the feedback submission
             submission = Feedback(date = c_date, comment = c_comment, course = c_course, user = c_user, rating = r_int)
