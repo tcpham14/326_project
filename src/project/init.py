@@ -212,8 +212,11 @@ for i in range(1,10):
     u_user_id = i
     u_bio = fake.text(500)
     u_grad_year = fake.year()
-    u_major = subjects[fake.random_int(0, len(subjects)) - 1]
+    u_major = subjects[fake.random_int(0, len(subjects)-1)]
+    # u_course = classes[fake.random_int(0, len(classes)-1)]
     user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major)
+    # user.save()
+    # user.course.set(u_course)
     user.save()
     users.append(user)
 
