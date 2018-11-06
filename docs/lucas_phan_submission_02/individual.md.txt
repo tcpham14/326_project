@@ -1,0 +1,6 @@
+For my contribution in this project submission, I worked mostly on the creation of templates for each page and created the URLs. We decided to create detailed views for the users and for each class. Possibly we may include professors in the future. I also built the homepage and collaborated on building a “most popular classes” list as well as a “highest rated class” list. 
+
+The index page that I created selects a random set of 4 classes to feature in the jumbotron and carousel. I displayed a popular feedback and course description for each one, and each user and class name links to its appropriate detail page. We also have a class list page accessible from the nav bar that displays all the classes and their links. 
+
+One of the challenges we faced while creating the lists for the home page was linking the correct feedbacks and ratings to the correct classes. We ended up discovering and utilizing the .filter() function to effectively follow the correct links. I also struggled to come up with a way to sort by number of feedbacks, which we used for the “most popular” list. We eventually solved this by filtering at feedback for a specific class and put it into an array, then sorted it and chose the top 5 indices for our list.
+
