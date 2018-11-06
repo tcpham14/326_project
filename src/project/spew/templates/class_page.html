@@ -162,7 +162,7 @@
 
                 <p style="font-size: 30px; margin: 20px">Reviews</p>
 
-                {% for feedback in class.class_feedback.all %}
+                {% for feedback in class_feedback %}
                 <p style="font-size: 18px; margin: 20px; margin-bottom: 10px; font-weight: bold">{{ feedback.user.first_name }} {{ feedback.user.last_name }}</p>
                 <p style="font-size: 14px; margin: 20px;">{{ feedback.comment }}</p>
                 {% endfor %}
