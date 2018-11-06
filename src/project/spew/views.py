@@ -3,6 +3,7 @@ from spew.models import User, Class, Professor, Feedback, Subject
 from django.views import generic
 import random
 from django.views import generic
+from django.db.models import Count
 
 # Create your views here.
 def index(request):
@@ -18,7 +19,7 @@ def index(request):
     # The 'all()' is implied by default.
     num_authors = Author.objects.count()'''
     num_classes = Class.objects.all().count()
-    popular_class_list = Class.objects.all()
+    popular_class_list = Class.objects.all().annotate(num_feedback=Count('feedback')).order_by('-num_feedback')
     class_list = Class.objects.all()
     class_featured = random.choice(popular_class_list)
     class_featured_1 = random.choice(popular_class_list)
@@ -27,14 +28,19 @@ def index(request):
 
     highest_rated_class_list = Class.objects.all()
     
-    feedback_list = {}
-    user_list = {}
+    popular_feedback_list = {}
+    popular_user_list = {}
+    for i in range(0, len(popular_class_list) - 1):
+        popular_feedback_list[i] = random.choice(Feedback.objects.filter(course=popular_class_list[i]))
+        popular_user_list[i] = popular_feedback_list[i].user
+        
+    highest_rated_feedback_list = {}
+    highest_rated_user_list = {}
     for i in range(0, len(highest_rated_class_list) - 1):
-        feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
-        user_list[i] = feedback_list[i].user
-    # feedback_count = {}
-    # for course in class_list:
-    #     feedback_count[course.class_id] = Class.objects.filter(feedback__courses=course).count()
+        highest_rated_feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
+        highest_rated_user_list[i] = highest_rated_feedback_list[i].user
+    
+    
 
     sorted_classes = []
     class_list = Class.objects.all()
@@ -56,8 +62,11 @@ def index(request):
         "class_featured_2": class_featured_2,
         "class_featured_3": class_featured_3,
         "popular_class_list": popular_class_list,
-        "feedback_list": feedback_list,
-        "user_list": user_list,
+        "highest_rated_feedback_list": highest_rated_feedback_list,
+        "popular_feedback_list": popular_feedback_list,
+        "popular_user_list": popular_user_list,
+        "highest_rated_user_list": highest_rated_user_list,
+#        "user_list": user_list,
         "class_list": class_list,
         "highest_rated_class_list": highest_rated_class_list,
         # "class_list_popular": class_list_popular
