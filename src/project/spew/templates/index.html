@@ -219,7 +219,7 @@
                     </li>
                     <li class="list-group-item">
                         <a href= "{{ popular_class_list.4.get_absolute_url }}" style="float: left">{{ popular_class_list.4.subject }} {{ popular_class_list.4.code }} : {{ popular_class_list.4.title }}</a>
-                        <p style="float:right">{{ feedback_list.4.comment }} - <a href="#">{{ user_list.4.first_name }}</a></p>
+                        <p style="float:right">{{ feedback_list.4.comment }} - <a href="{{ user_list.4.get_absolute_url }}">{{ user_list.4.first_name }}</a></p>
                         <br>
                         <p style="float:left">Exams: {{ popular_class_list.4.exams }}, Attendance: {{ popular_class_list.4.attendance }}</p>
                     </li>

@@ -210,8 +210,10 @@ for i in range(1,10):
     u_fname = fake.first_name()
     u_lname = fake.last_name()
     u_user_id = i
+    u_bio = fake.text(500)
+    u_grad_year = fake.year()
     u_major = subjects[fake.random_int(0, len(subjects)) - 1]
-    user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, major = u_major)
+    user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major)
     user.save()
     users.append(user)
 

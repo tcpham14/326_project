@@ -83,14 +83,15 @@ class User(models.Model):
     # A list for the classes that were favorited
     course = models.ManyToManyField(Class, help_text="Select the classes this user favorites")
     # A textfield for the user's biography
-    bio = models.TextField(max_length=1000, help_text="Enter a bio for this user")
+    bio = models.TextField(max_length=1000, help_text="Enter a bio for this user", default = "")
     # A charField for the user's graduation year
-    grad_year = models.CharField(max_length=100)
+    grad_year = models.CharField(max_length=100, default="2020")
     # A particular id for this user
     user_id = models.CharField(
         primary_key=True,
         default=uuid.uuid4,
         help_text="Unique ID for this particular user",
+        max_length=1000
     )
     
     def display_course(self):
