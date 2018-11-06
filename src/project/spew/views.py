@@ -118,3 +118,9 @@ class UserListView(generic.ListView):
 class UserDetailView(generic.DetailView):
     model = User
     template_name = "profile.html"
+    
+    def get_context_data(self, **kwargs):
+        pk = self.kwargs.get(self.pk_url_kwarg, None)
+        context = super(UserDetailView, self).get_context_data(**kwargs)
+        context['user_feedback'] = Feedback.objects.filter(user=pk)
+        return context
