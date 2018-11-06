@@ -58,7 +58,7 @@ def index(request):
 
     popular_class_list = [i[0] for i in popular_sorted]
     popular_rating_list = [range(round(i[1])) for i in popular_sorted]
-    
+    popular_rating_half_boolean_list = [(not (round(i[1]*2)/2).is_integer() and (not i[1] % 1 > .5)) for i in popular_sorted]
     
 
     fav_average_ratings = []
@@ -74,6 +74,7 @@ def index(request):
 
     highest_rated_class_list = [i[0] for i in fav_average_ratings]
     highest_rated_rating_list = [range(round(i[1])) for i in fav_average_ratings]
+    highest_rated_half_boolean_list = [(not (round(i[1]*2)/2).is_integer() and (not i[1] % 1 > .5)) for i in fav_average_ratings]
 
     context = {
         "num_classes": num_classes,
@@ -83,7 +84,9 @@ def index(request):
         "class_featured_3": class_featured_3,
         "popular_class_list": popular_class_list,
         "popular_rating_list": popular_rating_list,
+        "popular_rating_half_boolean_list": popular_rating_half_boolean_list,
         "highest_rated_feedback_list": highest_rated_feedback_list,
+        "highest_rated_half_boolean_list": highest_rated_half_boolean_list,
         "popular_feedback_list": popular_feedback_list,
         "popular_user_list": popular_user_list,
         "highest_rated_user_list": highest_rated_user_list,
