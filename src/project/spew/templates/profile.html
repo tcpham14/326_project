@@ -229,7 +229,11 @@
                     </tr>
                     {% for feedback in user_feedback %}
                         <tr>
+                            {% if feedback.course != null %}
                             <td><a href="{{ feedback.course.get_absolute_url }}" class="text-success">{{ feedback.course.subject.subject_name }} {{ feedback.course.code }} </a></td>
+                            {% else %}
+                            <td><a href="{{ feedback.professor.get_absolute_url }}" class="text-success">{{ feedback.professor.first_name }} {{ feedback.professor.last_name }} </a></td>
+                            {% endif %}
                             <td><font color="black">{{ feedback.rating }}/5.0</font></td>
                             <td><font color="black">{{ feedback.comment }}</font></td>
                         </tr>

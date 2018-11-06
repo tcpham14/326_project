@@ -30,7 +30,7 @@ def index(request):
     feedback_3 = random.choice(Feedback.objects.filter(course = class_featured_3))
     popular_class_list = Class.objects.all().annotate(num_feedback=Count('feedback')).order_by('-num_feedback')
 
-    highest_rated_class_list = Class.objects.all()
+    highest_rated_class_list = Class.objects.all().order_by('-feedback__rating')
     
     popular_feedback_list = {}
     popular_user_list = {}
