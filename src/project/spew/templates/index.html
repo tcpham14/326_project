@@ -68,7 +68,7 @@
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">{{ feedback_1.user }}</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_1.user.get_absolute_url }}">{{ feedback_1.user }}</a>
                                             said:</h6>
 
                                         <p class="drop-shadow" style="color: white">{{ feedback_1.comment }}</p>
@@ -104,7 +104,7 @@
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">{{ feedback_2.user }}</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_2.user.get_absolute_url }}">{{ feedback_2.user }}</a>
                                             said:</h6>
 
                                         <p class="drop-shadow" style="color: white">{{ feedback_2.comment }}</p>
@@ -140,7 +140,7 @@
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="#">{{ feedback_3.user }}</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_3.user.get_absolute_url }}">{{ feedback_3.user }}</a>
                                             said:</h6>
 
                                         <p class="drop-shadow" style="color: white">{{ feedback_3.comment }}</p>
