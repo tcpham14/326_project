@@ -216,10 +216,15 @@ for i in range(1,10):
     # u_course.save
     user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major)
     user.save()
-    subject_index=fake.random_int(0,2)
-    num_courses = random_int(1,4)
+    subject_index = fake.random_int(0, 2)
+    num_courses = fake.random_int(1, len(classes[subject_index])-1)
+    used_courses = []
     for x in range(0, num_courses):
-        user.course.add(classes[subject_index][fake.random_int(0, len(classes[subject_index]))-1])
+        course_index = fake.random_int(0, len(classes[subject_index])-1)
+        if course_index in used_courses:
+            continue
+        user.course.add(classes[subject_index][course_index])
+        used_courses.append(course_index)
     user.save()
     users.append(user)
 
