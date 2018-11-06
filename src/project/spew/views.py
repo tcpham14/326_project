@@ -151,6 +151,21 @@ def advanced_search(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, "advanced_search.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 
+def SearchResults(request):
+
+    classes = []
+    professors = []
+    for lecture in Class.objects.all():
+        prof = random.choice(Professor.objects.all())
+        classes.append(lecture)
+        professors.append(prof)
+
+    context = {
+        'list': zip(classes, professors)
+    }
+
+    return render(request, "search_results.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+
 
 class ClassListView(generic.ListView):
     model = Class
@@ -168,9 +183,9 @@ class ClassDetailView(generic.DetailView):
         return context
 
 
-class SearchResults(generic.ListView):
+'''class SearchResults(generic.ListView):
    model = Class
-   template_name = "search_results.html"
+   template_name = "search_results.html"'''
 
 class UserListView(generic.ListView):
     model = User

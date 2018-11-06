@@ -85,43 +85,42 @@
     <div class="container info" style="border: 4px solid white; top: 100px">
         <hgroup class="mb20" style="margin: 35px;">
             <h3>Search Results</h3>
-            <h2 class="lead"><strong class="text-primary">3</strong> classes were found for "<strong
-                    class="text-primary">Comp
-                    Sci</strong>"</h2>
+            <h2 class="lead"><strong class="text-primary">25</strong> classes were found for "<strong
+                    class="text-primary"></strong>"</h2>
         </hgroup>
 
-        {% for class in class_list %}
+        {% for class in list %}
 
         <section class="col-xs-12 col-sm-6 col-md-12">
             <article class="search-result row">
                 <div class="col-xs-12 col-sm-12 col-md-3">
                     <ul class="meta-search">
                         <li><span class="text-success">Course Subject</span></li>
-                        <h6>{{ class.subject.subject_name }}</h6>
+                        <h6>{{ class.0.subject.subject_name }}</h6>
                         <hr>
                         <li><span class="text-success">Credits</span></li>
-                        <h6>{{ class.num_credits }}</h6>
+                        <h6>{{ class.0.num_credits }}</h6>
                         <hr>
                         <li><span class="text-success">Prerequisites</span></li>
                         <h6><a href="/class_page" style="color:black;">COMPSCI
-                                    220</a> or <a href="/class_page" style="color:black;">COMPSCI230</a></h6>
+                                    220</a> or <a href="/class_page" style="color:black;">None</a></h6>
                         <hr>
-                        <li><span class="text-success">Requirements</span><h6>IE</h6></li>
+                        <li><span class="text-success">Requirements</span><h6>None</h6></li>
                         <hr>
                         <li><span class="text-success">Meeting Times</span></li>
                         <h6>Tue/Thur: 1:00pm-2:15pm</h6>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-8 excerpet">
-                    <h3><a href="{{ class.get_absolute_url }}" title="">{{ class.subject.subject_name }} {{ class.code }}: {{ class.title }}</a></h3>
+                    <h3><a href="{{ class.0.get_absolute_url }}" title="">{{ class.0.subject.subject_name }} {{ class.0.code }}: {{ class.0.title }}</a></h3>
                     <div style="color: gold">
                         <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
                     </div>
                     <ul>
                     </ul>
                     <hr style="background-color: #c6c6c6;">
-                    <h5>Instructors(s): Timothy Richards</h5>
-                    <p>{{ class.description }}</p>
+                    <h5><a href="{{ class.1.get_absolute_url }}">Instructors(s): {{ class.1.first_name }} {{ class.1.last_name }}</a></h5>
+                    <p>{{ class.0.description }}</p>
                     <span class="plus"><a href="#" title="Web Programming"><i class="glyphicon glyphicon-plus"></i></a></span>
                 </div>
                 <span class="clearfix borda"></span>

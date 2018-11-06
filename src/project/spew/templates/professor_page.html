@@ -77,16 +77,19 @@
             <div class="row">
                 <div class="col-md-2">
                 </div>
-                                <div class="col-md-1" style="flex: 0 0 230px; z-index: 3; top: 5px;">
-                                    <img class="rounded-circle" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="230" height="230" style="margin-bottom: 30px; border: 3px solid #3887ff">
-                                </div> 
                 <div class="col-md-4">
                     <div class="profile-header-card card" style="right: 50px">
                         <div class="card-body">
                             <div class="row">  
-                                <div class="col">
+                                <div class="col-sm-4">
+                                    <div class="col-md-1" style="flex: 0 0 230px; z-index: 3; top: 5px;">
+                                        <img class="rounded-circle" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="230" height="230" style="margin-bottom: 30px; border: 3px solid #3887ff">
+                                    </div> 
+                                </div>
+                                <div class="col-sm-8">
                                     <h2 style="margin-left: 50px; margin-top: 10px">{{ professor.first_name }} {{ professor.last_name }}</h2>
                                     <p style="margin-left: 50px">Position: {{ professor.position }} <br> Contact Information: {{ professor.contact }} <br> Office: {{professor.office}}</p>
+                                </div>
 
                                 </div>
                             </div>

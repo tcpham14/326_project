@@ -11,7 +11,7 @@ urlpatterns = [
     path("user/<int:pk>", views.UserDetailView.as_view(), name="user-detail"),
     path("professor/<int:pk>", views.ProfessorDetailView.as_view(), name="professor-detail"),
 
-    path("search_results", views.SearchResults.as_view(), name="search_results"),
+    path("search_results", views.SearchResults, name="search_results"),
     path("submissions", views.submissions_page, name="submissions_page"),
     path("advanced_search", views.advanced_search, name="advanced_search"),
 ]

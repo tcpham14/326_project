@@ -362,9 +362,6 @@ for professor in professors:
 
 
 
-
-
-
 # Retrieve a random book from model and print it.
 class_count = Class.objects.count()
 class_ = Class.objects.all()[fake.random_int(0, class_count - 1)]
