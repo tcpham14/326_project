@@ -10,7 +10,7 @@ Spew
 Spew is an innovative student-driven database centered around finding the perfect class for any student. It provides an array of information on any class offered at UMass, such as required textbooks, instructors, attendance and so on. It also allows students to share feedback in the form of reviews, along with ratings based on certain disciplines of the class. This application will allow students to view most-rated and highest-rated classes, along with the ability to view related classes in the form of track based on the student's concentration. 
 
 # VIDEO LINK 
-TODO
+https://youtu.be/Sk58hvr6hwo
 
 # DESIGN OVERVIEW
 We have implemented several data points in our data model for Spew. We have the Subject class, which includes the title of the subject. We have the Class class, which includes the title, code, description, textbooks, unique id, number of credits, a foreign key to subject, related classes (many to many from Class to itself), and boolean values of exams and attendance describing whether or not the class has exams and required attendance. We have the User class, which includes the first name, last name, major (a foreign key to subject), unique id, favorite courses (many to many to Class), current courses (many to many to Class), graduation year, number of classes taken, and number of liked reviews. We have the Professor class, which includes the first name, last name, position, contact information, office number, and courses taught by the Umass professor(many to many to Class). Finally, we have the Feedback class, which includes comments, date and ratings, as well as foreign keys for the user, professor, and class. 
