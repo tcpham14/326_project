@@ -1,9 +1,17 @@
 from django.shortcuts import render
 from spew.models import SpewUser, Class, Professor, Feedback, Subject
 from django.views import generic
-import random
 from django.views import generic
 from django.db.models import Count
+
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.views.generic import View
+from .forms import UserForm
+#from django.contrib.auth.forms import UserCreationForm
+
+import random
+
 
 # Create your views here.
 def index(request):
@@ -257,3 +265,45 @@ class ProfessorDetailView(generic.DetailView):
         context = super(ProfessorDetailView, self).get_context_data(**kwargs)
         context['courses_taught'] = Class.objects.filter(professor=pk).all()
         return context
+
+def Registration(request):
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/classes')
+
+    else:
+        form = UserForm()
+        
+    context = {'form': form}
+
+    return render(request, "register.html", context) ##THIS IS HWERE HTE PAGE GOES
+
+    '''if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/classes')
+
+    else:
+        form = UserCreationForm()
+    args = {'form': form}
+    return render(request, 'register.html', args)'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -60,11 +60,15 @@ class SpewUser(models.Model):
     """Model representing the SpewUser."""
 
     # A character field for the first name.
-    first_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100, default='')
     # A character field for the last name.
-    last_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100, default='')
     # A forigen key field for the major.
-    major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True)
+    email = models.CharField(max_length=100, default='')
+    # A character field for their email.
+    password = models.CharField(max_length=100, default='')
+    # A character field for their password.
+    major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, default='')
     # A CharField for the user's concentration within their major
     concentration = models.CharField(max_length=100, default='NA')
     # A list for the classes that were favorited
