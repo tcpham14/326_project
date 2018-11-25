@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 import random
 
-from spew.models import Professor, SpewUser, Feedback, Subject, Class
+from spew.models import Professor, User, Feedback, Subject, Class
 
 fake = Faker()
 
@@ -15,7 +15,8 @@ Professor.objects.all().delete()
 Feedback.objects.all().delete()
 Subject.objects.all().delete()
 Class.objects.all().delete()
-SpewUser.objects.all().delete()
+User.objects.all().delete()
+User.objects.all().delete()
 
 # Create Genres
 subjects = [
@@ -243,7 +244,7 @@ for i in range(1,10):
     u_concentration = concentrations[subject_index][fake.random_int(1, len(concentrations[subject_index])-1)]
     u_liked_reviews = fake.random_int(0, 30)
     u_classes_taken = fake.random_int(0, 30)
-    user = SpewUser(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major, concentration = u_concentration, num_classes_taken = u_classes_taken, num_liked_reviews = u_liked_reviews)
+    user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major, concentration = u_concentration, num_classes_taken = u_classes_taken, num_liked_reviews = u_liked_reviews)
     user.save()
     num_fav_courses = fake.random_int(1, len(classes[subject_index])-1)
     num_current_courses = fake.random_int(4, len(classes[subject_index])-1)
@@ -300,13 +301,14 @@ for subject_index in range(0, 3):
             c_date = fake.date_this_decade(before_today=True, after_today=False)
             # Create the feedback submission
             submission = Feedback(date = c_date, comment = c_comment, course = c_course, user = c_user, rating = r_int)
+            print('@@@@@')
             submission.save()
+            print('#####')
             course_feedbacks.append(submission)
             # Add current feedback submission to the current class to reference
             # when rendering class page
             used_comments.append(r2_int)
             used_users.append(u_int)
-
 
 ################################################
 ###### CREATION OF PROF FEEDBACK OBJECTS #######
@@ -375,7 +377,8 @@ print("Summary:\n{textwrap.fill(class_.summary, 77)}")'''
 username = "admin"
 password = "admin"
 email = "admin@326.edu"
-adminuser = User.objects.create_user(username, email, password)
+#adminuser = User.objects.create_user(username, email, password)
+adminuser = User(username, email, password)
 adminuser.save()
 adminuser.is_superuser = True
 adminuser.is_staff = True

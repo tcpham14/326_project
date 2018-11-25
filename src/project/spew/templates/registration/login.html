@@ -84,11 +84,13 @@
     <br>
     <div class="container info" style="border: 4px solid white; top: 100px; width: 500px; height: 1000px">
 
-        <!--<form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-success" style="width: 50%; float right">Login</button></div>
-        </form>-->
+        {% if form.errors %}
+        <p>There's something wrong with what you entered!</p>
+        {% endif %}
+
+        {% if next %}
+        <p>You cannot access that page.</p>
+        {% endif %}
 
         <form class="px-4 py-3" action = "" method="post">
 
@@ -96,17 +98,7 @@
 
                 <br>
 
-                <h5 style="font-family: Verdana; color: #666666; text-align: center">Create New Account</h5>
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.first_name }}
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.last_name }}
+                <h5 style="font-family: Verdana; color: #666666; text-align: center">Login</h5>
 
                 <br>
 
@@ -121,8 +113,8 @@
                 <br>
                 <br>
 
-                <div><button type="submit" class="btn btn-primary" style="width: 50%; float: left">Create Account</button>
-                <button type="submit" class="btn btn-success" style="width: 50%; float right">Login</button></div>
+                <div><button type="submit" class="btn btn-primary" style="width: 50%; float left">Login</button>
+                <button type="submit" class="btn btn-success" style="width: 50%; float: right">Create Account</button></div>
 
             </div>
         </form>

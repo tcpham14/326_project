@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from spew.models import SpewUser, Class, Professor, Feedback, Subject
+from spew.models import User, Class, Professor, Feedback, Subject
 from django.views import generic
 from django.views import generic
 from django.db.models import Count
@@ -196,11 +196,11 @@ class ClassDetailView(generic.DetailView):
    template_name = "search_results.html"'''
 
 class UserListView(generic.ListView):
-    model = SpewUser
+    model = User
     template_name = "user_list.html"
 
 class UserDetailView(generic.DetailView):
-    model = SpewUser
+    model = User
     template_name = "profile.html"
 
     
@@ -209,7 +209,7 @@ class UserDetailView(generic.DetailView):
         pk = self.kwargs.get(self.pk_url_kwarg, None)
 
         fav_average_ratings = []
-        fav_list = SpewUser.objects.get(user_id=pk).fav_courses.all()
+        fav_list = User.objects.get(user_id=pk).fav_courses.all()
         for course in fav_list:
            fav_average_ratings.append((course, 0))
            for course_feedback in Feedback.objects.filter(course=course.class_id):
@@ -221,7 +221,7 @@ class UserDetailView(generic.DetailView):
 
 
         current_average_ratings = []
-        current_list = SpewUser.objects.get(user_id=pk).current_courses.all()
+        current_list = User.objects.get(user_id=pk).current_courses.all()
         for course in current_list:
            current_average_ratings.append((course, 0))
            for course_feedback in Feedback.objects.filter(course=course.class_id):
