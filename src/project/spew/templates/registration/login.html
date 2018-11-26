@@ -113,8 +113,10 @@
                 <br>
                 <br>
 
-                <div><button type="submit" class="btn btn-primary" style="width: 50%; float left">Login</button>
-                <button type="submit" class="btn btn-success" style="width: 50%; float: right">Create Account</button></div>
+                <div>
+                    <input type="submit" value="login" />
+                    <input type ="hidden" name="next" value = "{{ next }}" />
+                </div>
 
             </div>
         </form>
