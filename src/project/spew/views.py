@@ -268,7 +268,7 @@ class ProfessorDetailView(generic.DetailView):
 
 def Registration(request):
     if request.method == 'POST':
-        form = Registration(request.POST)
+        form = RegistrationForm(request.POST)
         # form2 = StudentForm(request.POST)
         if form.is_valid():
             form.save()
