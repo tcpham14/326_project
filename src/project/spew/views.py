@@ -277,7 +277,7 @@ def Registration(request):
             # student.student_id = 10
             student.user = user
             student.save()
-            return redirect('/classes')
+            return redirect('/')
 
     else:
         form = UserForm()
@@ -285,7 +285,7 @@ def Registration(request):
         
     context = {'form': form}
 
-    return render(request, "register.html", context) ##THIS IS HWERE HTE PAGE GOES
+    return render(request, "registration/register.html", context) ##THIS IS HWERE HTE PAGE GOES
 
     '''if request.method == 'POST':
         form = UserCreationForm(request.POST)

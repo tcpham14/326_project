@@ -84,26 +84,29 @@
     <br>
     <div class="container info" style="border: 4px solid white; top: 100px; width: 500px; height: 1000px">
 
-        {% if form.errors %}
-        <p>There's something wrong with what you entered!</p>
-        {% endif %}
+        <!--<form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success" style="width: 50%; float right">Login</button></div>
+        </form>-->
 
-        {% if next %}
+        <form action="" method="post" style="">
 
-            {% if user.is_authenitcated %}
-            <p>You cannot access that page.</p>
-            {% else %}
-            <p>Please login to see this page</p>
-            {% endif %}
-        {% endif %}
-
-        <form class="px-4 py-3" action = "{% url 'login' %}" method="post">
-
-            <div class="form-group" style="width: 90%; margin:auto">
+            <div class="form-group px-4 py-3" style="width: 90%; margin:auto">
 
                 <br>
 
-                <h5 style="font-family: Verdana; color: #666666; text-align: center">Login</h5>
+                <h5 style="font-family: Verdana; color: #666666; text-align: center;">Create Account</h5>
+
+                <br>
+
+                {% csrf_token %}
+                {{ form.first_name }}
+
+                <br>
+
+                {% csrf_token %}
+                {{ form.last_name }}
 
                 <br>
 
@@ -118,15 +121,13 @@
                 <br>
                 <br>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; float left">Login</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; float: center">Create Account</button>
 
             </div>
         </form>
-
         <div class="px-4" style="width: 90%; margin:auto">
-            <a href="/accounts/login"><button class="btn btn-success" style="width: 100%; float: center;">Create Account</button></a>
+            <a href="/accounts/login"><button class="btn btn-success" style="width: 100%; float: center;">Login (Existing Users)</button></a>
         </div>
-        
     </div>
     <div class="row d-flex">
         <ul class="pagination mx-auto" style="margin:20px; justify-content: center;">

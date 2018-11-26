@@ -234,7 +234,7 @@ for a in range(1,10):
     s_fname = fake.first_name()
     s_lname = fake.last_name()
     username = s_fname.lower() + s_lname.lower()
-    email = f"{username}@326.edu"
+    email = username + "@326.edu"
     password = s_lname
     user = User.objects.create_user(username, email, password)
     user.first_name = s_fname
@@ -242,13 +242,13 @@ for a in range(1,10):
     #user.user_permissions.add(permission)
     user.save()
     users.append(user)
-    print(f"  username: {username}, password: {password}")
+    print("username: " + username + ", password: " + password)
 
 ######################################
 ##### CREATION OF USER OBJECTS #######
 ######################################
 students = []
-for i in range(1,10):
+for i in range(0,9):
     subject_index = fake.random_int(0, 2)
     u_user_id = i
     u_user = users[i]
@@ -314,9 +314,7 @@ for subject_index in range(0, 3):
             c_date = fake.date_this_decade(before_today=True, after_today=False)
             # Create the feedback submission
             submission = Feedback(date = c_date, comment = c_comment, course = c_course, student = c_user, rating = r_int)
-            print('@@@@@')
             submission.save()
-            print('#####')
             course_feedbacks.append(submission)
             # Add current feedback submission to the current class to reference
             # when rendering class page
