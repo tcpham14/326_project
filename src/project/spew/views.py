@@ -268,8 +268,7 @@ class ProfessorDetailView(generic.DetailView):
 
 def Registration(request):
     if request.method == 'POST':
-        form = Registration(request.POST)
-        # form2 = StudentForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -279,7 +278,7 @@ def Registration(request):
             student.user = user
             student.save()
             login(request, user)
-            return redirect('/profile')
+            return redirect('/')
 
     else:
         form = RegistrationForm()
