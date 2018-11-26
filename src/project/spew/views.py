@@ -7,7 +7,7 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
-from .forms import UserForm
+from .forms import RegistrationForm
 #from django.contrib.auth.forms import UserCreationForm
 
 import random
@@ -267,24 +267,24 @@ class ProfessorDetailView(generic.DetailView):
         return context
 
 def Registration(request):
-
     if request.method == 'POST':
-        form = UserForm(request.POST)
+        form = Registration(request.POST)
         # form2 = StudentForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
             student = Student()
-            # student.student_id = 10
             student.user = user
             student.save()
-            return redirect('/')
+            login(request, user)
+            return redirect('/profile')
 
     else:
-        form = UserForm()
+        form = RegistrationForm()
         # form2 = StudentForm()
-        
     context = {'form': form}
-
     return render(request, "registration/register.html", context) ##THIS IS HWERE HTE PAGE GOES
 
     '''if request.method == 'POST':

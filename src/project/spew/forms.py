@@ -1,22 +1,16 @@
 from .models import Student
 from django import forms
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
-class UserForm(forms.ModelForm):
+class RegistrationForm(UserCreationForm):
+    first_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    last_name = forms.CharField(max_length=30, required=False, help_text='Optional.')
+    email = forms.EmailField(max_length=254, help_text='Required. Inform a valid email address.')
 
-	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password', 'style': 'margin-top: 7px'}))
-
-	class Meta:
-		model = User
-		fields = ['first_name', 'last_name', 'email', 'username', 'password']
-		widgets = {
-			'first_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'First Name', 'style': 'margin-top: 7px'}),
-			'last_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Last Name', 'style': 'margin-top:7px'}), 
-			'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Email ', 'style': 'margin-top:7px'}), 
-			'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username', 'style': 'margin-top:7px'}),
-			'password': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter a password', 'style': 'margin-top:7px'})
-			}
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
 class LoginForm(AuthenticationForm):
     

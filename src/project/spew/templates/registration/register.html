@@ -90,53 +90,23 @@
             <button type="submit" class="btn btn-success" style="width: 50%; float right">Login</button></div>
         </form>-->
 
-        <form action="" method="post" style="">
-
-            <div class="form-group px-4 py-3" style="width: 90%; margin:auto">
-
-                <br>
-
-                <h5 style="font-family: Verdana; color: #666666; text-align: center;">Create Account</h5>
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.first_name }}
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.last_name }}
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.username }}
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.password }}
-
-                <br>
-                <br>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; float: center">Create Account</button>
-
-            </div>
-        </form>
-        <div class="px-4" style="width: 90%; margin:auto">
-            <a href="/accounts/login"><button class="btn btn-success" style="width: 100%; float: center;">Login (Existing Users)</button></a>
-        </div>
-    </div>
-    <div class="row d-flex">
-        <ul class="pagination mx-auto" style="margin:20px; justify-content: center;">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
+        <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+    {% endfor %}
+    <button type="submit">Sign up</button>
+  </form>
+        
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0">
         <p>Footer</p>
