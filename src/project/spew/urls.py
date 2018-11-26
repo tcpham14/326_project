@@ -15,4 +15,6 @@ urlpatterns = [
     path("search_results", views.SearchResults, name="search_results"),
     path("submissions", views.submissions_page, name="submissions_page"),
     path("advanced_search", views.advanced_search, name="advanced_search"),
+
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
