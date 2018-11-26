@@ -13,7 +13,7 @@ urlpatterns = [
     path("professors/", views.ProfessorListView.as_view(), name="professors"),
 
     path("class/<int:pk>", views.ClassDetailView.as_view(), name="class-detail"),
-    path("user/<int:pk>", views.UserDetailView.as_view(), name="user-detail"),
+    path("user/<str:pk>", views.UserDetailView.as_view(), name="user-detail"),
     path("professor/<int:pk>", views.ProfessorDetailView.as_view(), name="professor-detail"),
 
     path("register/", views.Registration, name="register"),

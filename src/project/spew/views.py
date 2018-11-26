@@ -274,6 +274,7 @@ def Registration(request):
         if form.is_valid():
             user = form.save()
             student = Student()
+            # student.student_id = 10
             student.user = user
             student.save()
             return redirect('/classes')
