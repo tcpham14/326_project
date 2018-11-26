@@ -63,9 +63,9 @@ class Student(models.Model):
     # A character field for the username.
     # username = models.CharField(max_length=100, default='')
     # A character field for the first name.
-    first_name = models.CharField(max_length=100, default='')
+    # first_name = models.CharField(max_length=100, default='')
     # A character field for the last name.
-    last_name = models.CharField(max_length=100, default='')
+    # last_name = models.CharField(max_length=100, default='')
     # A forigen key field for the major.
     # email = models.CharField(max_length=100, default='')
     # A character field for their email.
@@ -97,7 +97,7 @@ class Student(models.Model):
     fav_courses.short_description = "Favorite Courses"
 
     class Meta:
-        ordering = ["last_name", "first_name"]
+        ordering = ["user"]
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
@@ -163,4 +163,4 @@ class Feedback(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {self.last_name}"
-        return '%s %s %s' % (self.user, self.comment, self.rating)
+        return '%s %s %s' % (self.student, self.comment, self.rating)

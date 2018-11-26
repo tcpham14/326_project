@@ -48,14 +48,14 @@ class SubjectAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     # By setting the list_display variable in an Admin class will have
     # it display only the fields in the model that are specified.
-    list_display = ("first_name", "last_name", "major", "concentration")
+    list_display = ("user", "major", "concentration")
 
     # By setting the fields variable in an Admin class will only
     # display the specified fields in the "detail view" of the
     # model. Fields are displayed vertically by default, but will
     # display horizontally if you further group them in a tuple as we
     # do here for the birth and death dates.
-    fields = ["first_name", "last_name", "major"]
+    fields = ["user", "major"]
     list_filter = ("major", "concentration")
     inlines = [FeedbackInline]
 

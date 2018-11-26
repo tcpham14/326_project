@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from faker import Faker
 import random
 
-from spew.models import Professor, User, Feedback, Subject, Class
+from spew.models import Professor, Student, Feedback, Subject, Class
 
 fake = Faker()
 
@@ -228,24 +228,38 @@ for subject_name in classes:
             if(course1.title != course2.title):
                 course1.related_classes.add(course2)
 
+users = []
+print("Generated users:")
+for a in range(1,10):
+    s_fname = fake.first_name()
+    s_lname = fake.last_name()
+    username = s_fname.lower() + s_lname.lower()
+    email = f"{username}@326.edu"
+    password = s_lname
+    user = User.objects.create_user(username, email, password)
+    user.first_name = s_fname
+    user.last_name = s_lname
+    #user.user_permissions.add(permission)
+    user.save()
+    users.append(user)
+    print(f"  username: {username}, password: {password}")
 
 ######################################
 ##### CREATION OF USER OBJECTS #######
 ######################################
-users = []
+students = []
 for i in range(1,10):
     subject_index = fake.random_int(0, 2)
-    u_fname = fake.first_name()
-    u_lname = fake.last_name()
     u_user_id = i
+    u_user = users[i]
     u_bio = fake.text(500)
     u_grad_year = fake.year()
     u_major = subjects[subject_index]
     u_concentration = concentrations[subject_index][fake.random_int(1, len(concentrations[subject_index])-1)]
     u_liked_reviews = fake.random_int(0, 30)
     u_classes_taken = fake.random_int(0, 30)
-    user = User(first_name = u_fname, last_name = u_lname, user_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major, concentration = u_concentration, num_classes_taken = u_classes_taken, num_liked_reviews = u_liked_reviews)
-    user.save()
+    student = Student(user = u_user, student_id = u_user_id, grad_year = u_grad_year, bio = u_bio, major = u_major, concentration = u_concentration, num_classes_taken = u_classes_taken, num_liked_reviews = u_liked_reviews)
+    student.save()
     num_fav_courses = fake.random_int(1, len(classes[subject_index])-1)
     num_current_courses = fake.random_int(4, len(classes[subject_index])-1)
     used_fav_courses = []
@@ -253,18 +267,17 @@ for i in range(1,10):
         course_index = fake.random_int(0, len(classes[subject_index])-1)
         if course_index in used_fav_courses:
             continue
-        user.fav_courses.add(classes[subject_index][course_index])
+        student.fav_courses.add(classes[subject_index][course_index])
         used_fav_courses.append(course_index)
     used_current_courses = []
     for x in range(0, num_current_courses):
         course_index = fake.random_int(0, len(classes[subject_index])-1)
         if course_index in used_current_courses:
             continue
-        user.current_courses.add(classes[subject_index][course_index])
+        student.current_courses.add(classes[subject_index][course_index])
         used_current_courses.append(course_index)
-    user.save()
-    users.append(user)
-
+    student.save()
+    students.append(student)
 
 ################################################
 ###### CREATION OF CLASS FEEDBACK OBJECTS ######
@@ -285,7 +298,7 @@ for subject_index in range(0, 3):
         for review in range(0, num_reviews):
             # Map the randomly generated rating to a comment that matches the rating
             r_int = random.randint(1,5)
-            u_int =random.randint(0,len(users)) - 1
+            u_int =random.randint(0,len(students)) - 1
             str(r_int)
             if(r_int == "1" or r_int == "2"):
                 r2_int = random.randint(0,3)
@@ -297,10 +310,10 @@ for subject_index in range(0, 3):
                 continue
             c_comment = comments[r2_int]
             c_course = classes[subject_index][course_index]
-            c_user = users[u_int]
+            c_user = students[u_int]
             c_date = fake.date_this_decade(before_today=True, after_today=False)
             # Create the feedback submission
-            submission = Feedback(date = c_date, comment = c_comment, course = c_course, user = c_user, rating = r_int)
+            submission = Feedback(date = c_date, comment = c_comment, course = c_course, student = c_user, rating = r_int)
             print('@@@@@')
             submission.save()
             print('#####')
@@ -320,17 +333,17 @@ for professor in professors:
     num_reviews = random.randint(1, 10)
     used_users = []
     for review in range(0, num_reviews):
-        u_int = random.randint(0,len(users)) - 1
+        u_int = random.randint(0,len(students)) - 1
         if u_int in used_users:
             continue
         # Map the randomly generated rating to a comment that matches the rating
         r_int = random.randint(1,5)
         c_professor = professor
         c_comment = fake.text(20)
-        c_user = users[u_int]
+        c_user = students[u_int]
         c_date = fake.date_this_decade(before_today=True, after_today=False)
         # Create the feedback submission
-        submission = Feedback(professor = c_professor, date = c_date, comment = c_comment, user = c_user, rating = r_int)
+        submission = Feedback(professor = c_professor, date = c_date, comment = c_comment, student = c_user, rating = r_int)
         submission.save()
         prof_feedbacks.append(submission)
         # Add current feedback submission to the current class to reference
@@ -368,22 +381,22 @@ for professor in professors:
 class_count = Class.objects.count()
 class_ = Class.objects.all()[fake.random_int(0, class_count - 1)]
 
-'''print("\nExample Book:")
-print("Title: {class_.title}")
-print("Author: {class_.professor}")
-print("Summary:\n{textwrap.fill(class_.summary, 77)}")'''
+#'''print("\nExample Book:")
+#print("Title: {class_.title}")
+#print("Author: {class_.professor}")
+#print("Summary:\n{textwrap.fill(class_.summary, 77)}")'''
 
 
-username = "admin"
-password = "admin"
-email = "admin@326.edu"
-#adminuser = User.objects.create_user(username, email, password)
-adminuser = User(username, email, password)
-adminuser.save()
-adminuser.is_superuser = True
-adminuser.is_staff = True
-adminuser.save()
-message = "Success"
+#username = "admin"
+#password = "admin"
+#email = "admin@326.edu"
+##adminuser = User.objects.create_user(username, email, password)
+#adminuser = User(username, email, password)
+#adminuser.save()
+#adminuser.is_superuser = True
+#adminuser.is_staff = True
+#adminuser.save()
+#message = "Success"
 """
 ====================================================================
 The database has been setup with the following credentials:
