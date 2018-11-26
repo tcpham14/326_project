@@ -1,4 +1,9 @@
 from django.urls import path
+from django.contrib import admin
+from django.conf.urls import include
+from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
@@ -15,6 +20,9 @@ urlpatterns = [
     path("search_results", views.SearchResults, name="search_results"),
     path("submissions", views.submissions_page, name="submissions_page"),
     path("advanced_search", views.advanced_search, name="advanced_search"),
+    path("accounts/", include("django.contrib.auth.urls")),
 
-    url(r'^accounts/', include('django.contrib.auth.urls')),
+#    url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
+
+
