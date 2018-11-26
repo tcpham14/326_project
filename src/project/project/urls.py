@@ -22,6 +22,7 @@ urlpatterns = [
     # path('index', include('spew.urls')),
     path('admin/', admin.site.urls),
     path('spew/', include('spew.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
