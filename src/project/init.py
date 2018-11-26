@@ -366,36 +366,17 @@ for professor in professors:
 ################################################################################################################
 ################################################################################################################
 ################################################################################################################
-################################################################################################################
-
-
-
-
-
-
-
-
-
-
-# Retrieve a random book from model and print it.
-class_count = Class.objects.count()
+##############################################################################################################class_count = Class.objects.count()
 class_ = Class.objects.all()[fake.random_int(0, class_count - 1)]
-
-#'''print("\nExample Book:")
-#print("Title: {class_.title}")
-#print("Author: {class_.professor}")
-#print("Summary:\n{textwrap.fill(class_.summary, 77)}")'''
-
-
-#username = "admin"
-#password = "admin"
-#email = "admin@326.edu"
-##adminuser = User.objects.create_user(username, email, password)
-#adminuser = User(username, email, password)
-#adminuser.save()
-#adminuser.is_superuser = True
-#adminuser.is_staff = True
-#adminuser.save()
+username = "admin"
+email = "admin@326.edu"
+password = "admin"
+adminuser = User.objects.create_user(username, email, password)
+# adminuser = User(username, email, password)
+adminuser.save()
+adminuser.is_superuser = True
+adminuser.is_staff = True
+adminuser.save()
 #message = "Success"
 """
 ====================================================================
