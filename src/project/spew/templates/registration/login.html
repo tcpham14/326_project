@@ -85,43 +85,37 @@
     <div class="container info" style="border: 4px solid white; top: 100px; width: 500px; height: 1000px">
 
         {% if form.errors %}
-        <p>There's something wrong with what you entered!</p>
-        {% endif %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
 
-        {% if next %}
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+  {% else %}
+    <p>Please login to see this page.</p>
+  {% endif %}
+{% endif %}
 
-            {% if user.is_authenitcated %}
-            <p>You cannot access that page.</p>
-            {% else %}
-            <p>Please login to see this page</p>
-            {% endif %}
-        {% endif %}
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
 
-        <form class="px-4 py-3" action = "{% url 'login' %}" method="post">
+<tr>
+  <td>{{ form.username.label_tag }}</td>
+  <td>{{ form.username }}</td>
+</tr>
 
-            <div class="form-group" style="width: 90%; margin:auto">
+<tr>
+  <td>{{ form.password.label_tag }}</td>
+  <td>{{ form.password }}</td>
+</tr>
+</table>
 
-                <br>
+<input type="submit" value="login" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
 
-                <h5 style="font-family: Verdana; color: #666666; text-align: center">Login</h5>
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.username }}
-
-                <br>
-
-                {% csrf_token %}
-                {{ form.password }}
-
-                <br>
-                <br>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; float left">Login</button>
-
-            </div>
-        </form>
 
         <div class="px-4" style="width: 90%; margin:auto">
             <a href="/accounts/login"><button class="btn btn-success" style="width: 100%; float: center;">Create Account</button></a>
