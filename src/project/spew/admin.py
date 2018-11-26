@@ -1,14 +1,14 @@
 from django.contrib import admin
 
-from spew.models import Class, User, Professor, Feedback, Subject
+from spew.models import Class, Professor, Feedback, Subject, Student
 
 #admin.site.register(Genre)
 
 
 #class ClassInline(admin.TabularInline):
 #    model = Class
-class UserInline(admin.TabularInline):
-    model = User
+class StudentInline(admin.TabularInline):
+    model = Student
 
 class ClassInline(admin.TabularInline):
     model = Class
@@ -44,8 +44,8 @@ class SubjectAdmin(admin.ModelAdmin):
 #    model = Professor
 
 
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+@admin.register(Student)
+class StudentAdmin(admin.ModelAdmin):
     # By setting the list_display variable in an Admin class will have
     # it display only the fields in the model that are specified.
     list_display = ("first_name", "last_name", "major", "concentration")
@@ -114,8 +114,8 @@ class ProfessorAdmin(admin.ModelAdmin):
     
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    list_display = ("user","comment", "course", "professor",  "rating", "date", )
-    list_filter = ("course", "user", "professor")
+    list_display = ("student","comment", "course", "professor",  "rating", "date", )
+    list_filter = ("course", "student", "professor")
     # inlines = [UserInline]
     
 

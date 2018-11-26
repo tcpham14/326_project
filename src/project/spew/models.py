@@ -2,6 +2,7 @@ import uuid
 from django.db.models import Q
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 class Subject(models.Model):
     """Model representing a book genre."""
@@ -56,19 +57,19 @@ class Class(models.Model):
         return reverse("class-detail", args=[str(self.class_id)])
 
 
-class User(models.Model):
+class Student(models.Model):
     """Model representing the User."""
-
+    user = models.OneToOneField(User, on_delete = models.CASCADE)
     # A character field for the username.
-    username = models.CharField(max_length=100, default='')
+    # username = models.CharField(max_length=100, default='')
     # A character field for the first name.
     first_name = models.CharField(max_length=100, default='')
     # A character field for the last name.
     last_name = models.CharField(max_length=100, default='')
     # A forigen key field for the major.
-    email = models.CharField(max_length=100, default='')
+    # email = models.CharField(max_length=100, default='')
     # A character field for their email.
-    password = models.CharField(max_length=100, default='')
+    # password = models.CharField(max_length=100, default='')
     # A character field for their password.
     major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, default='')
     # A CharField for the user's concentration within their major
@@ -86,7 +87,7 @@ class User(models.Model):
     # of reviews this user liked
     num_liked_reviews = models.TextField(max_length=1000, help_text="# of reviews this user liked", default = "")
     # A particular id for this user
-    user_id = models.CharField(
+    student_id = models.CharField(
         primary_key=True,
         default=uuid.uuid4,
         help_text="Unique ID for this particular user",
@@ -150,7 +151,7 @@ class Feedback(models.Model):
     # A foreign key for the class it's for
     course = models.ForeignKey("Class", on_delete=models.SET_NULL, null=True)
     # A foreign key for the user it's from
-    user = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
+    student = models.ForeignKey("Student", on_delete=models.SET_NULL, null=True)
     # A foreign key for the professor it's for
     professor = models.ForeignKey("Professor", on_delete=models.SET_NULL, null=True)
     # A char field for the rating; should be average of all ratings but we'll just leave it as is for now.

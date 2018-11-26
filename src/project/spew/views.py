@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from spew.models import User, Class, Professor, Feedback, Subject
+from spew.models import Student, Class, Professor, Feedback, Subject
 from django.views import generic
 from django.views import generic
 from django.db.models import Count
@@ -44,13 +44,13 @@ def index(request):
     popular_user_list = {}
     for i in range(0, len(popular_class_list) - 1):
         popular_feedback_list[i] = random.choice(Feedback.objects.filter(course=popular_class_list[i]))
-        popular_user_list[i] = popular_feedback_list[i].user
+        popular_user_list[i] = popular_feedback_list[i].student
         
     highest_rated_feedback_list = {}
     highest_rated_user_list = {}
     for i in range(0, len(highest_rated_class_list) - 1):
         highest_rated_feedback_list[i] = random.choice(Feedback.objects.filter(course=highest_rated_class_list[i]))
-        highest_rated_user_list[i] = highest_rated_feedback_list[i].user
+        highest_rated_user_list[i] = highest_rated_feedback_list[i].student
 
 
     popular_sorted = []
@@ -196,11 +196,11 @@ class ClassDetailView(generic.DetailView):
    template_name = "search_results.html"'''
 
 class UserListView(generic.ListView):
-    model = User
+    model = Student
     template_name = "user_list.html"
 
 class UserDetailView(generic.DetailView):
-    model = User
+    model = Student
     template_name = "profile.html"
 
     
@@ -209,7 +209,7 @@ class UserDetailView(generic.DetailView):
         pk = self.kwargs.get(self.pk_url_kwarg, None)
 
         fav_average_ratings = []
-        fav_list = User.objects.get(user_id=pk).fav_courses.all()
+        fav_list = Student.objects.get(student_id=pk).fav_courses.all()
         for course in fav_list:
            fav_average_ratings.append((course, 0))
            for course_feedback in Feedback.objects.filter(course=course.class_id):
@@ -221,7 +221,7 @@ class UserDetailView(generic.DetailView):
 
 
         current_average_ratings = []
-        current_list = User.objects.get(user_id=pk).current_courses.all()
+        current_list = Student.objects.get(student_id=pk).current_courses.all()
         for course in current_list:
            current_average_ratings.append((course, 0))
            for course_feedback in Feedback.objects.filter(course=course.class_id):
@@ -232,8 +232,8 @@ class UserDetailView(generic.DetailView):
 
 
         context = super(UserDetailView, self).get_context_data(**kwargs)
-        context['user_feedback'] = Feedback.objects.filter(user=pk).all()
-        context['feedback_count'] = Feedback.objects.filter(user=pk).count()
+        context['user_feedback'] = Feedback.objects.filter(student=pk).all()
+        context['feedback_count'] = Feedback.objects.filter(student=pk).count()
         context['favorite_courses'] = zip(fav_list, fav_average_ratings)
         context['current_courses'] = zip(current_list, current_average_ratings)       
         return context
