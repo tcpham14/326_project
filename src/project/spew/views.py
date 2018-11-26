@@ -270,12 +270,17 @@ def Registration(request):
 
     if request.method == 'POST':
         form = UserForm(request.POST)
+        # form2 = StudentForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            student = Student()
+            student.user = user
+            student.save()
             return redirect('/classes')
 
     else:
         form = UserForm()
+        # form2 = StudentForm()
         
     context = {'form': form}
 

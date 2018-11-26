@@ -48,7 +48,7 @@ class SubjectAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     # By setting the list_display variable in an Admin class will have
     # it display only the fields in the model that are specified.
-    list_display = ("user", "major", "concentration")
+    list_display = ("user", "major", "concentration", "student_id")
 
     # By setting the fields variable in an Admin class will only
     # display the specified fields in the "detail view" of the

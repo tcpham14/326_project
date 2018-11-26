@@ -87,8 +87,8 @@
                                 </div>
                                 <div class="col-sm-8">
                                 
-                                    <h2 style="margin-left: 50px; margin-top: 10px">{{ user.first_name }} {{ user.last_name }}</h2>
-                                    <p style="margin-left: 50px">{{ user.bio }}.</p>
+                                    <h2 style="margin-left: 50px; margin-top: 10px">{{ student.user.first_name }} {{ student.user.last_name }}</h2>
+                                    <p style="margin-left: 50px">{{ student.bio }}.</p>
 
                                 </div>
                                 
@@ -125,23 +125,23 @@
                                 </div>
                                 <div class="col-md-7">
                                     <div class="row text-center">
-                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ user.major }}</a>
+                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ student.major }}</a>
                                     </div>
                                     <div class="row text-center">
-                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ user.concentration }}</a>
+                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ student.concentration }}</a>
                                     </div>
                                     <div class="row text-center">
-                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ user.grad_year }}</a>
+                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ student.grad_year }}</a>
                                     </div>
                                     <hr>
                                     <div class="row text-center">
                                         <a style="color: #20e216; font-size: 16px; margin-bottom: 3px;">{{ feedback_count }}</a>
                                     </div>
                                     <div class="row text-center">
-                                        <a style="color: #20e216; font-size: 16px; margin-bottom: 3px;">{{ user.num_classes_taken }}</a>
+                                        <a style="color: #20e216; font-size: 16px; margin-bottom: 3px;">{{ student.num_classes_taken }}</a>
                                     </div>
                                     <div class="row text-center">
-                                        <a style="color: #20e216; font-size: 16px; margin-bottom: 3px; margin-bottom: 100px">{{ user.num_liked_reviews }}</a>
+                                        <a style="color: #20e216; font-size: 16px; margin-bottom: 3px; margin-bottom: 100px">{{ student.num_liked_reviews }}</a>
                                     </div>
 
                                 </div>

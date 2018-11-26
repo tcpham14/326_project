@@ -5,9 +5,9 @@
 
 {% if user_list %}
 <ul>
-  {% for user in user_list %}
+  {% for student in user_list %}
   <li>
-    <a href="{{ user.get_absolute_url }}">{{ user.first_name }} {{ user.last_name }}</a> ({{ user.major }})
+    <a href="{{ student.get_absolute_url }}">{{ student.student_id }}</a> ({{ student.major }})
   </li>
   {% endfor %}
 </ul>

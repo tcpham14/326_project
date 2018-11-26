@@ -106,7 +106,7 @@ class Student(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {se lf.last_name}"
-        return '%s %s' % (self.first_name, self.last_name)
+        return '%s' % (self.user)
 
 class Professor(models.Model):
     """Model representing the Professor."""
