@@ -12,6 +12,8 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import Permission
+from datetime import datetime
+from django.utils.formats import get_format
 from .forms import RegistrationForm
 #from django.contrib.auth.forms import UserCreationForm
 
@@ -310,6 +312,12 @@ class FeedbackCreate(PermissionRequiredMixin, CreateView):
     model = Feedback
     permission_required = "spew.can_add_feedback"
     template_name = "feedback_form.html"
-    fields = '__all__'
-    initial = {'date': '11/26/2018'}
+    fields = ('comment', 'course', 'professor', 'rating')
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.student = user.student
+        form.save()
+        form.instance.date = datetime.date(datetime.now())
+        form.save()
+        return super(FeedbackCreate, self).form_valid(form)
     success_url = reverse_lazy('classes')
