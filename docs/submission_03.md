@@ -26,7 +26,7 @@ For our user registraton, when the user registers a new account this is stored i
 
 We implemented a login and logout feature. We have created the login.html file in the registration folder of our project documents. This login page includes functionality for user input of username and password which then allows the user to gain access to their personal accounts. We added the authentication urls to include roots for authentication, templates for authentication views, and the template directory in the settings.py so Django can find the login.html. The login page features a redirection functionality that will redirect the user to the main page after logging in. For the logout page, we implemented a logout function that will redirect the user to the application's logout view. 
 
-
+In terms of user interaciton with forms, we have added a login form, a registration form, an edit-user form, and an edit-student form. The edit-user form allows the user to edit their first name, last name, and email address. The edit-student form allows the user to edit their bio, major, concentration, favorite courses, current courses, and graduation year. The login form takes the username and password of the user. The registration form creates a new user, taking their first name, last name, email-address, and newly created password. We proceeded to add url patterns for these forms to access their respective views, which will render the form. 
  
 # SUCCESSES
 * We were able to delegate tasks in a more efficient manner whilst maintaining coordination amongst our code and ourselves
