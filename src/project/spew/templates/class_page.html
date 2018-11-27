@@ -192,7 +192,9 @@
                                 <a href="/submissions/create/" class="btn btn-success">Rate this class</a>
                             {% endif %}
                             {% if not perms.spew.can_add_feedback %}
+                                {% if not request.user.is_authenticated %}
                                 <a href="/accounts/login/" class="btn btn-success">Log in to rate this class</a>
+                                {% endif %}
                             {% endif %}
 
                         </div>
