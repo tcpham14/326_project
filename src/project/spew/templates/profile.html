@@ -122,9 +122,9 @@
                                     <div class="row text-center">
                                         <h6><a>Classes Taken</a></h6>
                                     </div>
-                                    {% if request.user == pk %}
+                                    {% if student_id1 == student_id2 %}
                                     <div class="row" style="margin-top: 15px;">
-                                        <button type="submit" class="btn btn-primary" style="width: 180px; float: center">Edit Profile</button>
+                                        <a href="../../edit_profile/"><button type="submit" class="btn btn-primary" style="width: 180px; float: center">Edit Profile</button></a>
                                     </div>
                                     {% endif %}
                                 </div>

@@ -245,7 +245,9 @@ class UserDetailView(generic.DetailView):
         context['feedback_count'] = Feedback.objects.filter(student=pk).count()
         context['favorite_courses'] = zip(fav_list, fav_average_ratings)
         context['current_courses'] = zip(current_list, current_average_ratings)
-        context['student_id'] = pk    
+        context['student_id1'] = pk
+        context['student_id2'] = Student.objects.filter(user=self.request.user)[0].student_id
+
         return context
 
 class ProfessorListView(generic.ListView):
@@ -317,7 +319,7 @@ def Registration(request):
     return render(request, 'register.html', args)'''
 
 
-def EditProfile(request, pk):
+def EditProfile(request):
 
     user = request.user
     if request.method == 'POST':
