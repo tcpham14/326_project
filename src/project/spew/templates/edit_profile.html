@@ -83,14 +83,14 @@
     <br>
     <br>
     <div class="container info" style="border: 4px solid white; top: 100px">
-        <hgroup class="mb20" style="margin: 35px;">
+        <hgroup class="mb20" style="margin-left: 60px; margin-top: 60px;">
             <h3>Edit Profile</h3>
         </hgroup>
 
         <form class="px-4 py-3" method="post">
 
 
-            <div class="form-group px-4 py-3" style="width: 90%; margin:auto">
+            <!--<div class="form-group px-4 py-3" style="width: 90%; margin:auto">
 
 
                 <table>
@@ -102,77 +102,91 @@
 
                 <button type="submit" class="btn btn-primary" style="width: 15%; float: center">Save</button>
 
-            </div>
+            </div>-->
 
 
-            <!--<div class="form-group" style="width: 90%; margin:auto">
+            <div class="form-group" style="font-family: Verdana;">
 
-                <table>
-                    {% csrf_token %}
-                    {{ user_form.as_table }}
-                    {{ student_form.as_table }}
-                </table>
+                <div style="font-size: 18px; font-family: sans-serif; margin-left: 35px; margin-top: 20px;">
 
+                    <table>
+                        {% csrf_token %}
+                        {{ user_form.as_table }}
+                        {{ student_form.as_table }}
+                    </table>
 
-                br>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 15%; margin: 35px; float left">Save</button>
+
+                <!--<br>
                 <br>
 
                 {% csrf_token %}
-                {{ form.bio }}
-
-                <br>
-                <br>
-
-                {% csrf_token %}
-                {{ form.major }}
-
-                <br>
-                <br>
-
-
-                {% csrf_token %}
-                {{ form.concentration }}
+                {{ user_form.first_name }}
 
                 <br>
                 <br>
 
                 {% csrf_token %}
-                {{ form.grad_year }}
+                {{ user_form.last_name }}
 
                 <br>
                 <br>
 
                 {% csrf_token %}
-                {{ form.fav_courses }}
+                {{ user_form.email }}
 
                 <br>
                 <br>
 
                 {% csrf_token %}
-                {{ form.current_courses }}
+                {{ student_form.bio }}
+
+                <br>
+                <br>
+
+                {% csrf_token %}
+                {{ student_form.major }}
+
+                <br>
+                <br>
+
+
+                {% csrf_token %}
+                {{ student_form.concentration }}
+
+                <br>
+                <br>
+
+                {% csrf_token %}
+                {{ student_form.grad_year }}
+
+                <br>
+                <br>
+
+                {% csrf_token %}
+                {{ student_form.fav_courses }}
+
+                <br>
+                <br>
+
+                {% csrf_token %}
+                {{ student_form.current_courses }}
 
                 <br>
                 <br>
 
                 <button type="submit" class="btn btn-primary" style="width: 15%; float left">Save</button>
 
-                <input type="hidden" name="next" value="{{ next }}" />
+                <input type="hidden" name="next" value="{{ next }}" />-->
 
-            </div>-->
+            </div>
 
         </form>
 
         
         
-    </div>
-    <div class="row d-flex">
-        <ul class="pagination mx-auto" style="margin:20px; justify-content: center;">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0">
         <p>Footer</p>
