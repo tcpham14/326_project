@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import Permission
 from .forms import RegistrationForm
 #from django.contrib.auth.forms import UserCreationForm
 
@@ -269,6 +272,8 @@ class ProfessorDetailView(generic.DetailView):
         return context
 
 def Registration(request):
+    ct = ContentType.objects.get_for_model(Feedback)
+    permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -276,6 +281,8 @@ def Registration(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
+            user.user_permissions.add(permission)
+            user.save()
             student = Student()
             student.user = user
             student.save()
@@ -299,8 +306,9 @@ def Registration(request):
     args = {'form': form}
     return render(request, 'register.html', args)'''
 
-class FeedbackCreate(CreateView):
+class FeedbackCreate(PermissionRequiredMixin, CreateView):
     model = Feedback
+    permission_required = "spew.can_add_feedback"
     template_name = "feedback_form.html"
     fields = '__all__'
     initial = {'date': '11/26/2018'}

@@ -188,8 +188,12 @@
                         <div class="col-md-8 my-5 py-5">
                             <h6>Share your thoughts on this class</h6>
                             <p>Your review will give better insight for other students</p>
-                            <a href="/submissions_page" class="btn btn-success">Rate this class</a>
-                            <a href="/submissions_page" class="btn btn-primary">Write Reviews</a>
+                            {% if perms.spew.can_add_feedback %}
+                                <a href="/submissions/create/" class="btn btn-success">Rate this class</a>
+                            {% endif %}
+                            {% if not perms.spew.can_add_feedback %}
+                                <a href="/accounts/login/" class="btn btn-success">Log in to rate this class</a>
+                            {% endif %}
 
                         </div>
                     </div>
