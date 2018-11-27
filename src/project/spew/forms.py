@@ -1,4 +1,4 @@
-from .models import Student
+from .models import Student, Class
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
@@ -25,7 +25,14 @@ class LoginForm(AuthenticationForm):
                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
 
 class EditUserForm(forms.ModelForm):
-
+    def __init__(self, user, *args, **kwargs):
+        """If no initial data, provide some defaults."""
+        initial = kwargs.get('initial', {})
+        initial['first_name'] = user.first_name
+        initial['last_name'] = user.last_name
+        initial['email'] = user.email
+        kwargs['initial'] = initial
+        super(EditUserForm, self).__init__(*args, **kwargs)
 
     class Meta:
         model = User
@@ -35,7 +42,21 @@ class EditUserForm(forms.ModelForm):
 
 
 class EditStudentForm(forms.ModelForm):
-
+    # def __init__(self, exp=None, *args, **kwargs):
+    #     super(EditStudentForm, self).__init__(*args, **kwargs)
+    #     if exp:
+    #         self.fields['bio'].initial = exp
+    def __init__(self, user, *args, **kwargs):
+        """If no initial data, provide some defaults."""
+        initial = kwargs.get('initial', {})
+        initial['bio'] = user.student.bio
+        initial['major'] = 
+        initial['concentration'] = user.student.concentration
+        # initial['fav_courses'] = user.student.fav_courses
+        # initial['current_courses'] = user.student.current_courses
+        initial['grad_year'] = user.student.grad_year
+        kwargs['initial'] = initial
+        super(EditStudentForm, self).__init__(*args, **kwargs)
     class Meta:
         model = Student
         fields = ['bio', 'major', 'concentration', 'fav_courses', 'current_courses', 'grad_year']

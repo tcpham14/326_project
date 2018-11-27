@@ -323,8 +323,8 @@ def EditProfile(request):
 
     user = request.user
     if request.method == 'POST':
-        user_form = EditUserForm(request.POST)
-        student_form = EditStudentForm(request.POST)
+        user_form = EditUserForm(user, request.POST)
+        student_form = EditStudentForm(user, request.POST)
         # student = request.user.student
         if user_form.is_valid() and student_form.is_valid():
             #form.save()
@@ -355,11 +355,11 @@ def EditProfile(request):
             student.current_courses.set(current_courses)
             student.save()
 
-            return redirect('/classes')
+            return redirect('/user/' + str(user.student.student_id))
 
     else:
-        user_form = EditUserForm()
-        student_form = EditStudentForm()
+        user_form = EditUserForm(user)
+        student_form = EditStudentForm(user)
     context = {'user_form': user_form, 'student_form': student_form}
     return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES
 
