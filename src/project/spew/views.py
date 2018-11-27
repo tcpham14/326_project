@@ -277,9 +277,10 @@ class ProfessorDetailView(generic.DetailView):
 
 def Registration(request):
 
-    ct = ContentType.objects.get_for_model(Feedback)
-    permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
+    #ct = ContentType.objects.get_for_model(Feedback)
+    #permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
     if request.method == 'POST':
+        print('POSTING REG \n')
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
@@ -289,7 +290,7 @@ def Registration(request):
             # student = Student()
             # student.user = user
             # student.save()
-            user.user_permissions.add(permission)
+            #user.user_permissions.add(permission)
             user.save()
             student = Student()
             student.user = user
@@ -315,9 +316,11 @@ def Registration(request):
     return render(request, 'register.html', args)'''
 
 
-def EditProfile(request):
+def EditProfile(request, pk):
+
     user = request.user
     if request.method == 'POST':
+        print('\n\nPOSTING\n\n')
         user_form = EditUserForm(request.POST)
         student_form = EditStudentForm(request.POST)
         # student = request.user.student
@@ -335,17 +338,25 @@ def EditProfile(request):
             fav_courses = student_form.cleaned_data['fav_courses']
             current_courses = student_form.cleaned_data['current_courses']
 
+            print('@@@@@@@@@@\n')
+            print(user)
+            print('\n')
+            student = Student.objects.filter(user=request.user)[0]
+            print('@@@@@@@@@@\n')
+
             user.first_name = first_name
             user.last_name = last_name
             user.email = email
             user.save()
-            user.student.bio = bio
-            user.student.major = major
-            user.student.concentration = concentration
-            user.student.grad_year = grad_year
-            user.student.fav_courses = fav_courses
-            user.student.current_courses = current_courses
-            user.student.save()
+            student.bio = bio
+            student.major = major
+            student.concentration = concentration
+            student.grad_year = grad_year
+            student.fav_courses.set(fav_courses)
+            student.current_courses.set(current_courses)
+            student.save()
+
+            print('\n\nSAVING\n\n')
 
             return redirect('/classes')
 
@@ -354,6 +365,48 @@ def EditProfile(request):
         student_form = EditStudentForm()
     context = {'user_form': user_form, 'student_form': student_form}
     return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES
+
+
+
+# def EditProfile(request):
+#     user = request.user
+#     if request.method == 'POST':
+#         user_form = EditUserForm(request.POST)
+#         student_form = EditStudentForm(request.POST)
+#         # student = request.user.student
+#         if user_form.is_valid() and student_form.is_valid():
+#             #form.save()
+#             first_name = user_form.cleaned_data['first_name']
+#             last_name = user_form.cleaned_data['last_name']
+#             email = user_form.cleaned_data['email']
+
+
+#             bio = student_form.cleaned_data['bio']
+#             major = student_form.cleaned_data['major']
+#             concentration = student_form.cleaned_data['concentration']
+#             grad_year = student_form.cleaned_data['grad_year']
+#             fav_courses = student_form.cleaned_data['fav_courses']
+#             current_courses = student_form.cleaned_data['current_courses']
+
+#             user.first_name = first_name
+#             user.last_name = last_name
+#             user.email = email
+#             user.save()
+#             user.student.bio = bio
+#             user.student.major = major
+#             user.student.concentration = concentration
+#             user.student.grad_year = grad_year
+#             user.student.fav_courses = fav_courses
+#             user.student.current_courses = current_courses
+#             user.student.save()
+
+#             return redirect('/classes')
+
+#     else:
+#         user_form = EditUserForm()
+#         student_form = EditStudentForm()
+#     context = {'user_form': user_form, 'student_form': student_form}
+#     return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES'''
 
 
 class FeedbackCreate(PermissionRequiredMixin, CreateView):

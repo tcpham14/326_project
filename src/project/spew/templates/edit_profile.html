@@ -87,9 +87,11 @@
             <h3>Edit Profile</h3>
         </hgroup>
 
-        <form class="px-4 py-3" action = "{% url 'index' %}" method="post"  enctype="multipart/form-data">
+        <form class="px-4 py-3" method="post">
 
-            <div class="form-group" style="width: 90%; margin:auto">
+
+            <div class="form-group px-4 py-3" style="width: 90%; margin:auto">
+
 
                 <table>
                     {% csrf_token %}
@@ -98,7 +100,21 @@
                 </table>
 
 
-                <!--<br>
+                <button type="submit" class="btn btn-primary" style="width: 15%; float: center">Save</button>
+
+            </div>
+
+
+            <!--<div class="form-group" style="width: 90%; margin:auto">
+
+                <table>
+                    {% csrf_token %}
+                    {{ user_form.as_table }}
+                    {{ student_form.as_table }}
+                </table>
+
+
+                br>
                 <br>
 
                 {% csrf_token %}
@@ -136,13 +152,13 @@
                 {{ form.current_courses }}
 
                 <br>
-                <br>-->
+                <br>
 
                 <button type="submit" class="btn btn-primary" style="width: 15%; float left">Save</button>
 
                 <input type="hidden" name="next" value="{{ next }}" />
 
-            </div>
+            </div>-->
 
         </form>
 
