@@ -244,7 +244,8 @@ class UserDetailView(generic.DetailView):
         context['user_feedback'] = Feedback.objects.filter(student=pk).all()
         context['feedback_count'] = Feedback.objects.filter(student=pk).count()
         context['favorite_courses'] = zip(fav_list, fav_average_ratings)
-        context['current_courses'] = zip(current_list, current_average_ratings)       
+        context['current_courses'] = zip(current_list, current_average_ratings)
+        context['student_id'] = pk    
         return context
 
 class ProfessorListView(generic.ListView):
@@ -320,7 +321,6 @@ def EditProfile(request, pk):
 
     user = request.user
     if request.method == 'POST':
-        print('\n\nPOSTING\n\n')
         user_form = EditUserForm(request.POST)
         student_form = EditStudentForm(request.POST)
         # student = request.user.student
@@ -338,11 +338,8 @@ def EditProfile(request, pk):
             fav_courses = student_form.cleaned_data['fav_courses']
             current_courses = student_form.cleaned_data['current_courses']
 
-            print('@@@@@@@@@@\n')
-            print(user)
             print('\n')
             student = Student.objects.filter(user=request.user)[0]
-            print('@@@@@@@@@@\n')
 
             user.first_name = first_name
             user.last_name = last_name
@@ -355,8 +352,6 @@ def EditProfile(request, pk):
             student.fav_courses.set(fav_courses)
             student.current_courses.set(current_courses)
             student.save()
-
-            print('\n\nSAVING\n\n')
 
             return redirect('/classes')
 
