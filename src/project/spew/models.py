@@ -158,7 +158,9 @@ class Feedback(models.Model):
     rating = models.CharField(max_length=100, help_text="Give a rating from 1 to 5")
     # A 
     date = models.DateField(null=True, blank=True)
-
+    
+    class Meta:
+        permissions = (("can_add_feedback", "Can add feedback"),)
 
     def __str__(self):
         """String for representing the Model object."""

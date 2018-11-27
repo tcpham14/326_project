@@ -82,53 +82,34 @@
         
     <br>
     <br>
-    <div class="container info" style="border: 4px solid white; top: 100px; width: 500px; height: 700px">
+    <div class="container info" style="border: 4px solid white; top: 100px; width: 700px; height: 1000px">
 
-        {% if form.errors %}
-          <p style="color: red; margin: 20px">Your username and password did not match. Please try again.</p>
-        {% endif %}
-
-        {% if next %}
-          {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.</p>
-          {% else %}
-            <p>Please login to see this page.</p>
-          {% endif %}
-        {% endif %}
-
-        <form class="px-4 py-3" action = "{% url 'login' %}" method="post">
-
-            <div class="form-group" style="width: 90%; margin:auto">
+        <!--<form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success" style="width: 50%; float right">Login</button></div>
+        </form>-->
+        <form action="" method="post">
+            <center>
+            <div class="form-group" style="width: 90%">
 
                 <br>
 
-                <h5 style="font-family: Verdana; color: #666666; text-align: center">Login</h5>
+                <h5 style="font-family: Verdana; color: #666666; text-align: center">Create New Feedback</h5>
 
                 <br>
 
                 {% csrf_token %}
-                {{ form.username }}
-
+                <table>
+                    {{ form.as_table }}
+                </table>
                 <br>
 
-                {% csrf_token %}
-                {{ form.password }}
-
-                <br>
-                <br>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; float left">Login</button>
-
-                <input type="hidden" name="next" value="/user/{{ request.user.student.student_id }}" />
+                <div><input type="submit" class="btn btn-primary" style="width: 50%; float: left" value="Create Feedback"></div>
 
             </div>
-
+            </center>
         </form>
-
-        <div class="px-4" style="width: 90%; margin:auto">
-            <a href="/accounts/register"><button class="btn btn-success" style="width: 100%; float: center;">Create Account</button></a>
-        </div>
         
     </div>
     <div class="jumbotron text-center" style="margin-bottom:0">

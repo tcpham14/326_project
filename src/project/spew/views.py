@@ -9,6 +9,14 @@ from django.contrib.auth import authenticate, login
 from django.views.generic import View
 from .forms import RegistrationForm, EditUserForm, EditStudentForm
 from django.contrib.auth.forms import UserChangeForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth.models import Permission
+from datetime import datetime
+from django.utils.formats import get_format
+from .forms import RegistrationForm
 #from django.contrib.auth.forms import UserCreationForm
 
 import random
@@ -269,6 +277,8 @@ class ProfessorDetailView(generic.DetailView):
 
 def Registration(request):
 
+    ct = ContentType.objects.get_for_model(Feedback)
+    permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -279,8 +289,13 @@ def Registration(request):
             # student = Student()
             # student.user = user
             # student.save()
+            user.user_permissions.add(permission)
+            user.save()
+            student = Student()
+            student.user = user
+            student.save()
             login(request, user)
-            return redirect('/')
+            return redirect('/user/' + str(user.student.student_id))
 
     else:
         form = RegistrationForm()
@@ -298,6 +313,7 @@ def Registration(request):
         form = UserCreationForm()
     args = {'form': form}
     return render(request, 'register.html', args)'''
+
 
 def EditProfile(request):
     user = request.user
@@ -340,17 +356,16 @@ def EditProfile(request):
     return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class FeedbackCreate(PermissionRequiredMixin, CreateView):
+    model = Feedback
+    permission_required = "spew.can_add_feedback"
+    template_name = "feedback_form.html"
+    fields = ('comment', 'course', 'professor', 'rating')
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.student = user.student
+        form.save()
+        form.instance.date = datetime.date(datetime.now())
+        form.save()
+        return super(FeedbackCreate, self).form_valid(form)
+    success_url = reverse_lazy('classes')

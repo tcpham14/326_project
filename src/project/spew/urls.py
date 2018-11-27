@@ -24,7 +24,9 @@ urlpatterns = [
     path("edit_profile/", views.EditProfile, name="edit_profile"),
     path("accounts/register/", views.Registration, name="register"),
     path("accounts/login/", auth_views.LoginView.as_view(template_name='registration/login.html', authentication_form=forms.LoginForm), name="login"),
+    path("submissions/create/", views.FeedbackCreate.as_view(), name='feedback_create'),
 ]
+
 '''
 urlpatterns = [
     path("", views.index, name="index"), #HOMEPAGE

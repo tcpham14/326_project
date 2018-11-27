@@ -23,7 +23,6 @@ class LoginForm(AuthenticationForm):
                                widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Username'}))
     password = forms.CharField(label=("Username"), max_length=30, 
                                widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Password'}))
- 
 
 class EditUserForm(forms.ModelForm):
 

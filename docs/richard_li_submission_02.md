@@ -1,5 +1,0 @@
-For this submission, I helped in the creation of the data diagram. I helped figure out what is put where and the fields of each model. I also helped participate in the creation of it on draw.io and helped in updating the fields and models.
-
-Another part that I helped take part was in the team write up. Taesan wrote it and I helped him in figuring out weaknesses and successes and look through our website to help write down our design overview for our project.
-
-In terms of coding, I did little to none. Most of it was me trying to figure out things on my own and I looked to other members in helping me learn along the way. I started to slack behind and I needed to play catchup. Eventually I was able to reach a point where I undertood the coding behind our website. I hope to work more in terms of coding on the next submission instead of just the write-ups/models.
