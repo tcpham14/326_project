@@ -7,6 +7,8 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .forms import RegistrationForm
 #from django.contrib.auth.forms import UserCreationForm
 
@@ -269,10 +271,7 @@ class ProfessorDetailView(generic.DetailView):
 def Registration(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-<<<<<<< HEAD
-=======
-        # form2 = StudentForm(request.POST)
->>>>>>> d2af4a3d48935d31b68894418b7dfd7657613692
+
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -301,18 +300,9 @@ def Registration(request):
     args = {'form': form}
     return render(request, 'register.html', args)'''
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class FeedbackCreate(CreateView):
+    model = Feedback
+    template_name = "feedback_form.html"
+    fields = '__all__'
+    initial = {'date': '11/26/2018'}
+    success_url = reverse_lazy('classes')
