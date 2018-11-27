@@ -50,7 +50,7 @@ class EditStudentForm(forms.ModelForm):
         """If no initial data, provide some defaults."""
         initial = kwargs.get('initial', {})
         initial['bio'] = user.student.bio
-        initial['major'] = 
+        # initial['major'] = 
         initial['concentration'] = user.student.concentration
         # initial['fav_courses'] = user.student.fav_courses
         # initial['current_courses'] = user.student.current_courses
