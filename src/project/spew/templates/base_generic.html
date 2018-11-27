@@ -37,6 +37,7 @@
 
 <body>
     <!-- {% block navbar %} -->
+    
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a href="#" class="navbar-brand navbar-left"><img src="{% static 'imgs/book.png' %}" width="40px"></a>
 
@@ -68,11 +69,12 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="/user/1">Profile</a>
+                        <a class="dropdown-item" href="/user/{{ request.user.student.student_id }}">Profile</a>
                         <a class="dropdown-item" href="#">Messages</a>
                         <a class="dropdown-item" href="#">Account Settings</a>
                     </div>
                 </li>
+                {% if not request.user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="/accounts/register">Register</a>
                     <!--<div class="dropdown-menu dropdown-menu-right" style="min-width:300px">
@@ -95,9 +97,16 @@
                         </form>
                     </div>-->
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="/accounts/login">Login</a>
-                </li>
+                
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/accounts/login">Login</a>
+                    </li>
+                {% endif %}
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/accounts/logout">Logout</a>
+                    </li>
+                {% endif %}
             </ul>
 
         </ul>
