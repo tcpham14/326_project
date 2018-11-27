@@ -21,8 +21,9 @@ urlpatterns = [
     path("search_results", views.SearchResults, name="search_results"),
     path("submissions", views.submissions_page, name="submissions_page"),
     path("advanced_search", views.advanced_search, name="advanced_search"),
+    path("edit_profile/", views.EditProfile, name="edit_profile"),
     path("accounts/register/", views.Registration, name="register"),
-    path("accounts/login/", auth_views.LoginView.as_view(template_name='registration/login.html', authentication_form=forms.LoginForm)),
+    path("accounts/login/", auth_views.LoginView.as_view(template_name='registration/login.html', authentication_form=forms.LoginForm), name="login"),
 ]
 '''
 urlpatterns = [

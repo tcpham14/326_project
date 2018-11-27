@@ -7,7 +7,8 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
-from .forms import RegistrationForm
+from .forms import RegistrationForm, EditUserForm, EditStudentForm
+from django.contrib.auth.forms import UserChangeForm
 #from django.contrib.auth.forms import UserCreationForm
 
 import random
@@ -267,20 +268,17 @@ class ProfessorDetailView(generic.DetailView):
         return context
 
 def Registration(request):
+
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
-<<<<<<< HEAD
-=======
-        # form2 = StudentForm(request.POST)
->>>>>>> d2af4a3d48935d31b68894418b7dfd7657613692
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            student = Student()
-            student.user = user
-            student.save()
+            # student = Student()
+            # student.user = user
+            # student.save()
             login(request, user)
             return redirect('/')
 
@@ -300,6 +298,46 @@ def Registration(request):
         form = UserCreationForm()
     args = {'form': form}
     return render(request, 'register.html', args)'''
+
+def EditProfile(request):
+    user = request.user
+    if request.method == 'POST':
+        user_form = EditUserForm(request.POST)
+        student_form = EditStudentForm(request.POST)
+        # student = request.user.student
+        if user_form.is_valid() and student_form.is_valid():
+            #form.save()
+            first_name = user_form.cleaned_data['first_name']
+            last_name = user_form.cleaned_data['last_name']
+            email = user_form.cleaned_data['email']
+
+
+            bio = student_form.cleaned_data['bio']
+            major = student_form.cleaned_data['major']
+            concentration = student_form.cleaned_data['concentration']
+            grad_year = student_form.cleaned_data['grad_year']
+            fav_courses = student_form.cleaned_data['fav_courses']
+            current_courses = student_form.cleaned_data['current_courses']
+
+            user.first_name = first_name
+            user.last_name = last_name
+            user.email = email
+            user.save()
+            user.student.bio = bio
+            user.student.major = major
+            user.student.concentration = concentration
+            user.student.grad_year = grad_year
+            user.student.fav_courses = fav_courses
+            user.student.current_courses = current_courses
+            user.student.save()
+
+            return redirect('/classes')
+
+    else:
+        user_form = EditUserForm()
+        student_form = EditStudentForm()
+    context = {'user_form': user_form, 'student_form': student_form}
+    return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES
 
 
 

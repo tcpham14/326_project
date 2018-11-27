@@ -73,7 +73,7 @@ class Student(models.Model):
     # A character field for their password.
     major = models.ForeignKey(Subject, on_delete=models.SET_NULL, null=True, default='')
     # A CharField for the user's concentration within their major
-    concentration = models.CharField(max_length=100, default='NA')
+    concentration = models.CharField(max_length=100, default='Software Engineering')
     # A list for the classes that were favorited
     fav_courses = models.ManyToManyField(Class, help_text="Select the classes this user favorites", related_name='fav_courses')
     # A list for the classes that the user is currently taking
@@ -83,9 +83,9 @@ class Student(models.Model):
     # A charField for the user's graduation year
     grad_year = models.CharField(max_length=100, default="2020")
     # of classes taken by this user
-    num_classes_taken = models.TextField(max_length=1000, help_text="# of classes taken by this user", default = "")
+    num_classes_taken = models.CharField(max_length=1000, help_text="# of classes taken by this user", default = "")
     # of reviews this user liked
-    num_liked_reviews = models.TextField(max_length=1000, help_text="# of reviews this user liked", default = "")
+    num_liked_reviews = models.CharField(max_length=1000, help_text="# of reviews this user liked", default = "")
     # A particular id for this user
     student_id = models.CharField(
         primary_key=True,
