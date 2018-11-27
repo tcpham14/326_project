@@ -159,7 +159,6 @@ class Feedback(models.Model):
     # A 
     date = models.DateField(null=True, blank=True)
 
-
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {self.last_name}"

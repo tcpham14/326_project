@@ -7,6 +7,8 @@ from django.db.models import Count
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .forms import RegistrationForm
 #from django.contrib.auth.forms import UserCreationForm
 
@@ -297,18 +299,9 @@ def Registration(request):
     args = {'form': form}
     return render(request, 'register.html', args)'''
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+class FeedbackCreate(CreateView):
+    model = Feedback
+    template_name = "feedback_form.html"
+    fields = '__all__'
+    initial = {'date': '11/26/2018'}
+    success_url = reverse_lazy('classes')
