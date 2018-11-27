@@ -120,7 +120,7 @@
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; float left">Login</button>
 
-                <input type="hidden" name="next" value="/user/{{ request.user.student.student_id }}" />
+                <input type="hidden" name="next" value="/user/{{ request.user.student.student_id }}"/>
 
             </div>
 
@@ -128,6 +128,10 @@
 
         <div class="px-4" style="width: 90%; margin:auto">
             <a href="/accounts/register"><button class="btn btn-success" style="width: 100%; float: center;">Create Account</button></a>
+        </div>
+        <br>
+        <div class="px-4" style="width: 90%; margin:auto">
+            <a href="/accounts/password_reset"><button class="btn btn-danger" style="width: 100%; float: center;">Reset Password</button></a>
         </div>
         
     </div>
