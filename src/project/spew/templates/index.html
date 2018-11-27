@@ -68,10 +68,10 @@
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_1.user.get_absolute_url }}">{{ feedback_1.user }}</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_2.student.get_absolute_url }}">{{ feedback_2.student.user.first_name }}</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow" style="color: white">{{ feedback_1.comment }}</p>
+                                        <p class="drop-shadow" style="color: white">{{ feedback_2.comment }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -104,10 +104,10 @@
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_2.user.get_absolute_url }}">{{ feedback_2.user }}</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_1.student.get_absolute_url }}">{{ feedback_1.student.user.first_name }}</a>
                                             said:</h6>
 
-                                        <p class="drop-shadow" style="color: white">{{ feedback_2.comment }}</p>
+                                        <p class="drop-shadow" style="color: white">{{ feedback_1.comment }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,7 @@
                                     <div class="col-sm-6">
                                         <h5 class="drop-shadow" style="color: white">Popular Reviews</h5>
                                         <!-- <div class="fakeimg">Fake Image</div> -->
-                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_3.user.get_absolute_url }}">{{ feedback_3.user }}</a>
+                                        <h6 class="drop-shadow" style="color: white"><a class="drop-shadow" style="color:white" href="{{ feedback_3.student.get_absolute_url }}">{{ feedback_3.student.user.first_name }}</a>
                                             said:</h6>
 
                                         <p class="drop-shadow" style="color: white">{{ feedback_3.comment }}</p>
@@ -207,7 +207,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                                <p style="float:left">{{ popular_feedback_list.0.comment }}<a href="{{ popular_user_list.0.get_absolute_url }}"><br>- {{ popular_user_list.0.first_name }}</a></p>
+                                {% comment %} <p style="float:left">{{ popular_feedback_list.0.comment }}<a href="{{ popular_user_list.0.get_absolute_url }}"><br>- {{ popular_user_list.0.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -227,7 +227,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                                <p style="float:left">{{ popular_feedback_list.1.comment }}<a href="{{ popular_user_list.1.get_absolute_url }}"><br>- {{ popular_user_list.1.first_name }}</a></p>
+                                {% comment %} <p style="float:left">{{ popular_feedback_list.1.comment }}<a href="{{ popular_user_list.1.get_absolute_url }}"><br>- {{ popular_user_list.1.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -247,7 +247,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                                <p style="float:left">{{ popular_feedback_list.2.comment }}<a href="{{ popular_user_list.2.get_absolute_url }}"><br>- {{ popular_user_list.2.first_name }}</a></p>
+                                {% comment %} <p style="float:left">{{ popular_feedback_list.2.comment }}<a href="{{ popular_user_list.2.get_absolute_url }}"><br>- {{ popular_user_list.2.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -267,7 +267,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                                <p style="float:left">{{ popular_feedback_list.3.comment }}<a href="{{ popular_user_list.3.get_absolute_url }}"><br>- {{ popular_user_list.3.first_name }}</a></p>
+                                {% comment %} <p style="float:left">{{ popular_feedback_list.3.comment }}<a href="{{ popular_user_list.3.get_absolute_url }}"><br>- {{ popular_user_list.3.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -287,7 +287,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5"> 
-                        <p style="float:left">{{ popular_feedback_list.4.comment }}<a href="{{ popular_user_list.4.get_absolute_url }}"><br>- {{ popular_user_list.4.first_name }}</a></p>
+                        {% comment %} <p style="float:left">{{ popular_feedback_list.4.comment }}<a href="{{ popular_user_list.4.get_absolute_url }}"><br>- {{ popular_user_list.4.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -316,7 +316,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                        <p style="float:left">{{ highest_rated_feedback_list.0.comment }}<a href="{{ highest_rated_user_list.0.get_absolute_url }}"><br>- {{ highest_rated_user_list.0.first_name }}</a></p>
+                        {% comment %} <p style="float:left">{{ highest_rated_feedback_list.0.comment }}<a href="{{ highest_rated_user_list.0.get_absolute_url }}"><br>- {{ highest_rated_user_list.0.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -336,7 +336,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                        <p style="float:left">{{ highest_rated_feedback_list.1.comment }}<a href="{{ highest_rated_user_list.1.get_absolute_url }}"><br>- {{ highest_rated_user_list.1.first_name }}</a></p>
+                        {% comment %} <p style="float:left">{{ highest_rated_feedback_list.1.comment }}<a href="{{ highest_rated_user_list.1.get_absolute_url }}"><br>- {{ highest_rated_user_list.1.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -356,7 +356,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                        <p style="float:left">{{ highest_rated_feedback_list.2.comment }}<a href="{{ highest_rated_user_list.2.get_absolute_url }}"><br>- {{ highest_rated_user_list.2.first_name }}</a></p>
+                        {% comment %} <p style="float:left">{{ highest_rated_feedback_list.2.comment }}<a href="{{ highest_rated_user_list.2.get_absolute_url }}"><br>- {{ highest_rated_user_list.2.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -376,7 +376,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                        <p style="float:left">{{ highest_rated_feedback_list.3.comment }}<a href="{{ highest_rated_user_list.3.get_absolute_url }}"><br>- {{ highest_rated_user_list.3.first_name }}</a></p>
+                        {% comment %} <p style="float:left">{{ highest_rated_feedback_list.3.comment }}<a href="{{ highest_rated_user_list.3.get_absolute_url }}"><br>- {{ highest_rated_user_list.3.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>
@@ -396,7 +396,7 @@
                                 {% endif %}
                             </div>
                             <div class="col-md-5">
-                        <p style="float:left">{{ highest_rated_feedback_list.4.comment }}<a href="{{ highest_rated_user_list.4.get_absolute_url }}"><br>- {{ highest_rated_user_list.4.first_name }}</a></p>
+                        {% comment %} <p style="float:left">{{ highest_rated_feedback_list.4.comment }}<a href="{{ highest_rated_feedback_list.4.student.get_absolute_url }}"><br>- {{ highest_rated_feedback_list.4.student.user.first_name }}</a></p> {% endcomment %}
                             </div>
                         </div>
                     </li>

@@ -101,12 +101,12 @@ class Student(models.Model):
 
     def get_absolute_url(self):
         """Returns the url to access a particular author instance."""
-        return reverse("user-detail", args=[str(self.user_id)])
+        return reverse("user-detail", args=[str(self.student_id)])
 
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {se lf.last_name}"
-        return '%s' % (self.user)
+        return '%s' % (self.student)
 
 class Professor(models.Model):
     """Model representing the Professor."""
