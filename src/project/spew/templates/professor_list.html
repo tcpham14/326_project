@@ -26,7 +26,7 @@
 <ul>
   {% for prof in professor_list %}
   <li>
-    <a href="{{ user.get_absolute_url }}">{{ prof.first_name }} {{ prof.last_name }}</a>
+    <a href="{{ prof.get_absolute_url }}">{{ prof.first_name }} {{ prof.last_name }}</a>
   </li>
   {% endfor %}
 </ul>
