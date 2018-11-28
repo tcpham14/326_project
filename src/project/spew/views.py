@@ -275,7 +275,7 @@ class ProfessorDetailView(generic.DetailView):
 
 
         context = super(ProfessorDetailView, self).get_context_data(**kwargs)
-        context['courses_taught'] = Class.objects.filter(professor=pk).all()
+        context['courses_taught'] = zip(course_list, taught_course_ratings)
         return context
 
 def Registration(request):
