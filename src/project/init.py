@@ -234,8 +234,8 @@ for subject_name in classes:
 ######################################
 
 new_group, created = Group.objects.get_or_create(name='Student')
-#ct = ContentType.objects.get_for_model(Feedback)
-#permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
+ct = ContentType.objects.get_for_model(Feedback)
+permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
 users = []
 print("Generated users:")
 for a in range(1,10):
@@ -247,7 +247,7 @@ for a in range(1,10):
     user = User.objects.create_user(username, email, password)
     user.first_name = s_fname
     user.last_name = s_lname
-    #user.user_permissions.add(permission)
+    user.user_permissions.add(permission)
     user.groups.add(new_group)
     user.save()
     users.append(user)
