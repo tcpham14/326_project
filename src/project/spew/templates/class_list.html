@@ -21,13 +21,17 @@
 <h1>Class List</h1>
 
 {% if class_list %}
+<table>
 <ul>
   {% for class in class_list %}
-  <li>
-    <a href="{{ class.get_absolute_url }}">{{ class.subject }} {{ class.code }}</a> ({{class.title}})
-  </li>
+  <tr>
+  {% comment %} <li> {% endcomment %}
+    <td><a href="{{ class.get_absolute_url }}">{{ class.subject }} {{ class.code }} </a></td> <td>{{class.title}} </td>
+  {% comment %} </li> {% endcomment %}
+  </tr>
   {% endfor %}
 </ul>
+</table>
 {% else %}
 <p>There are no classes available at the moment.</p>
 {% endif %}       

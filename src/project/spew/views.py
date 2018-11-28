@@ -187,6 +187,12 @@ def SearchResults(request):
 class ClassListView(generic.ListView):
     model = Class
     template_name = "class_list.html"
+    # def get_context_data(self, **kwargs):
+    #     pk = self.kwargs.get(self.pk_url_kwarg, None)
+    #     context = super(ClassListView, self).get_context_data(**kwargs)
+    #     # context['class_feedback'] = Feedback.objects.filter(course=pk)
+    #     context['professor'] = Professor.objects.filter(course=pk).all()
+    #     return context
 
 
 class ClassDetailView(generic.DetailView):
@@ -197,6 +203,7 @@ class ClassDetailView(generic.DetailView):
         pk = self.kwargs.get(self.pk_url_kwarg, None)
         context = super(ClassDetailView, self).get_context_data(**kwargs)
         context['class_feedback'] = Feedback.objects.filter(course=pk)
+        context['professor'] = Professor.objects.filter(course=pk).all()
         return context
 
 
@@ -245,6 +252,7 @@ class UserDetailView(generic.DetailView):
         context['feedback_count'] = Feedback.objects.filter(student=pk).count()
         context['favorite_courses'] = zip(fav_list, fav_average_ratings)
         context['current_courses'] = zip(current_list, current_average_ratings)
+        
         context['student_id1'] = pk
         context['student_id2'] = Student.objects.filter(user=self.request.user)[0].student_id
 

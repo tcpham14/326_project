@@ -82,9 +82,7 @@
                         <div class="card-body">
                             <div class="row">  
                                 <div class="col-sm-4">
-                                    <div class="col-md-1" style="flex: 0 0 230px; z-index: 3; top: 5px;">
-                                        <img class="rounded-circle" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="230" height="230" style="margin-bottom: 30px; border: 3px solid #3887ff">
-                                    </div> 
+                                    <img class="align-middle" align="center" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="200" height="200" style="margin-bottom: 30px; border: 3px solid #3887ff">
                                 </div>
                                 <div class="col-sm-8">
                                     <h2 style="margin-left: 50px; margin-top: 10px">{{ professor.first_name }} {{ professor.last_name }}</h2>
@@ -123,7 +121,7 @@
                         <tr>
                             <td>Course Number</td>
                             <td>Course Name</td>
-                            <td>Average Rating</td>
+                            {% comment %} <td>Average Rating</td> {% endcomment %}
                         </tr>
                     {% for row in courses_taught %}
                     <tr>
