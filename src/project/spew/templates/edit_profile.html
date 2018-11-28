@@ -111,9 +111,31 @@
 
                     <table>
                         {% csrf_token %}
-                        {{ user_form.as_table }}
-                        {{ student_form.as_table }}
+                                                {{ user_form.as_table }}
+                                                {{ student_form.as_table }}
+
+                        {% comment %} <label for="{{ student_form.bio }}">Email subject:</label> {% endcomment %}
+                        
+                        {% comment %} <table>
+                        <tr><td>{{ user_form.first_name }}</td></tr>
+                        <tr><td>{{ user_form.last_name }}</td></tr>
+                        <tr><td>{{ user_form.email }}</td></tr>
+                        <tr><td>{{ student_form.bio }}</td></tr>
+                        <tr><td>{{ student_form.major }}</td></tr>
+                        <tr><td>{{ student_form.concentration }}</td></tr>
+                        <tr><td>{{ student_form.grad_year }}</td></tr> {% endcomment %}
+{% comment %} </table> {% endcomment %}
                     </table>
+                    {% comment %} {% for field in student_form %} {% endcomment %}
+        {% comment %} <div class="col-md-12 dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ field.label_tag }}
+                <span class="caret"></span>
+            </button>
+            <div class="dropdown-menu">
+                <div><a href="#">{{ field }}</a></div>
+            </div>
+        </div> {% endcomment %}
+    {% comment %} {% endfor %} {% endcomment %}
 
                 </div>
 
