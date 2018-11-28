@@ -283,13 +283,13 @@ class ProfessorDetailView(generic.DetailView):
 
 
         context = super(ProfessorDetailView, self).get_context_data(**kwargs)
-        context['courses_taught'] = Class.objects.filter(professor=pk).all()
+        context['courses_taught'] = zip(course_list, taught_course_ratings)
         return context
 
 def Registration(request):
 
-    #ct = ContentType.objects.get_for_model(Feedback)
-    #permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
+    ct = ContentType.objects.get_for_model(Feedback)
+    permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
     if request.method == 'POST':
         print('POSTING REG \n')
         form = RegistrationForm(request.POST)
@@ -298,10 +298,7 @@ def Registration(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            # student = Student()
-            # student.user = user
-            # student.save()
-            #user.user_permissions.add(permission)
+            user.user_permissions.add(permission)
             user.save()
             student = Student()
             student.user = user
