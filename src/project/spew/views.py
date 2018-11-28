@@ -355,55 +355,13 @@ def EditProfile(request):
             student.current_courses.set(current_courses)
             student.save()
 
-            return redirect('/classes')
+            return redirect('/user/' + request.user.student.student_id)
 
     else:
         user_form = EditUserForm()
         student_form = EditStudentForm()
     context = {'user_form': user_form, 'student_form': student_form}
     return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES
-
-
-
-# def EditProfile(request):
-#     user = request.user
-#     if request.method == 'POST':
-#         user_form = EditUserForm(request.POST)
-#         student_form = EditStudentForm(request.POST)
-#         # student = request.user.student
-#         if user_form.is_valid() and student_form.is_valid():
-#             #form.save()
-#             first_name = user_form.cleaned_data['first_name']
-#             last_name = user_form.cleaned_data['last_name']
-#             email = user_form.cleaned_data['email']
-
-
-#             bio = student_form.cleaned_data['bio']
-#             major = student_form.cleaned_data['major']
-#             concentration = student_form.cleaned_data['concentration']
-#             grad_year = student_form.cleaned_data['grad_year']
-#             fav_courses = student_form.cleaned_data['fav_courses']
-#             current_courses = student_form.cleaned_data['current_courses']
-
-#             user.first_name = first_name
-#             user.last_name = last_name
-#             user.email = email
-#             user.save()
-#             user.student.bio = bio
-#             user.student.major = major
-#             user.student.concentration = concentration
-#             user.student.grad_year = grad_year
-#             user.student.fav_courses = fav_courses
-#             user.student.current_courses = current_courses
-#             user.student.save()
-
-#             return redirect('/classes')
-
-#     else:
-#         user_form = EditUserForm()
-#         student_form = EditStudentForm()
-#     context = {'user_form': user_form, 'student_form': student_form}
-#     return render(request, "edit_profile.html", context) ##THIS IS HWERE HTE PAGE GOES'''
 
 
 class FeedbackCreate(PermissionRequiredMixin, CreateView):
