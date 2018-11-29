@@ -18,7 +18,7 @@ Spew is an innovative student-driven database centered around finding the perfec
 * Taesan Yoon
 
 # VIDEO LINK 
-
+https://youtu.be/rIquJKyS6OA
 
 # DESIGN OVERVIEW
 
@@ -38,6 +38,6 @@ In terms of user interaciton with forms, we have added a login form, a registrat
 * Miscommunication on github repo management 
 
 # Team Choice
-
+Adding a "Like" system to like reviews
 
 

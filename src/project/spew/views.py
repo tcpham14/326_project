@@ -13,7 +13,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth.models import Permission
+from django.contrib.auth.models import Permission, Group
 from datetime import datetime
 from django.utils.formats import get_format
 from .forms import RegistrationForm
@@ -310,6 +310,7 @@ class ProfessorDetailView(generic.DetailView):
 
 def Registration(request):
 
+    stu_group, created = Group.objects.get_or_create(name='Student')
     ct = ContentType.objects.get_for_model(Feedback)
     permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
     if request.method == 'POST':
@@ -321,6 +322,7 @@ def Registration(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             user.user_permissions.add(permission)
+            user.groups.add(stu_group)
             user.save()
             student = Student()
             student.user = user
