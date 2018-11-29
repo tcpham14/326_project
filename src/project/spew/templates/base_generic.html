@@ -71,7 +71,8 @@
                     <a href="/search_results"><button type="button" class="btn btn-primary btn btn-block">Search</button></a>
 
                 </form>
-                
+                <a class="nav-link" href="/accounts/logout">Welcome, {{ request.user.first_name }}</a>
+
                 <a class="navbar-brand" style="color: white"><img src="{% static 'imgs/download.png' %}" width="32px"></a>
                                         {% if request.user.is_authenticated %}
 
