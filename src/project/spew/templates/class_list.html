@@ -1,34 +1,148 @@
 {% extends "base_generic.html" %}
+{% block title %}Class List{% endblock %}
+
 {% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="en">
 {% block content %}
-  <head>
-    <title>Class Info</title>
+
+<head style="background-color: yellow">
+    <title>Spew@UMass</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/class_style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<h1>Class List</h1>
+    <style>
+        .fakeimg {
+                  height: 200px;
+                  background: #aaa;
+              }
+              </style>
+    <style>
+        .pagination a{
+                        color:black;
+                        float:none;
+                        padding:8px 16px;
+                        text-decoration:none;
+                    }
+                    .pagination a.active{
+                        background-color:#4CAF50;
+                        color:white;
+                    }
+                    .pagination a:hover:not(.active){background-color:#ddd;}
+                </style>
+</head>
 
-{% if class_list %}
-<ul>
-  {% for class in class_list %}
-  <li>
-    <a href="{{ class.get_absolute_url }}">{{ class.subject }} {{ class.code }}</a> ({{class.title}})
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>There are no classes available at the moment.</p>
-{% endif %}       
+<body>
+
+    <div id="carousel" class="carousel-main container-fluid">
+        <div class="row">
+            <div id="myCarousel" class="carousel slide mx-auto" style="</*padding-right:50px; padding-left: 50px*/"
+                data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-pic1 carousel-item active">
+
+                    </div>
+                    <div class="carousel-pic2 carousel-item">
+                                
+                    </div>
+                    <div class="carousel-pic3 carousel-item">
+                                
+                    </div>
+                </div>
+
+                <a class="carousel-control-prev" style="margin-left: 0px;" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" style="margin-right: 0px;" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+                <ul class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        
+    <br>
+    <br>
+    <div class="container info" style="border: 4px solid white; top: 100px">
+        <hgroup class="mb20" style="margin: 35px; margin-bottom: 80px">
+            <h2>Classes</h2>
+        </hgroup>
+
+        {% for class in list %}
+
+        <section class="col-xs-12 col-sm-6 col-md-12">
+            <article class="search-result row">
+                <div class="col-xs-12 col-sm-12 col-md-3">
+                    <ul class="meta-search">
+                        <li><span class="text-success">Course Subject</span></li>
+                        <h6>{{ class.0.subject.subject_name }}</h6>
+                        <hr>
+                        <li><span class="text-success">Credits</span></li>
+                        <h6>{{ class.0.num_credits }}</h6>
+                        <hr>
+                        <li><span class="text-success">Prerequisites</span></li>
+                        <h6><a href="/class_page" style="color:black;">COMPSCI
+                                    220</a> or <a href="/class_page" style="color:black;">None</a></h6>
+                        <hr>
+                        <li><span class="text-success">Requirements</span><h6>None</h6></li>
+                        <hr>
+                        <li><span class="text-success">Meeting Times</span></li>
+                        <h6>Tue/Thur: 1:00pm-2:15pm</h6>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-8 excerpet">
+                    <h3><a href="{{ class.0.get_absolute_url }}" title="">{{ class.0.subject.subject_name }} {{ class.0.code }}: {{ class.0.title }}</a></h3>
+                    <div style="color: gold">
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                    </div>
+                    <ul>
+                    </ul>
+                    <hr style="background-color: #c6c6c6;">
+                    <h5><a href="{{ class.1.get_absolute_url }}">Instructors(s): {{ class.1.first_name }} {{ class.1.last_name }}</a></h5>
+                    <p>{{ class.0.description }}</p>
+                    <span class="plus"><a href="#" title="Web Programming"><i class="glyphicon glyphicon-plus"></i></a></span>
+                </div>
+                <span class="clearfix borda"></span>
+            </article>
+
+            <hr style="background-color: #c6c6c6;">
+
+        </section>
+
+        {% endfor %}
+        
+    </div>
+    <div class="row d-flex">
+        <ul class="pagination mx-auto" style="margin:20px; justify-content: center;">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>Footer</p>
+    </div>
+</body>
 {% endblock %}
+</html>

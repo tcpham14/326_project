@@ -168,6 +168,21 @@ def advanced_search(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, "advanced_search.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 
+def ClassListView(request):
+
+    classes = []
+    professors = []
+    for lecture in Class.objects.all():
+        prof = random.choice(Professor.objects.all())
+        classes.append(lecture)
+        professors.append(prof)
+
+    context = {
+        'list': zip(classes, professors)
+    }
+
+    return render(request, "class_list.html", context=context) ##THIS IS HWERE HTE PAGE GOES
+
 def SearchResults(request):
 
     classes = []
@@ -184,9 +199,9 @@ def SearchResults(request):
     return render(request, "search_results.html", context=context) ##THIS IS HWERE HTE PAGE GOES
 
 
-class ClassListView(generic.ListView):
+'''class ClassListView(generic.ListView):
     model = Class
-    template_name = "class_list.html"
+    template_name = "class_list.html"'''
 
 
 class ClassDetailView(generic.DetailView):
@@ -208,12 +223,25 @@ class UserListView(generic.ListView):
     model = Student
     template_name = "user_list.html"
 
+    def get_context_data(self, **kwargs):
+
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context['student_user'] = Student.objects.all()
+
+        return context
+
 class UserDetailView(generic.DetailView):
+
     model = Student
     template_name = "profile.html"
 
+    def myView(request):    
+        user = request.user
+        if user.username == 'admin':
+            return redirect('/')
     
     def get_context_data(self, **kwargs):
+
 
         pk = self.kwargs.get(self.pk_url_kwarg, None)
 
@@ -245,14 +273,20 @@ class UserDetailView(generic.DetailView):
         context['feedback_count'] = Feedback.objects.filter(student=pk).count()
         context['favorite_courses'] = zip(fav_list, fav_average_ratings)
         context['current_courses'] = zip(current_list, current_average_ratings)
-        context['student_id1'] = pk
-        context['student_id2'] = Student.objects.filter(user=self.request.user)[0].student_id
+        context['student_id1'] = 1
+        context['student_id2'] = 2
+
+        if self.request.user.username == 'admin' or self.request.user.is_authenticated:
+            context['student_id1'] = pk
+            context['student_id2'] = Student.objects.filter(user=self.request.user)[0].student_id
 
         return context
 
 class ProfessorListView(generic.ListView):
     model = Professor
     template_name = "professor_list.html"
+
+
 
 class ProfessorDetailView(generic.DetailView):
     model = Professor
@@ -280,8 +314,8 @@ class ProfessorDetailView(generic.DetailView):
 
 def Registration(request):
 
-    #ct = ContentType.objects.get_for_model(Feedback)
-    #permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
+    ct = ContentType.objects.get_for_model(Feedback)
+    permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
     if request.method == 'POST':
         print('POSTING REG \n')
         form = RegistrationForm(request.POST)
@@ -290,10 +324,7 @@ def Registration(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
-            # student = Student()
-            # student.user = user
-            # student.save()
-            #user.user_permissions.add(permission)
+            user.user_permissions.add(permission)
             user.save()
             student = Student()
             student.user = user
@@ -320,6 +351,11 @@ def Registration(request):
 
 
 def EditProfile(request):
+
+    if not request.user.is_authenticated:
+        return redirect('/')
+    elif request.user.username == 'admin':
+        return redirect('/')
 
     user = request.user
     if request.method == 'POST':
@@ -355,11 +391,7 @@ def EditProfile(request):
             student.current_courses.set(current_courses)
             student.save()
 
-<<<<<<< HEAD
-            return redirect('/user/' + request.user.student.student_id)
-=======
             return redirect('/user/' + str(user.student.student_id))
->>>>>>> 3acb925af73eaa023bcd579e43b0d08e5092df33
 
     else:
         user_form = EditUserForm(user)

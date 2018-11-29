@@ -11,7 +11,7 @@ from . import forms
 urlpatterns = [
     path("", views.index, name="index"), #HOMEPAGE
     path("users/", views.UserListView.as_view(), name="users"),
-    path("classes/", views.ClassListView.as_view(), name="classes"),
+    path("classes/", views.ClassListView, name="classes"),
     path("professors/", views.ProfessorListView.as_view(), name="professors"),
 
     path("class/<int:pk>/", views.ClassDetailView.as_view(), name="class-detail"),

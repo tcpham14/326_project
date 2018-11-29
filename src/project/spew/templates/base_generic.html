@@ -37,8 +37,6 @@
 
 <body>
     <!-- {% block navbar %} -->
-
-    {{ user.user_student.first_name }}
     
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a href="#" class="navbar-brand navbar-left"><img src="{% static 'imgs/book.png' %}" width="40px"></a>
@@ -58,7 +56,7 @@
                 <a class="nav-link" href="/professors">Professors</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/users">Users</a>
+                <a class="nav-link" href="/users">Students</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/advanced_search">Advanced Search</a>
@@ -79,8 +77,12 @@
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbardrop" href="#">My Account</a>
-                    <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-menu dropdown-menu-right">              
+                        {% if request.user.username == "admin" %}
+                            <a class="dropdown-item" href="/">Profile</a>
+                        {% else %}
                             <a class="dropdown-item" href="/user/{{ request.user.student.student_id }}">Profile</a>
+                        {% endif %}
                         <a class="dropdown-item" href="#">Messages</a>
                         <a class="dropdown-item" href="/edit_profile">Account Settings</a>
                     </div>

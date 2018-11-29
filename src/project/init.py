@@ -200,7 +200,8 @@ for i in range(1, 10):
     p_fname = fake.first_name()
     p_lname = fake.last_name()
     p_contact = fake.phone_number()
-    professor = Professor(prof_id=i, first_name=p_fname, last_name=p_lname, position="professor", contact=p_contact)
+    p_office = str(fake.random_int(0,300)) + ' ' + str(fake.street_name()) + ' ' + str(fake.city()) + ' ' + str(fake.state()) + ' ' + str(fake.zipcode())
+    professor = Professor(prof_id=i, first_name=p_fname, last_name=p_lname, position="Professor", contact=p_contact, office=p_office)
     professor.save()
     professors.append(professor)
     professor_subject = fake.random_int(0, 2)
@@ -234,8 +235,8 @@ for subject_name in classes:
 ######################################
 
 new_group, created = Group.objects.get_or_create(name='Student')
-#ct = ContentType.objects.get_for_model(Feedback)
-#permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
+ct = ContentType.objects.get_for_model(Feedback)
+permission = Permission.objects.get(codename="can_add_feedback", name="Can add feedback", content_type=ct)
 users = []
 print("Generated users:")
 for a in range(1,10):
@@ -247,7 +248,7 @@ for a in range(1,10):
     user = User.objects.create_user(username, email, password)
     user.first_name = s_fname
     user.last_name = s_lname
-    #user.user_permissions.add(permission)
+    user.user_permissions.add(permission)
     user.groups.add(new_group)
     user.save()
     users.append(user)

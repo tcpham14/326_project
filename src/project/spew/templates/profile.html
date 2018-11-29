@@ -83,7 +83,9 @@
                         <div class="card-body">
                             <div class="row">  
                                 <div class="col-sm-4">
-                                    <img class="align-middle" align="center" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="200" height="200" style="margin-bottom: 30px; border: 3px solid #3887ff">
+                                    <div class="col-md-1" style="flex: 0 0 230px; z-index: 3; top: 5px;">
+                                        <img class="rounded-circle" src="{% static 'imgs/profilepic.png' %}" alt="Generic placeholder image" width="230" height="230" style="margin-bottom: 30px; border: 3px solid #3887ff">
+                                    </div> 
                                 </div>
                                 <div class="col-sm-8">
                                 
@@ -112,12 +114,12 @@
                                     <div class="row text-center">
                                         <h6><a>Graduation Class</a></h6>
                                     </div>
+                                    <div class="row text-center">
+                                        <h6><a>Email</a></h6>
+                                    </div>
                                     <hr>
                                     <div class="row text-center">
                                         <h6><a>Written Reviews</a></h6>
-                                    </div>
-                                    <div class="row text-center">
-                                        <h6><a>Liked Reviews</a></h6>
                                     </div>
                                     <div class="row text-center">
                                         <h6><a>Classes Taken</a></h6>
@@ -138,15 +140,16 @@
                                     <div class="row text-center">
                                         <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ student.grad_year }}</a>
                                     </div>
+                                    <div class="row text-center">
+                                        <a style="color: #3887ff; font-size: 16px; margin-bottom: 3px;">{{ student.user.email }}</a>
+                                    </div>
+
                                     <hr>
                                     <div class="row text-center">
                                         <a style="color: #20e216; font-size: 16px; margin-bottom: 3px;">{{ feedback_count }}</a>
                                     </div>
                                     <div class="row text-center">
                                         <a style="color: #20e216; font-size: 16px; margin-bottom: 3px;">{{ student.num_classes_taken }}</a>
-                                    </div>
-                                    <div class="row text-center">
-                                        <a style="color: #20e216; font-size: 16px; margin-bottom: 3px; margin-bottom: 100px">{{ student.num_liked_reviews }}</a>
                                     </div>
 
                                 </div>
