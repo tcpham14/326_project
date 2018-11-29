@@ -75,9 +75,9 @@ class Student(models.Model):
     # A CharField for the user's concentration within their major
     concentration = models.CharField(max_length=100, default='Software Engineering')
     # A list for the classes that were favorited
-    fav_courses = models.ManyToManyField(Class, help_text="Select the classes this user favorites", related_name='fav_courses')
+    fav_courses = models.ManyToManyField(Class, blank = True, help_text="Select the classes this user favorites", related_name='fav_courses')
     # A list for the classes that the user is currently taking
-    current_courses = models.ManyToManyField(Class, help_text="Select the classes this user is currently taking", related_name='current_courses')
+    current_courses = models.ManyToManyField(Class, blank = True, help_text="Select the classes this user is currently taking", related_name='current_courses')
     # A textfield for the user's biography
     bio = models.TextField(max_length=1000, help_text="Enter a bio for this user", default = "")
     # A charField for the user's graduation year
