@@ -1,4 +1,4 @@
-from .models import Student, Class
+from .models import Student, Class, Subject
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm
@@ -46,17 +46,21 @@ class EditStudentForm(forms.ModelForm):
     #     super(EditStudentForm, self).__init__(*args, **kwargs)
     #     if exp:
     #         self.fields['bio'].initial = exp
+    fav_courses = forms.ModelMultipleChoiceField(queryset=Class.objects.all(), widget=forms.CheckboxSelectMultiple())
+    current_courses = forms.ModelMultipleChoiceField(queryset=Class.objects.all(), widget=forms.CheckboxSelectMultiple())
+    major = forms.ModelChoiceField(queryset = Subject.objects.all())
     def __init__(self, user, *args, **kwargs):
         """If no initial data, provide some defaults."""
-        initial = kwargs.get('initial', {})
-        initial['bio'] = user.student.bio
-        # initial['major'] = 
-        initial['concentration'] = user.student.concentration
-        # initial['fav_courses'] = user.student.fav_courses
-        # initial['current_courses'] = user.student.current_courses
-        initial['grad_year'] = user.student.grad_year
-        kwargs['initial'] = initial
         super(EditStudentForm, self).__init__(*args, **kwargs)
+        # initial = kwargs.get('initial', {})
+        self.fields['bio'].initial = user.student.bio
+        self.fields['major'].initial = user.student.major
+        self.fields['concentration'].initial = user.student.concentration
+        self.fields['fav_courses'].initial = user.student.fav_courses.all()
+        self.fields['current_courses'].initial = user.student.current_courses.all()
+        self.fields['grad_year'].initial = user.student.grad_year
+        # kwargs['initial'] = initial
+
     class Meta:
         model = Student
         fields = ['bio', 'major', 'concentration', 'fav_courses', 'current_courses', 'grad_year']

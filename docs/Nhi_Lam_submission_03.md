@@ -1,0 +1,5 @@
+For this project subission, I worked on various areas of our website. First, I edited our user model, working alongside Lucas to include another StudentUser model that extends User and contains the fields that are not included in User what we felt was necessary for our users to have. With this, I created fake users from within the code, and then working with the StudentUser from there.
+
+In addition, I created the feedback form for users to create feedback. The form automatically initializes the student and the date, which are two things the user shouldn't be able to change. This is for the requirement for having the users to create new data.
+
+After that, I worked on the permissions for users. In order to create feedback, the user has to have a registered account, or else it will redirect the user to the log-in page. Each user is also added to the group Student. Towards the end, I worked on some fixes for the professor page (wasn't showing average ratings for classes). Throughout the project, however, I assisted with research and various troubleshooting during working sessions with the other group members.
