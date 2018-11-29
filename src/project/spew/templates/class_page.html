@@ -167,8 +167,13 @@
                 <p style="font-size: 30px; margin: 20px">Reviews</p>
 
                 {% for feedback in class_feedback %}
-                <p style="font-size: 18px; margin: 20px; margin-bottom: 10px; font-weight: bold"><a href="{{ feedback.student.get_absolute_url }}">{{ feedback.student.user.first_name }} {{ feedback.student.user.last_name }}</a></p>
-                <p style="font-size: 14px; margin: 20px;">{{ feedback.comment }}</p>
+                <p style="font-size: 18px; margin: 0px; margin-bottom: 10px; margin-left: 20px; font-weight: bold;"><a href="{{ feedback.student.get_absolute_url }}">{{ feedback.student.user.first_name }} {{ feedback.student.user.last_name }}</a></p>
+                <p style="font-size: 14px; margin: 0px; margin-left: 20px; margin-bottom: 5px">{{ feedback.comment }}</p>
+                <div style="position: relative; bottom: 16px; right: 4px">
+                    <form class="px-4 py-3" method="post" style="height: 30px;">
+                        <button type="submit" class="btn btn-primary" style="width: 45px; height: 20px;"><h1 style="font-size: 8px">Like</h1></button>
+                    </form>
+                </div>
                 {% endfor %}
 
 

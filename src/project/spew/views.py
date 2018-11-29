@@ -197,19 +197,7 @@ def SearchResults(request):
     }
 
     return render(request, "search_results.html", context=context) ##THIS IS HWERE HTE PAGE GOES
-
-
-class ClassListView(generic.ListView):
-    model = Class
-    template_name = "class_list.html"
-
-    def get_context_data(self, **kwargs):
-         pk = self.kwargs.get(self.pk_url_kwarg, None)
-         context = super(ClassListView, self).get_context_data(**kwargs)
-         # context['class_feedback'] = Feedback.objects.filter(course=pk)
-         context['professor'] = Professor.objects.filter(course=pk).all()
-         return context
-
+    
 
 class ClassDetailView(generic.DetailView):
     model = Class

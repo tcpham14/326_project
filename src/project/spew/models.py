@@ -166,3 +166,18 @@ class Feedback(models.Model):
         """String for representing the Model object."""
         #return f"{self.first_name}, {self.last_name}"
         return '%s %s %s' % (self.student, self.comment, self.rating)
+
+class Like(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    review = models.ForeignKey(Feedback, on_delete=models.SET_NULL, null=True)
+    liked = models.BooleanField(default=False)
+
+
+
+
+
+
+
+
+
