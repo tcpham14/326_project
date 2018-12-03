@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from spew.models import Student, Class, Professor, Feedback, Subject
+from spew.models import Student, Class, Professor, Feedback, Subject, Like
 from django.views import generic
 from django.views import generic
 from django.db.models import Count
@@ -204,16 +204,27 @@ class ClassDetailView(generic.DetailView):
     template_name = "class_page.html"
 
     def get_context_data(self, **kwargs):
+
         pk = self.kwargs.get(self.pk_url_kwarg, None)
         context = super(ClassDetailView, self).get_context_data(**kwargs)
         context['class_feedback'] = Feedback.objects.filter(course=pk)
         context['professor'] = Professor.objects.filter(course=pk).all()
+
         return context
 
+    def post(self, request, *args, **kwargs):
 
-'''class SearchResults(generic.ListView):
-   model = Class
-   template_name = "search_results.html"'''
+        liked_student_id = request.POST.get("liked_student_id", "")
+        liked_course_id = request.POST.get("liked_course_id", "")
+        f_course = Class.objects.filter(class_id=liked_course_id)[0]
+        f_student = Student.objects.filter(student_id=liked_student_id)[0]
+        f_feedback = Feedback.objects.filter(course=f_course, student=f_student)[0]
+        like = Like(review=f_feedback, student=f_student, liked=True)
+
+        self.object = self.get_object()
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
+
 
 class UserListView(generic.ListView):
     model = Student

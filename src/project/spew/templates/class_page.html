@@ -171,7 +171,11 @@
                 <p style="font-size: 14px; margin: 0px; margin-left: 20px; margin-bottom: 5px">{{ feedback.comment }}</p>
                 <div style="position: relative; bottom: 16px; right: 4px">
                     <form class="px-4 py-3" method="post" style="height: 30px;">
+                        {% csrf_token %}
                         <button type="submit" class="btn btn-primary" style="width: 45px; height: 20px;"><h1 style="font-size: 8px">Like</h1></button>
+                        <input type="hidden" name="liked_student_id" value="{{ feedback.student }}">
+                        <input type="hidden" name="liked_course_id" value="{{ feedback.course }}">
+                        {% csrf_token %}
                     </form>
                 </div>
                 {% endfor %}

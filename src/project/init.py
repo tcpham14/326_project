@@ -7,7 +7,7 @@ from faker import Faker
 from django.contrib.contenttypes.models import ContentType
 import random
 
-from spew.models import Professor, Student, Feedback, Subject, Class
+from spew.models import Professor, Student, Feedback, Subject, Class, Like
 
 fake = Faker()
 
@@ -359,6 +359,13 @@ for professor in professors:
         used_comments.append(r2_int)
         used_users.append(u_int)
 
+################################################
+########### CREATION OF LIKE OBJECTS ###########
+################################################
+
+for l_feedback in course_feedbacks:
+    for l_student in students:
+        like = Like(student=l_student, review=l_feedback, liked=False)
 
 
 

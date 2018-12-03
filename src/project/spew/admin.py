@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from spew.models import Class, Professor, Feedback, Subject, Student
+from spew.models import Class, Professor, Feedback, Subject, Student, Like
 
 #admin.site.register(Genre)
 
@@ -92,6 +92,24 @@ class ClassAdmin(admin.ModelAdmin):
     # inlines = [ProfessorInline]
     inlines = [FeedbackInline, MembershipInline]
 
+
+@admin.register(Like)
+class LikeAdmin(admin.ModelAdmin):
+    # By setting the list_display variable in an Admin class will have
+    # it display only the fields in the model that are
+    # specified. Notice that we do not specify the genre field for
+    # this Admin class because it is a many-to-many field. This can be
+    # a costly operation when accessing the database. So, we have it
+    # display the results of a function call (display_genre) - see the
+    # defintion of this function in the Book class in models.py.
+    list_display = ["student", "review", "liked"] #need to add the professor
+    fields = ["student", "review", "liked"]
+    # This allows us to display information about the corresponding
+    # book instances of this book. It is clearly useful to be able to
+    # see which book instances we have for a book. Because the
+    # BookInstance model defines a "foreign key" on Book, Django will
+    # automatically be able to look up the associated book instances.
+    # inlines = [ProfessorInline]
 
 
 @admin.register(Professor)

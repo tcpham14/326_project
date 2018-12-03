@@ -54,7 +54,7 @@ class Class(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {se lf.last_name}"
-        return '%s %s' % (self.subject, self.code)
+        return '%s' % (self.class_id)
 
 
 class Student(models.Model):
@@ -106,7 +106,7 @@ class Student(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {se lf.last_name}"
-        return '%s' % (self.user.username)
+        return '%s' % (self.student_id)
 
 class Professor(models.Model):
     """Model representing the Professor."""
@@ -158,6 +158,7 @@ class Feedback(models.Model):
     rating = models.CharField(max_length=100, help_text="Give a rating from 1 to 5")
     # A 
     date = models.DateField(null=True, blank=True)
+    # primary key for feedback
     
     class Meta:
         permissions = (("can_add_feedback", "Can add feedback"),)
@@ -169,8 +170,8 @@ class Feedback(models.Model):
 
 class Like(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    review = models.ForeignKey(Feedback, on_delete=models.SET_NULL, null=True)
+    student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True, default='')
+    review = models.ForeignKey(Feedback, on_delete=models.SET_NULL, null=True, default='')
     liked = models.BooleanField(default=False)
 
 
