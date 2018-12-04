@@ -241,7 +241,12 @@ class ClassDetailView(generic.DetailView):
             like.liked = False
         else:
             like.liked = True
+
         like.save()
+        f_feedback = Feedback.objects.filter(course=f_course, student=f_student)[0]
+        if (request.user.has_perm('spew.can_add_feedback')):
+            like = Like(review=f_feedback, student=f_student, liked=True)
+            like.save()
 
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
