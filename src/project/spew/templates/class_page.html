@@ -167,14 +167,24 @@
                 <p style="font-size: 30px; margin: 20px">Reviews</p>
 
                 {% for feedback in class_feedback %}
-                <p style="font-size: 18px; margin: 0px; margin-bottom: 10px; margin-left: 20px; font-weight: bold;"><a href="{{ feedback.student.get_absolute_url }}">{{ feedback.student.user.first_name }} {{ feedback.student.user.last_name }}</a></p>
-                <p style="font-size: 14px; margin: 0px; margin-left: 20px; margin-bottom: 5px">{{ feedback.comment }}</p>
-                <div style="position: relative; bottom: 16px; right: 4px">
+                <p style="font-size: 18px; margin: 0px; margin-bottom: 10px; margin-left: 20px; font-weight: bold;"><a href="{{ feedback.student.get_absolute_url }}">{{ feedback.0.student.user.first_name }} {{ feedback.0.student.user.last_name }}</a></p>
+                <p style="font-size: 14px; margin: 0px; margin-left: 20px; margin-bottom: 12px">{{ feedback.0.comment }}</p>
+                <div style="position: relative; bottom: 16px; right: 4px; margin-bottom: 15px">
                     <form class="px-4 py-3" method="post" style="height: 30px;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-primary" style="width: 45px; height: 20px;"><h1 style="font-size: 8px">Like</h1></button>
-                        <input type="hidden" name="liked_student_id" value="{{ feedback.student }}">
-                        <input type="hidden" name="liked_course_id" value="{{ feedback.course }}">
+                        {% if feedback.2 == True %}
+                        <h8><button type="submit" class="btn btn-primary" style="width: 60px; height: 25px;"><h1 style="font-size: 10px">Unlike</h1></button>
+                        {% else %}
+                        <h8><button type="submit" class="btn btn-primary" style="width: 60px; height: 25px;"><h1 style="font-size: 10px">Like</h1></button>
+                        {% endif %}
+                        {{ feedback.1 }} 
+                        {% if feedback.1 == 1 %}
+                        like</h8>
+                        {% else %}
+                        likes</h8>
+                        {% endif %}
+                        <input type="hidden" name="liked_student_id" value="{{ feedback.0.student }}">
+                        <input type="hidden" name="liked_course_id" value="{{ feedback.0.course }}">
                         {% csrf_token %}
                     </form>
                 </div>

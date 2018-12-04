@@ -206,20 +206,42 @@ class ClassDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
 
         pk = self.kwargs.get(self.pk_url_kwarg, None)
+        logged_student = Student.objects.filter(user=self.request.user)[0]
+
+        num_likes_zip = []
+        like_bool_zip = []
+        for class_feedback in Feedback.objects.filter(course=pk):
+            num_likes = Like.objects.filter(review=class_feedback, liked=True).count()
+            num_likes_zip.append(num_likes)
+            if self.request.user.username != 'admin' and self.request.user.is_authenticated:
+                like_bool = Like.objects.filter(review=class_feedback, student=logged_student)[0]
+                like_bool_zip.append(like_bool.liked)
+
+
         context = super(ClassDetailView, self).get_context_data(**kwargs)
-        context['class_feedback'] = Feedback.objects.filter(course=pk)
+        context['class_feedback'] = zip(Feedback.objects.filter(course=pk), num_likes_zip, like_bool_zip)
         context['professor'] = Professor.objects.filter(course=pk).all()
 
         return context
 
     def post(self, request, *args, **kwargs):
 
+        if self.request.user.username == 'admin' or not self.request.user.is_authenticated:
+            return redirect('/accounts/login')
+
+        logged_student = Student.objects.filter(user=request.user)[0]
         liked_student_id = request.POST.get("liked_student_id", "")
         liked_course_id = request.POST.get("liked_course_id", "")
         f_course = Class.objects.filter(class_id=liked_course_id)[0]
         f_student = Student.objects.filter(student_id=liked_student_id)[0]
-        f_feedback = Feedback.objects.filter(course=f_course, student=f_student)[0]
-        like = Like(review=f_feedback, student=f_student, liked=True)
+        f_feedback = Feedback.objects.filter(course=f_course, student=f_student)
+        like = Like.objects.filter(student=logged_student, review=f_feedback[0])[0]
+
+        if like.liked == True:
+            like.liked = False
+        else:
+            like.liked = True
+        like.save()
 
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
@@ -283,7 +305,7 @@ class UserDetailView(generic.DetailView):
         context['student_id1'] = 1
         context['student_id2'] = 2
 
-        if self.request.user.username == 'admin' or self.request.user.is_authenticated:
+        if self.request.user.username != 'admin' and self.request.user.is_authenticated:
             context['student_id1'] = pk
             context['student_id2'] = Student.objects.filter(user=self.request.user)[0].student_id
 
@@ -415,10 +437,13 @@ class FeedbackCreate(PermissionRequiredMixin, CreateView):
     template_name = "feedback_form.html"
     fields = ('comment', 'course', 'professor', 'rating')
     def form_valid(self, form):
-        user = self.request.user
-        form.instance.student = user.student
+        curr_user = self.request.user
+        f_student = Student.objects.get(user=curr_user).fav_courses.all()
+        form.instance.student = curr_user.student
         form.save()
         form.instance.date = datetime.date(datetime.now())
         form.save()
+        #like = Like(student=f_student, review=l_feedback, liked=False)
+        #like.save()
         return super(FeedbackCreate, self).form_valid(form)
     success_url = reverse_lazy('classes')

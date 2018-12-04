@@ -366,6 +366,7 @@ for professor in professors:
 for l_feedback in course_feedbacks:
     for l_student in students:
         like = Like(student=l_student, review=l_feedback, liked=False)
+        like.save()
 
 
 

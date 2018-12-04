@@ -111,7 +111,7 @@
                     <h5>Current Courses: </h5>
                     <br>
                     {% for class in student.current_courses.all %}
-                      <a href="{{ class.get_absolute_url }}"><p>{{ class }}</p></a>
+                      <a href="{{ class.get_absolute_url }}"><p>{{ class.subject }} {{ class.code }}</p></a>
                     {% endfor %}
                     <span class="plus"><a href="#" title="Web Programming"><i class="glyphicon glyphicon-plus"></i></a></span>
                 </div>
