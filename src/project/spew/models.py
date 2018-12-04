@@ -54,7 +54,7 @@ class Class(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         #return f"{self.first_name}, {se lf.last_name}"
-        return '%s' % (self.class_id)
+        return '%s %s' % (self.subject, self.code)
 
 
 class Student(models.Model):

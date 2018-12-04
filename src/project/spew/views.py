@@ -212,6 +212,11 @@ class ClassDetailView(generic.DetailView):
         like_bool_zip = []
         for class_feedback in Feedback.objects.filter(course=pk):
             num_likes = Like.objects.filter(review=class_feedback, liked=True).count()
+            for test in Like.objects.filter(review=class_feedback, liked=True):
+                print(test.review)
+                print('\n')
+                print(test.student.user.username)
+                print('\n-----------------------\n')
             num_likes_zip.append(num_likes)
             if self.request.user.username != 'admin' and self.request.user.is_authenticated:
                 like_bool = Like.objects.filter(review=class_feedback, student=logged_student)[0]
@@ -229,10 +234,13 @@ class ClassDetailView(generic.DetailView):
         if self.request.user.username == 'admin' or not self.request.user.is_authenticated:
             return redirect('/accounts/login')
 
+
         logged_student = Student.objects.filter(user=request.user)[0]
         liked_student_id = request.POST.get("liked_student_id", "")
-        liked_course_id = request.POST.get("liked_course_id", "")
-        f_course = Class.objects.filter(class_id=liked_course_id)[0]
+        liked_course_code = request.POST.get("liked_course_id", "").rsplit(' ', 1)[1]
+        liked_course_subject = request.POST.get("liked_course_id", "").rsplit(' ', 1)[0]
+        liked_course_subject_object = Subject.objects.filter(subject_name=liked_course_subject)[0]
+        f_course = Class.objects.filter(subject=liked_course_subject_object, code=liked_course_code)[0]
         f_student = Student.objects.filter(student_id=liked_student_id)[0]
         f_feedback = Feedback.objects.filter(course=f_course, student=f_student)
         like = Like.objects.filter(student=logged_student, review=f_feedback[0])[0]
@@ -243,10 +251,6 @@ class ClassDetailView(generic.DetailView):
             like.liked = True
 
         like.save()
-        f_feedback = Feedback.objects.filter(course=f_course, student=f_student)[0]
-        if (request.user.has_perm('spew.can_add_feedback')):
-            like = Like(review=f_feedback, student=f_student, liked=True)
-            like.save()
 
         self.object = self.get_object()
         context = self.get_context_data(object=self.object)
@@ -443,12 +447,13 @@ class FeedbackCreate(PermissionRequiredMixin, CreateView):
     fields = ('comment', 'course', 'professor', 'rating')
     def form_valid(self, form):
         curr_user = self.request.user
-        f_student = Student.objects.get(user=curr_user).fav_courses.all()
+        f_student = Student.objects.get(user=curr_user)
         form.instance.student = curr_user.student
         form.save()
         form.instance.date = datetime.date(datetime.now())
         form.save()
-        #like = Like(student=f_student, review=l_feedback, liked=False)
-        #like.save()
+        new_feedback = Feedback.objects.last()
+        like = Like(student=f_student, review=new_feedback, liked=False)
+        like.save()
         return super(FeedbackCreate, self).form_valid(form)
     success_url = reverse_lazy('classes')
