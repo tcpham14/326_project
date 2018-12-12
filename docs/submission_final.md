@@ -15,6 +15,31 @@ Team Members: Lucas Phan, Thanh Pham, Nhi Lam, Richard Li, Taesan Yoon, Michael 
 
 User Interface: A final up-to-date list/table describing your application’s user interface. This should include the name of the UI view and its purpose. You should include a screenshot of each of your UI views.
 
+Home Page
+![example image](images_final/326HomePage.png)
+Registration Page
+![example image](images_final/326RegistrationPage.png)
+Login Page
+![example image](images_final/326LoginPage.png)
+Class Page
+![example image](images_final/326ClassPage.png)
+Class List Page
+![example image](images_final/326ClassList.png)
+Professor Page
+![example image](images_final/326ProfessorPage.png)
+Professor List Page
+![example image](images_final/326ProfessorList.png)
+Student Page
+![example image](images_final/326StudentPage.png)
+Student List Page
+![example image](images_final/326StudentList.png)
+Edit Profile Page
+![example image](images_final/326EditProfilePage.png)
+Search Page
+![example image](images_final/326AdvancedSearchPage.png)
+Search Results Page
+![example image](images_final/326SearchResultsPage.png)
+
 
 Data Model: A final up-to-date diagram of your data model including a brief description of each of the entities in your model and their relationships.
 
