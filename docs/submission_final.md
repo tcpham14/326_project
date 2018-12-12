@@ -46,7 +46,7 @@ Data Model: A final up-to-date diagram of your data model including a brief desc
 
 URL Routes/Mappings: 
 | Route               | Purpose                                                                                                        | 
-|---------------------|----------------------------------------------------------------------------------------------------------------|
+|---------------------|:--------------------------------------------------------------------------------------------------------------:|
 | users/              | Viewing the list of users on the website                                                                       |
 | classes/            | Viewing the list of classes on the website                                                                     |
 | professors/         | Viewing the list of professors on the website                                                                  |
