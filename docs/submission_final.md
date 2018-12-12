@@ -41,8 +41,9 @@ Search Results Page - Currently not functional, but self-explanatory
 ![example image](images_final/326SearchResultsPage.png)
 
 
-Data Model: A final up-to-date diagram of your data model including a brief description of each of the entities in your model and their relationships.
-
+Data Model:
+![example image](images_final/Data_Model_Diagram.png)
+For the entities in our models, we named them based on what they are used for, so the names themselves explain their relationships with the other models. For example, we have the Student model which contains the "fave_courses" entity that each student (user) can choose, which references the Class objects, and so on. The arrows from each model point to a model they have a direct relationship with.
 
 URL Routes/Mappings: 
 | Route               | Purpose                                                                                                        | 
@@ -62,7 +63,7 @@ URL Routes/Mappings:
 Authentication/Authorization: We have authentication for students only. Registration creates a User along with a Student (profile) which is a one-to-one model in relation to the User in order to add additional fields, basically extending the User model. The students, only once logged in, will be able to review classes (leave feedback and ratings). Users will only be able to access the edit profile for their own user profile page, not anyone else's. The user is also able to edit their password by going through the password reset form on the registration page. Only admins will be able to add classes and professors.
 
 
-Team Choice: You should briefly mention your team choice component for your application. You should highlight any additions to your application that are part of your team choice, such as, URL routes, UI views, data model, to make it clear what your team choice addition is.
+Team Choice: For our team choice, we added a "like" function for class feedback that is related. We added a "Like" model to our data model, which has three components: the student who liked the feedback, the feedback that is being liked, and a boolean field that shows if that student liked that feedback or not. In our views.py file, to our Class Detail View, we edited the look of the feedback given for that class on that page, adding a 'Like' counter and a 'like' button under each feedback. We initialize the likes in our init.py file by going through all the students and all the feedback, each 'liked' value being false for each student for each feedback until they click the like button, changing the value for that student for that feedback to 'true'.
 
 
 Conclusion: This semester there were many things we as a team were able to learn  a website using django framework. On team level, we learned the importance of having clear and concise communication. When we were able to accomplish this feat, this made our work and progress much faster. We also learned the importance of always looking forward when making decisions and how our current design could affect things we would want to implement later. For instance, we tried to implement a custom user, but this caused issues later when we could not utilize django’s built in authentication with the custom user. In hindsight, it would have been better to use the default django user. All in all, the lessons that we learned will help us further our careers in computer science.
