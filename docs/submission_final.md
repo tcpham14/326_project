@@ -46,8 +46,9 @@ Data Model:
 For the entities in our models, we named them based on what they are used for, so the names themselves explain their relationships with the other models. For example, we have the Student model which contains the "fave_courses" entity that each student (user) can choose, which references the Class objects, and so on. The arrows from each model point to a model they have a direct relationship with.
 
 URL Routes/Mappings: 
+
 | Route               | Purpose                                                                                                        | 
-|---------------------|:--------------------------------------------------------------------------------------------------------------:|
+|---------------------|----------------------------------------------------------------------------------------------------------------|
 | users/              | Viewing the list of users on the website                                                                       |
 | classes/            | Viewing the list of classes on the website                                                                     |
 | professors/         | Viewing the list of professors on the website                                                                  |
@@ -57,9 +58,10 @@ URL Routes/Mappings:
 | search_results      | Viewing a list of classes based on a user’s certain criteria                                                   |
 | advanced_search     | Allows user to find classes based on multiple forms of criteria                                                |
 | accounts/register/  | A page allowing a person to register as a user of the website                                                  |
-| accounts/login/     | A page that allows a person to log in. This route requires authentication of the user logging in.              |
-| submissions/create/ | Allows user to submit feedback for a class. Student only has permissions to create feedbacks for themselvelves,| 
-| edit_profile/       | Allows user to edit their profile settings. A student only has permissions to edit their own profile.          |                                   |
+| accounts/login/     | A page that allows a person to log in. This route requires authentication of the user logging in               |
+| submissions/create/ | Can create feedback for a class. A student only has permissions to create feedbacks for themselves             | 
+| edit_profile/       | Allows user to edit their profile settings. A student only has permissions to edit their own profile           |
+
 Authentication/Authorization: We have authentication for students only. Registration creates a User along with a Student (profile) which is a one-to-one model in relation to the User in order to add additional fields, basically extending the User model. The students, only once logged in, will be able to review classes (leave feedback and ratings). Users will only be able to access the edit profile for their own user profile page, not anyone else's. The user is also able to edit their password by going through the password reset form on the registration page. Only admins will be able to add classes and professors.
 
 
