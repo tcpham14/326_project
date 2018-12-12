@@ -13,31 +13,30 @@ Overview: A brief overview of your application. This will be based on what you a
 Team Members: Lucas Phan, Thanh Pham, Nhi Lam, Richard Li, Taesan Yoon, Michael Ahn
 
 
-User Interface: A final up-to-date list/table describing your application’s user interface. This should include the name of the UI view and its purpose. You should include a screenshot of each of your UI views.
-
-Home Page
+User Interface: Each page of our UI is fairly self-explanatory. We have a persistent nav bar at the top that has links to each of the views.
+Home Page / Landing Page
 ![example image](images_final/326HomePage.png)
 Registration Page
 ![example image](images_final/326RegistrationPage.png)
 Login Page
 ![example image](images_final/326LoginPage.png)
-Class Page
+Class Page - Contains all of the fine details of each class
 ![example image](images_final/326ClassPage.png)
-Class List Page
+Class List Page - Lists all of the available classes
 ![example image](images_final/326ClassList.png)
-Professor Page
+Professor Page - Contains all of the fine details of each professor
 ![example image](images_final/326ProfessorPage.png)
-Professor List Page
+Professor List Page - Lists all of the professors
 ![example image](images_final/326ProfessorList.png)
-Student Page
+Student Page - Contains all of the fine details of each student
 ![example image](images_final/326StudentPage.png)
-Student List Page
+Student List Page - Lists all of the students
 ![example image](images_final/326StudentList.png)
-Edit Profile Page
+Edit Profile Page - Only accessible for your own user page
 ![example image](images_final/326EditProfilePage.png)
-Search Page
+Search Page - Currently not functional, but self-explanatory
 ![example image](images_final/326AdvancedSearchPage.png)
-Search Results Page
+Search Results Page - Currently not functional, but self-explanatory
 ![example image](images_final/326SearchResultsPage.png)
 
 
