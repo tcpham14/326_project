@@ -206,7 +206,7 @@ class ClassDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
 
         pk = self.kwargs.get(self.pk_url_kwarg, None)
-        logged_student = Student.objects.filter(user=self.request.user)[0]
+        logged_student = self.request.user.student
 
         num_likes_zip = []
         like_bool_zip = []
