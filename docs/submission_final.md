@@ -45,21 +45,20 @@ Data Model: A final up-to-date diagram of your data model including a brief desc
 
 
 URL Routes/Mappings: 
-| Route  | Purpose   |
-|---|---|
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-|   |   |
-
+| Route               | Purpose                                                                                                                                           |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| users/              | Viewing the list of users on the website                                                                                                          |
+| classes/            | Viewing the list of classes on the website                                                                                                        |
+| professors/         | Viewing the list of professors on the website                                                                                                     |
+| class/<int:pk>/     | Viewing the details of a class                                                                                                                    |
+| user/<str:pk>/      | Viewing the details of a user                                                                                                                     |
+| professor/<int:pk>  | Viewing the details of a professor                                                                                                                |
+| search_results      | Viewing a list of classes based on a user’s certain criteria                                                                                      |
+| advanced_search     | Allows user to find classes based on multiple forms of criteria                                                                                   |
+| accounts/register/  | A page allowing a person to register as a user of the website                                                                                     |
+| accounts/login/     | A page that allows a person to log in. This route requires authentication of the user logging in.                                                 |
+| submissions/create/ | Allows user to submit feedback for a class. A student only has permissions to create feedbacks for themselves, and not for others once logged in. |
+| edit_profile/       | Allows user to edit their profile settings. A student only has permissions to edit their own profile.                                             |
 Authentication/Authorization: We have authentication for students only. Registration creates a User along with a Student (profile) which is a one-to-one model in relation to the User in order to add additional fields, basically extending the User model. The students, only once logged in, will be able to review classes (leave feedback and ratings). Users will only be able to access the edit profile for their own user profile page, not anyone else's. The user is also able to edit their password by going through the password reset form on the registration page. Only admins will be able to add classes and professors.
 
 
