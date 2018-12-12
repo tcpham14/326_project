@@ -212,20 +212,34 @@ class ClassDetailView(generic.DetailView):
         like_bool_zip = []
         for class_feedback in Feedback.objects.filter(course=pk):
             num_likes = Like.objects.filter(review=class_feedback, liked=True).count()
-            for test in Like.objects.filter(review=class_feedback, liked=True):
-                print(test.review)
-                print('\n')
-                print(test.student.user.username)
-                print('\n-----------------------\n')
+
             num_likes_zip.append(num_likes)
             if self.request.user.username != 'admin' and self.request.user.is_authenticated:
                 like_bool = Like.objects.filter(review=class_feedback, student=logged_student)[0]
                 like_bool_zip.append(like_bool.liked)
 
+        popular_sorted = []
+        class_list = Class.objects.filter(class_id=pk)
+        for course in class_list:
+           popular_sorted.append((course, 0))
+           for course_feedback in Feedback.objects.filter(course=course.class_id):
+               popular_sorted[len(popular_sorted)-1] = (popular_sorted[len(popular_sorted)-1][0], popular_sorted[len(popular_sorted)-1][1] + int(course_feedback.rating))
+           popular_sorted[len(popular_sorted)-1] = (popular_sorted[len(popular_sorted)-1][0], popular_sorted[len(popular_sorted)-1][1] / len(Feedback.objects.filter(course=course.class_id)))
+
+        popular_sorted.sort(key=lambda x: x[1])
+        popular_sorted.reverse()
+
+        popular_class_list = [i[0] for i in popular_sorted]
+        popular_rating_list = [range(round(i[1])) for i in popular_sorted]
+        popular_rating_half_boolean_list = [(not (round(i[1]*2)/2).is_integer() and (not i[1] % 1 > .5)) for i in popular_sorted]
+        
+
 
         context = super(ClassDetailView, self).get_context_data(**kwargs)
         context['class_feedback'] = zip(Feedback.objects.filter(course=pk), num_likes_zip, like_bool_zip)
         context['professor'] = Professor.objects.filter(course=pk).all()
+        context['popular_rating_list'] = popular_rating_list
+        context['popular_rating_half_boolean_list'] = popular_rating_half_boolean_list
 
         return context
 
