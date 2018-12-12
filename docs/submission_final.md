@@ -7,7 +7,7 @@ Subtitle: Spew
 Semester: Fall 2018
 
 
-Overview: A brief overview of your application. This will be based on what you are submitting as your final web application artifact. You should also mention why your application is innovative.
+Overview: Spew is an innovative student-driven database centered around finding the perfect class for any student. It provides an array of information on any class offered at UMass, such as required textbooks, instructors, attendance and so on. It also allows students to share feedback in the form of reviews, along with ratings based on certain disciplines of the class. This application will allow students to view most-rated and highest-rated classes, along with the ability to view related classes in the form of track based on the student's concentration.
 
 
 Team Members: Lucas Phan, Thanh Pham, Nhi Lam, Richard Li, Taesan Yoon, Michael Ahn
