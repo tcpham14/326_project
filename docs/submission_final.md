@@ -14,6 +14,7 @@ Team Members: Lucas Phan, Thanh Pham, Nhi Lam, Richard Li, Taesan Yoon, Michael 
 
 
 User Interface: Each page of our UI is fairly self-explanatory. We have a persistent nav bar at the top that has links to each of the views.
+
 Home Page / Landing Page
 ![example image](images_final/326HomePage.png)
 Registration Page
