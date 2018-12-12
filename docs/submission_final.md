@@ -35,7 +35,7 @@ Student List Page - Lists all of the students
 Edit Profile Page - Only accessible for your own user page
 ![example image](images_final/326EditProfilePage.png)
 Search Page - Currently not functional, but self-explanatory
-![example image](images_final/326AdvancedSearchPage.png)
+![example image](images_final/326AdvancedSearch.png)
 Search Results Page - Currently not functional, but self-explanatory
 ![example image](images_final/326SearchResultsPage.png)
 
